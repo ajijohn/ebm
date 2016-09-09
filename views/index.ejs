@@ -2,17 +2,59 @@
 <html>
 <head>
     <title><%= title %></title>
-    <script src="javascripts/leaflet.js"></script>
-    <script src="javascripts/leaflet.draw.js"></script>
-    <link rel="stylesheet" href="stylesheets/leaflet.css" />
-    <link rel="stylesheet" href="stylesheets/leaflet.draw.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.3.2/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.3.2/leaflet.draw.css" />
     <link rel="stylesheet" href="https://cdn.rawgit.com/wyuenho/backgrid/master/lib/backgrid.css" />
     <link rel="stylesheet" href="https://cdn.rawgit.com/wyuenho/backgrid-select-all/master/backgrid-select-all.css" />
 
 
-    <link rel='stylesheet' href='stylesheets/bootstrap.css' />
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css' />
     <!-- Latest compiled and minified CSS -->
-    <link rel='stylesheet' href='stylesheets/eb.css' />
+    <!--<link rel='stylesheet' href='stylesheets/eb.css' /> -->
+
+    <style>
+        /*
+  * Additional Style tweaks
+  * --------------------------------------------------
+  */
+        body {
+            padding-top: 12px;
+            background-color: #f5f5f5;
+        }
+        footer {
+            padding-left: 15px;
+            padding-right: 15px;
+            background-color: #fff;
+        }
+
+
+        .card-box {
+            padding: 20px;
+            border: 1px solid rgba(54, 64, 74, 0.08);
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            background-clip: padding-box;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+
+        .form-inline > * {
+            margin:15px 0px !important;
+        }
+        .card-box {
+            padding: 20px;
+            border: 1px solid rgba(54, 64, 74, 0.08);
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            background-clip: padding-box;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+    </style>
     <!-- Bootstrap core JavaScript================================================== -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
