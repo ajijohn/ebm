@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <script src="/javascripts/leaflet.js"></script>
+    <script src="/javascripts/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="/stylesheets/leaflet.css" />
+    <link rel="stylesheet" href="/stylesheets/leaflet.draw.css" />
+    <link rel="stylesheet" href="https://cdn.rawgit.com/wyuenho/backgrid/master/lib/backgrid.css" />
+    <link rel="stylesheet" href="https://cdn.rawgit.com/wyuenho/backgrid-select-all/master/backgrid-select-all.css" />
+
+
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <!-- Latest compiled and minified CSS -->
+    <link rel='stylesheet' href='/stylesheets/eb.css' />
+   <!-- Bootstrap core JavaScript================================================== -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/javascripts/eb.js"></script>
+
+
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">EB Stacks Inc.</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="row ">
+
+       <div class="col-sm-9 col-md-10 main">
+
+            <div class="page-header"></div>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div id="map" style="width: 500px; height: 400px"></div>
+
+                    <!--<span class="text-muted">Something else</span> -->
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <h4>Filter Criteria</h4>
+                    <div class="card-box">
+
+                    <!--<span class="text-muted">Something else</span> -->
+                    <form class="form-inline">
+
+                        <div class="form-group">
+
+                            <label class="control-label">Select export attributes</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="temp"> Temp</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="humidity"> Humidity</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="soilm"> Soil Moisture</label>
+                        </div>
+                        <div class="form-group ">
+                            <label for="stdate" class="control-label">Start Date</label>
+                            <input type="text" class="form-control" id="stdate" name="stdate" placeholder="Start Date">
+                        </div>
+                        <div class="form-group">
+                            <label for="eddate" class="control-label">End Date</label>
+                            <input type="text" class="form-control" id="eddate" name="eddate" placeholder="End Date">
+                        </div>
+
+                        <div class="form-group">
+                              <label class="control-label">Select export type</label>
+                              <label class="radio-inline"><input type="radio" value="1"/>netCDF</label>
+                              <label class="radio-inline"><input type="radio" value="2"/>CSV</label>
+                        </div>
+                        <br />
+                        <div class="form-group"> <!-- Submit button !-->
+                            <button type="button" class="btn btn-success btn-lg">Process</button>
+                        </div>
+
+                    </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <h2 class="sub-header">Results-Tabular</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Header</th>
+                        <th>Header</th>
+                        <th>Header</th>
+                        <th>Header</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1,001</td>
+                        <td>Lorem</td>
+                        <td>ipsum</td>
+                        <td>dolor</td>
+                        <td>sit</td>
+                    </tr>
+                    <tr>
+                        <td>1,002</td>
+                        <td>amet</td>
+                        <td>consectetur</td>
+                        <td>adipiscing</td>
+                        <td>elit</td>
+                    </tr>
+                    <tr>
+                        <td>1,003</td>
+                        <td>Integer</td>
+                        <td>nec</td>
+                        <td>odio</td>
+                        <td>Praesent</td>
+                    </tr>
+                    <tr>
+                        <td>1,003</td>
+                        <td>libero</td>
+                        <td>Sed</td>
+                        <td>cursus</td>
+                        <td>ante</td>
+                    </tr>
+                    <tr>
+                        <td>1,004</td>
+                        <td>dapibus</td>
+                        <td>diam</td>
+                        <td>Sed</td>
+                        <td>nisi</td>
+                    </tr>
+                    <tr>
+                        <td>1,005</td>
+                        <td>Nulla</td>
+                        <td>quis</td>
+                        <td>sem</td>
+                        <td>at</td>
+                    </tr>
+                    <tr>
+                        <td>1,006</td>
+                        <td>nibh</td>
+                        <td>elementum</td>
+                        <td>imperdiet</td>
+                        <td>Duis</td>
+                    </tr>
+                    <tr>
+                        <td>1,007</td>
+                        <td>sagittis</td>
+                        <td>ipsum</td>
+                        <td>Praesent</td>
+                        <td>mauris</td>
+                    </tr>
+                    <tr>
+                        <td>1,008</td>
+                        <td>Fusce</td>
+                        <td>nec</td>
+                        <td>tellus</td>
+                        <td>sed</td>
+                    </tr>
+                    <tr>
+                        <td>1,009</td>
+                        <td>augue</td>
+                        <td>semper</td>
+                        <td>porta</td>
+                        <td>Mauris</td>
+                    </tr>
+                    <tr>
+                        <td>1,010</td>
+                        <td>massa</td>
+                        <td>Vestibulum</td>
+                        <td>lacinia</td>
+                        <td>arcu</td>
+                    </tr>
+                    <tr>
+                        <td>1,011</td>
+                        <td>eget</td>
+                        <td>nulla</td>
+                        <td>Class</td>
+                        <td>aptent</td>
+                    </tr>
+                    <tr>
+                        <td>1,012</td>
+                        <td>taciti</td>
+                        <td>sociosqu</td>
+                        <td>ad</td>
+                        <td>litora</td>
+                    </tr>
+                    <tr>
+                        <td>1,013</td>
+                        <td>torquent</td>
+                        <td>per</td>
+                        <td>conubia</td>
+                        <td>nostra</td>
+                    </tr>
+                    <tr>
+                        <td>1,014</td>
+                        <td>per</td>
+                        <td>inceptos</td>
+                        <td>himenaeos</td>
+                        <td>Curabitur</td>
+                    </tr>
+                    <tr>
+                        <td>1,015</td>
+                        <td>sodales</td>
+                        <td>ligula</td>
+                        <td>in</td>
+                        <td>libero</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div><!--/row-->
+    </div>
+
+
+
+</div><!--/.container-->
+
+<footer>
+    <p class="pull-right">©2014-2016 University of Washington. Buckley Lab.</p>
+</footer>
+<script>
+    var map = L.map('map').setView([-41.2858, 174.78682], 14);
+    mapLink =
+            '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+    L.tileLayer(
+            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; ' + mapLink + ' Contributors',
+                maxZoom: 18
+            }).addTo(map);
+
+    var LeafIcon = L.Icon.extend({
+        options: {
+            shadowUrl:
+                    'http://leafletjs.com/docs/images/leaf-shadow.png',
+            iconSize:     [38, 95],
+            shadowSize:   [50, 64],
+            iconAnchor:   [22, 94],
+            shadowAnchor: [4, 62],
+            popupAnchor:  [-3, -76]
+        }
+    });
+
+    var greenIcon = new LeafIcon({
+        iconUrl: 'http://leafletjs.com/docs/images/leaf-green.png'
+    });
+
+    var drawnItems = new L.FeatureGroup();
+    map.addLayer(drawnItems);
+
+    var drawControl = new L.Control.Draw({
+        position: 'topleft',
+        draw: {
+            polygon: {
+                shapeOptions: {
+                    color: 'purple'
+                },
+                allowIntersection: false,
+                drawError: {
+                    color: 'orange',
+                    timeout: 1000
+                },
+                showArea: true,
+                metric: false,
+                repeatMode: true
+            },
+            polyline: {
+                shapeOptions: {
+                    color: 'red'
+                }
+            },
+            rect: {
+                shapeOptions: {
+                    color: 'green'
+                }
+            },
+            circle: {
+                shapeOptions: {
+                    color: 'steelblue'
+                }
+            },
+            marker: {
+                icon: greenIcon
+            }
+        },
+        edit: {
+            featureGroup: drawnItems
+        }
+    });
+    map.addControl(drawControl);
+
+    map.on('draw:created', function (e) {
+        var type = e.layerType,
+                layer = e.layer;
+
+        if (type === 'marker') {
+            layer.bindPopup('A popup!');
+            console.log("Marker created")
+        }
+
+        if (type === 'polygon') {
+
+            console.log("polygon created" + layer)
+            grid.insertRow({
+                priority:5,
+                type: 8
+            });
+        }
+
+        drawnItems.addLayer(layer);
+    });
+
+</script>
+
+
+<script src="https://cdn.rawgit.com/jashkenas/underscore/1.5.2/underscore.js"></script>
+<script src="https://cdn.rawgit.com/jashkenas/backbone/1.1.0/backbone.js"></script>
+<script src="https://cdn.rawgit.com/wyuenho/backbone-pageable/master/lib/backbone-pageable.js"></script>
+<script src="https://cdn.rawgit.com/wyuenho/backgrid/master/lib/backgrid.js"></script>
+<script src="https://cdn.rawgit.com/wyuenho/backgrid-filter/master/backgrid-filter.js"></script>
+<script>
+
+    var items = [
+    ];
+    var collection = new Backbone.Collection(items);
+
+    var grid = new Backgrid.Grid({
+        collection : collection,
+        columns : [{
+            name : 'priority',
+            label : 'Region',
+            cell : Backgrid.NumberCell,
+            sortable: false
+        },{
+            name : 'type',
+            label : 'Type',
+            cell : Backgrid.NumberCell,
+            sortable : false
+        }]
+    });
+
+
+    var GreaterThanClientFilter = Backgrid.Extension.ClientSideFilter.extend({
+        makeMatcher: function(query){
+            var q = 1*query;
+            return function (model) {
+                if (isNaN(q)) return false;
+                var keys = this.fields || model.keys();
+                for (var i = 0, l = keys.length; i < l; i++) {
+                    value = model.get(keys[i]);
+                    if (!isNaN(value) &&  (1*value >= q))
+                        return true;
+                }
+                return false;
+            };
+        }
+    });
+
+    var filter = new GreaterThanClientFilter({
+        collection: collection,
+        placeholder: "Search"
+    });
+
+    $('#main').append( grid.render().el );
+
+    //$("#client-side-filter").html(filter.render().el);
+
+
+
+</script>
+
+</body>
+</html>
