@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.3.2/leaflet.draw.css" />
     <link rel="stylesheet" href="https://cdn.rawgit.com/wyuenho/backgrid/master/lib/backgrid.css" />
     <link rel="stylesheet" href="https://cdn.rawgit.com/wyuenho/backgrid-select-all/master/backgrid-select-all.css" />
+    <!-- select -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css" />
+
 
 
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css' />
@@ -62,6 +65,9 @@
     <script src="javascripts/eb.js"></script>
 
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
+
+
 </head>
 <body>
 
@@ -101,7 +107,7 @@
 
             <div class="row">
                 <div class="col-lg-6 col-md-6">
-                    <div id="map" style="width: 500px; height: 400px"></div>
+                    <div id="map" style="width: 500px; height: 650px"></div>
 
                     <!--<span class="text-muted">Something else</span> -->
                 </div>
@@ -114,25 +120,104 @@
 
                             <div class="form-group">
 
-                                <label class="control-label">Select export attributes</label>
-                                <label class="checkbox-inline"><input type="checkbox" name="temp"> Temp</label>
-                                <label class="checkbox-inline"><input type="checkbox" name="humidity"> Humidity</label>
-                                <label class="checkbox-inline"><input type="checkbox" name="soilm"> Soil Moisture</label>
+                                <label class="control-label">Variable</label>
+
+                                <select class="selectpicker" data-header="Select a variable">
+
+                                    <optgroup label="WRF">
+                                        <option>Albedo</option>
+                                        <option>BGAP</option>
+                                        <option>FVEG</option>
+                                        <option>GLW</option>
+                                        <option>ISNOW</option>
+                                        <option>SWDOWN</option>
+                                        <option>TAH</option>
+                                        <option>TV</option>
+                                        <option>WGAP</option>
+                                        <option>TG</option>
+                                        <option>T2</option>
+                                        <option>QAIR</option>
+                                        <option>SMOIS</option>
+                                    </optgroup>
+                                    <optgroup label="Microclimate">
+                                        <option>Tair</option>
+                                        <option>Tsurface</option>
+                                        <option>Tsoil</option>
+                                        <option>UV</option>
+                                    </optgroup>
+
+                                </select>
+
                             </div>
-                            <div class="form-group ">
-                                <label for="stdate" class="control-label">Start Date</label>
-                                <input type="text" class="form-control" id="stdate" name="stdate" placeholder="Start Date">
-                            </div>
+
+
                             <div class="form-group">
-                                <label for="eddate" class="control-label">End Date</label>
-                                <input type="text" class="form-control" id="eddate" name="eddate" placeholder="End Date">
+                                <label class="control-label input-group">Locations</label>
+                                <span class="text-muted">select the geographic bounding box</span>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="lat" name="lat" placeholder="Lat">
+                                    <label for="lat" class="control-label">degrees N Lat</label>
+                                    <span class="input-group-addon"></span>
+                                    <input type="number" class="form-control" id="lng" name="lon" placeholder="Lon">
+                                    <label for="lng" class="control-label">degrees E Lon</label>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group ">
+                                <label class="control-label input-group">Time periods</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="stdate" name="stdate" placeholder="Start Date">
+                                    <label for="stdate" class="control-label">Start Date</label>
+                                    <span class="input-group-addon">-</span>
+
+                                    <input type="text" class="form-control" id="eddate" name="eddate" placeholder="End Date">
+                                    <label for="eddate" class="control-label">End Date</label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="interval" class="control-label input-group">Interval</label>
+                                    <select id="interval" class="selectpicker">
+                                        <option>Hourly</option>
+                                        <option>6 Hourly</option>
+                                        <option>12 Hourly</option>
+                                        <option>Daily</option>
+                                        <option>Monthly</option>
+                                        <option>Annual</option>
+                                    </select>
+                                    <label for="aggregation" class="control-label input-group">Aggregation Metric</label>
+                                    <select id="aggregation" class="selectpicker" >
+                                        <option>Instantaneous</option>
+                                        <option>Max</option>
+                                        <option>Min</option>
+                                        <option>Mean</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label">Select export type</label>
-                                <label class="radio-inline"><input type="radio" value="1"/>netCDF</label>
-                                <label class="radio-inline"><input type="radio" value="2"/>CSV</label>
+                                <label for="file" class="control-label input-group">Output file format</label>
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="file" value="csv">CSV
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="file" value="json">JSON
+                                    </label>
+                                    <label class="btn btn-default active">
+                                        <input type="radio" name="file" value="netCDF" checked="">netCDF
+                                    </label>
+                                </div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="email" class="control-label input-group">Email address</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Please enter your email">
+                            </div>
+
                             <br />
                             <div class="form-group"> <!-- Submit button !-->
                                 <button type="button" class="btn btn-success btn-lg">Process</button>
@@ -367,6 +452,22 @@
         if (type === 'polygon') {
 
             console.log("polygon created" + layer)
+            var width = layer.getBounds().getEast() - layer.getBounds().getWest();
+            var height = layer.getBounds().getNorth() - layer.getBounds().getSouth();
+
+            var lats = []; var lngs = [];
+
+            for (var i = 0; i < layer._latlngs.length; i++)  {
+                lats.push(layer._latlngs[i].lat);
+                lngs.push(layer._latlngs[i].lng);
+
+            }
+
+            //Show the bounding box
+            $("#lat").val( layer.getBounds().getCenter().lat );
+            $("#lng").val( layer.getBounds().getCenter().lng );
+
+
             grid.insertRow({
                 priority:5,
                 type: 8
@@ -375,6 +476,8 @@
 
         drawnItems.addLayer(layer);
     });
+
+
 
 </script>
 
