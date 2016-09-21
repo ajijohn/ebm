@@ -23,6 +23,15 @@ router.get('/', function(req, res, next) {
 });
 */
 
+/* GET All Requests. */
+router.get('/', function(req, res, next) {
+    var db = req.db;
+    var requests = db.get('requests');
+    requests.find({},{},function(e,rqsts){
+        res.json(201, rqsts);
+    });
+});
+
 
 /* Write to the requests file */
 router.post('/', function(req, res, next) {

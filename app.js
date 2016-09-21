@@ -7,11 +7,12 @@ var bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient
 const compression = require('compression');
 var monk = require('monk');
+var _ = require('underscore');
 
 //TODO load the models
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var exec = require('./routes/exec');
+var requests = require('./routes/requests');
 
 var app = express();
 
@@ -27,6 +28,7 @@ var db = monk(process.env.MONGODB_URI || process.env.MONGOLAB_URI || url);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 
 app.use(compression());
 
@@ -46,7 +48,7 @@ app.use(function(req,res,next){
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/extract', exec);
+app.use('/requests', requests);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
