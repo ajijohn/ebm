@@ -59,20 +59,26 @@ router.post('/', function(req, res, next) {
 
 
     var variable = req.body.variable;
-    var lat = req.body.lat;
-    var lng = req.body.lng;
+    var latN = req.body.latN;
+    var latS = req.body.latS;
+    var lonW = req.body.lonW;
+    var lonE = req.body.lonE;
+
+
     var stdate = req.body.startdate;
     var eddate = req.body.enddate;
     var file = req.body.file;
     var email = req.body.email;
     var dateperformed = req.body.dateperformed;
+
+    //latS,latN,lonW,lonE
     var new_request = {  misc:"",
                          email:email,
                          status:"OPEN",
                          aggregationmetric:"",
-                         lats:[lat],
+                         lats:[latS,latN],
                          timelogged:dateperformed,
-                          longs:[lng],
+                          longs:[lonW,lonE],
                          variable:[variable],
                          interval:"",
                           text:"",

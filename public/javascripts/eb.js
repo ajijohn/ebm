@@ -125,13 +125,24 @@ $(function () {
             if (self.$el.find('form').parsley('validate')  != '') {
                 self.$el.find('.alert-container').empty();
 
+                stfmtdt = moment(self.$el.find('#stdate').val()).utc().format("YYYYMMDD");
+                endfmtdt = moment(self.$el.find('#eddate').val()).utc().format("YYYYMMDD");
+
                 var data = {
                     variable: self.$el.find('#variable').val(),
                     dateperformed: moment(new Date()).utc().format("MM/DD/YYYY HH:mm:ss Z"),
-                    lat: self.$el.find('#lat').val(),
-                    lng: self.$el.find('#lng').val(),
-                    startdate: self.$el.find('#stdate').val(),
-                    enddate: self.$el.find('#eddate').val(),
+
+                    //latS,latN,lonW,lonE
+                    latN: self.$el.find('#latN').val(),
+                    latS: self.$el.find('#latS').val(),
+                    lonW: self.$el.find('#lonW').val(),
+                    lonE: self.$el.find('#lonE').val(),
+
+                    startdate: stfmtdt,
+                    enddate: endfmtdt,
+
+
+
                     file: self.$el.find('input:radio[name=file]').val(),
                     email: self.$el.find('#email').val()
                 };

@@ -16,7 +16,7 @@
 
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css' />
     <!-- Latest compiled and minified CSS -->
-     <link rel='stylesheet' href='/stylesheets/eb.css' /> 
+     <link rel='stylesheet' href='/stylesheets/eb.css' />
 
     <style>
         /*
@@ -172,15 +172,23 @@
                             </div>
 
 
+
                             <div class="form-group">
                                 <label class="control-label input-group">Locations</label>
                                 <span class="text-muted">select the geographic bounding box</span>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" id="lat" name="lat" placeholder="Lat">
+                                    <input type="number" class="form-control" id="latN" name="latN" placeholder="LatN">
                                     <label for="lat" class="control-label">degrees N Lat</label>
                                     <span class="input-group-addon"></span>
-                                    <input type="number" class="form-control" id="lng" name="lng" placeholder="Lon">
-                                    <label for="lng" class="control-label">degrees E Lon</label>
+                                    <input type="number" class="form-control" id="latS" name="latS" placeholder="LatS">
+                                    <label for="lng" class="control-label">degrees S Lat</label>
+                                </div><hr/>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="lonW" name="lonW" placeholder="LonW">
+                                    <label for="lat" class="control-label">degrees E Lat</label>
+                                    <span class="input-group-addon"></span>
+                                    <input type="number" class="form-control" id="lonE" name="lonE" placeholder="LonE">
+                                    <label for="lng" class="control-label">degrees W Lon</label>
                                 </div>
                             </div>
 
@@ -421,14 +429,14 @@
             console.log("Marker created")
         }
 
-        if (type === 'polygon') {
+        if (type === 'polygon' || type=="rectangle") {
 
-            console.log("polygon created" + layer)
             var width = layer.getBounds().getEast() - layer.getBounds().getWest();
             var height = layer.getBounds().getNorth() - layer.getBounds().getSouth();
 
             var lats = []; var lngs = [];
 
+            //coordinates of the polygon
             for (var i = 0; i < layer._latlngs.length; i++)  {
                 lats.push(layer._latlngs[i].lat);
                 lngs.push(layer._latlngs[i].lng);
@@ -436,8 +444,16 @@
             }
 
             //Show the bounding box
-            $("#lat").val( layer.getBounds().getCenter().lat );
-            $("#lng").val( layer.getBounds().getCenter().lng );
+            //$("#lat").val( layer.getBounds().getCenter().lat );
+            //$("#lng").val( layer.getBounds().getCenter().lng );
+
+            //latS,latN,lonW,lonE
+            $("#latS").val( layer.getBounds().getSouth());
+            $("#latN").val( layer.getBounds().getNorth());
+
+            $("#lonW").val(layer.getBounds().getWest());
+            $("#lonE").val(layer.getBounds().getEast());
+
 
 
         }
