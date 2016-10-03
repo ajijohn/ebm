@@ -1,6 +1,6 @@
 # Architecture and Process Flow
 
-[![N|Solid](https://cdn.rawgit.com/ajijohn/ebm/e2fc2f2698798a1d1594196b1b4c0846134c2f86/public/images/flow-ebs.png)]()
+[![N|Solid](https://github.com/ajijohn/ebm/blob/774815ff68b6c41f7667c2ea8f92ccf7b776fd9e/public/images/Process-Flow.png)]()
 
 microclim.org is a cloud-enabled, responsive, ExpressJS powered HTML5 Micro Climate Export site.
 
