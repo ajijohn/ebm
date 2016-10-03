@@ -42,7 +42,7 @@ router.post('/', function(req, res, next) {
     /*
 
      misc:
-     email:aji.john@gmail.com
+     email:a.j@xyz.com
      status:EMAILED
      aggregationmetric:
      lats:Array[3]
