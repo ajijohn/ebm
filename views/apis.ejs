@@ -21,9 +21,9 @@
             <a class="navbar-brand" href="/"><i class="fa fa-google-plus-circle"></i>E B M (beta)</a></div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
+                <li ><a href="/">Home</a></li>
                 <li><a href="/microclim">Microclim</a></li>
-                <li><a href="/APIs">APIs</a></li>
+                <li class="active"><a href="/APIs">APIs</a></li>
                 <li><a href="/">Help</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -35,20 +35,53 @@
 </div>
 <div class="container">
     <div class="page-header"></div>
-    <h1>Energy Balance Modeling</h1>
-    <p class="lead text-justify">We provide microclimatic data for ecological forecasting.  The data describes microclimates and vegetation for the past and the future at spatial and temporal resolutions of 36 km (approximately 0.3°) and 1 h, respectively. [Levy *et al*. (2016)](http://onlinelibrary.wiley.com/doi/10.1002/ecy.1444/full) used the [Weather Research & Forecasting](http://www.wrf-model.org/) model to downscale published, bias-corrected predictions of a global-circulation model from a resolution of 0.9° latitude and 1.25° (approximately 100 km in latitude and 130 km in longitude). Output from this model was used as input for a microclimate model, which generated temperatures and wind speeds as well as soil temperatures for 1980-1999 and 2080-2099 at various heights, as well as soil temperatures at various depths and shade intensities. We also predicted the percentage of green vegetation and the percentage of shade given the angle of the sun.</p>
+    <h3>APIs</h3>
+    <p class="lead text-justify">We offer 3 APIs for assessing available data and retrieving data.</p>
     <hr>
     <div class="row">
-        <div class="col-sm-6"><h2>Resources</h2>
-            <p class="lead text-justify">The modeling protocol, microclimate calculations, computer programs, and the evaluation process are detailed in the following [publication](http://onlinelibrary.wiley.com/doi/10.1002/ecy.1444/full), which should be cited if the data are used in publications:
-                >Levy O, Buckley LB, Keitt TH, and Angilletta MJ. 2016. A dynamically downscaled projection of past and future microclimates. Ecology 97:1888.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p></div>
-        <div class="col-sm-6"><h2>Specifications</h2>
-            <p class="lead text-justify">The data spans North America at a resolution of 36km (approximately 0.3°).  The domain was centered at 38.3°N, 99.6°W, with a grid dimension of 130 x 200 points </p>
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p></div>
-        <div class="col-sm-6"><h2>Extracting data using APIs</h2>
-            <p class="lead text-justify">We offer 3 APIs for assessing available data and retrieving data.</p>
-            <p><a class="btn btn-default" href="/APIs" role="button">View details »</a></p></div>
+
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action">
+                <h5 class="list-group-item-heading">query_microclim()</h5>
+                <p class="list-group-item-text">The API call will return the options available for the following: variables, locations, time period, time interval, aggregation metrics.</p>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                <h5 class="list-group-item-heading">fetch_microclim(startdate, enddate, latS, latN, lonW, lonE, varname, shade, height, interval, aggregation, output)</h5>
+                <p class="list-group-item-text">This API allows users to fetch data</p>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                     # startdate and endate are indicated as YYYYMMDDHH where YYYY is year, MM is month, DD is day, and HH is hour.
+                    </li>
+                    <li class="list-group-item">
+                        # latS, latN, lonW, and lonE indicate the bounding box of the data in degrees north latitude and degrees east longitude.
+                    </li>
+                    <li class="list-group-item">
+                        # varname indicates to variable names in the table above.
+                    </li>
+                    <li class="list-group-item">
+                        # shade indicates to the percent shade: 0, 25, 50, 75, 100
+                    </li>
+                    <li class="list-group-item">
+                        # height indicates to the height (m) above or depth below the surface: 0.03, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27, 0.30, 0.48, 0.66, 0.84, 1.02, 1.20, 1.38, 1.56, 1.74, 1.92
+                    </li>
+                    <li class="list-group-item">
+                        # interval indicates times interval:hr, 6hr, 12hr, day, month, year
+                    </li>
+                    <li class="list-group-item">
+                        # aggregation indicates the aggregation metric across time:  instantaneous, max, min, mean
+                    </li>
+                    <li class="list-group-item">
+                        #output should indicate the output type: csv, netcdf.
+                    </li>
+                </ul>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                <h5 class="list-group-item-heading">retrieve_microclim(request_id)</h5>
+                <p class="list-group-item-text">The API call will return a status update or a link for retrieving the data once the request in completed.  The data can be retrieved from the Amazon Web Services S3 storage.
+                </p>
+            </a>
+        </div>
+
     </div>
 </div>
 <footer>

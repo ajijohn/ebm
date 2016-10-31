@@ -6,6 +6,11 @@ router.get('/',function(req, res, next) {
   res.render('home', { title: 'Energy Balance Modeling' });
 });
 
+/* GET api page. */
+router.get('/APIs',function(req, res, next) {
+  res.render('apis', { title: 'Energy Balance Modeling' });
+});
+
 
 router.get('/signup',function(req, res, next) {
   res.render('signup', { title: 'Energy Balance Modeling' });
