@@ -18,65 +18,7 @@
     <!-- Latest compiled and minified CSS -->
      <link rel='stylesheet' href='/stylesheets/eb.css' />
 
-    <style>
-        /*
-  * Additional Style tweaks
-  * --------------------------------------------------
-  */
-        body {
-            padding-top: 12px;
-            background-color: #f5f5f5;
-        }
-        footer {
-            padding-left: 15px;
-            padding-right: 15px;
-            background-color: #fff;
-        }
 
-
-        .card-box {
-            padding: 20px;
-            border: 1px solid rgba(54, 64, 74, 0.08);
-            -webkit-border-radius: 5px;
-            border-radius: 5px;
-            -moz-border-radius: 5px;
-            background-clip: padding-box;
-            margin-bottom: 20px;
-            background-color: #fff;
-        }
-
-        .form-inline > * {
-            margin:15px 0px !important;
-        }
-        .card-box {
-            padding: 20px;
-            border: 1px solid rgba(54, 64, 74, 0.08);
-            -webkit-border-radius: 5px;
-            border-radius: 5px;
-            -moz-border-radius: 5px;
-            background-clip: padding-box;
-            margin-bottom: 20px;
-            background-color: #fff;
-        }
-
-        #loading-img {
-            background: url(images/3.gif) center center no-repeat;
-            height: 100%;
-            z-index: 20;
-        }
-
-        .overlay {
-            background: #e9e9e9;
-            display: none;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            opacity: 0.5;
-        }
-
-    </style>
     <!-- Bootstrap core JavaScript================================================== -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
@@ -92,38 +34,34 @@
 <body>
 
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Energy Balance Modeling (beta)</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">APIs</a></li>
-                <li><a href="/auth/google">Login</a></li>
-                <li><a href="#">Help</a></li>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse"><span
+                        class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span
+                        class="icon-bar"></span></button>
+            <a class="navbar-brand" href="/"><i class="fa fa-google-plus-circle"></i>E B M (beta)</a></div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/microclim">Microclim</a></li>
+                <li><a href="/APIs">APIs</a></li>
+                <li><a href="/">Help</a></li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/login">Login</a></li>
+                <li class="active"><a href="/signup">Create Account</a></li>
+            </ul>
         </div>
     </div>
-</nav>
-
-<div class="container-fluid">
+</div>
+<div class="container">
 
     <div class="row ">
 
         <div class="col-sm-9 col-md-10 main">
 
-            <div class="page-header"></div>
+            <div class="page-header"></div><h3>Dashboard</h3></div>
 
             <div class="row">
                 <div class="col-lg-6 col-md-6">
@@ -347,9 +285,18 @@
 
 </div><!--/.container-->
 
+
 <footer>
-    <p class="pull-right">©2014-2016 University of Washington. Buckley Lab.</p>
+    <div class="container text-center"><p class="pull-left">© 2014-2016 University of Washington. Buckley Lab.</p>
+        <ul class="pull-right list-inline">
+            <li><b>release</b></li>
+            <li>
+                <v>0.04</v>
+            </li>
+        </ul>
+    </div>
 </footer>
+
 <script>
     var map = L.map('map').setView([39.70005491693909,-106.22817993164061 ], 10);
     mapLink =

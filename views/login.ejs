@@ -14,35 +14,31 @@
 </head>
 <body>
 
-
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Energy Balance Modeling (beta)</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">APIs</a></li>
-                <li><a href="/auth/google">Login</a></li>
-                <li><a href="#">Help</a></li>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse"><span
+                        class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span
+                        class="icon-bar"></span></button>
+            <a class="navbar-brand" href="/"><i class="fa fa-google-plus-circle"></i>E B M (beta)</a></div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/microclim">Microclim</a></li>
+                <li><a href="/APIs">APIs</a></li>
+                <li><a href="/">Help</a></li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/login">Login</a></li>
+                <li><a href="/signup">Create Account</a></li>
+            </ul>
         </div>
     </div>
-</nav>
+</div>
 
-<div class="container-fluid">
+<div class="container">
 
-    <div class="page-header"></div>
+    <div class="page-header"></div><h3>Login</h3></div>
     <form class="form-horizontal" method="POST"><input type="hidden" name="_csrf"
                                                        value="u5Vf8pkZPi/ZxYDTY07Z3/En8ejDoLmc2ZBNw=">
         <div class="form-group"><label class="col-sm-3 control-label" for="email">Email</label>
@@ -55,7 +51,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-7">
-                <button class="col-sm-3 btn btn-primary" type="submit"><i class="fa fa-user"></i>Login</button>
+                <button class="col-sm-3 btn btn-success btn-lg" type="submit"><i class="fa fa-user"></i>Login</button>
                 <a class="btn btn-link" href="/forgot">Forgot your password?</a></div>
         </div>
         <div class="form-group">
@@ -65,15 +61,23 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-7">
-               <a class="btn btn-block btn-google btn-social" href="/auth/google"><i class="fa fa-google-plus"></i>Sign in with Google</a>
+               <a class="btn btn-block btn-google btn-social btn-lg" href="/auth/google"><i class="fa fa-google-plus"></i>Sign in with Google</a>
             </div>
+        </div>
     </form>
 
 
 </div><!--/.container-->
 
 <footer>
-    <p class="pull-right">©2014-2016 University of Washington. Buckley Lab.</p>
+    <div class="container text-center"><p class="pull-left">© 2014-2016 University of Washington. Buckley Lab.</p>
+        <ul class="pull-right list-inline">
+            <li><b>release</b></li>
+            <li>
+                <v>0.04</v>
+            </li>
+        </ul>
+    </div>
 </footer>
 
 </body>

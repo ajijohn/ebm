@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4DA5F4">
+    <meta name="csrf-token" content="MFD51vYyzp+LTqq27woifqWjX2rwLcg5OKxGw=">
+    <title><%= title %></title>
+    <link rel="shortcut icon" href="/favicon.png">
+    <!-- Latest compiled and minified CSS -->
+    <link rel='stylesheet' href='/stylesheets/eb.css' />
+</head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse"><span
+                        class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span
+                        class="icon-bar"></span></button>
+            <a class="navbar-brand" href="/"><i class="fa fa-google-plus-circle"></i>E B M (beta)</a></div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/microclim">Microclim</a></li>
+                <li><a href="/APIs">APIs</a></li>
+                <li><a href="/">Help</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/login">Login</a></li>
+                <li class="active"><a href="/signup">Create Account</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="page-header"></div>
+    <h1>Energy Balance Modeling</h1>
+    <p class="lead text-justify">We provide microclimatic data for ecological forecasting.  The data describes microclimates and vegetation for the past and the future at spatial and temporal resolutions of 36 km (approximately 0.3°) and 1 h, respectively. [Levy *et al*. (2016)](http://onlinelibrary.wiley.com/doi/10.1002/ecy.1444/full) used the [Weather Research & Forecasting](http://www.wrf-model.org/) model to downscale published, bias-corrected predictions of a global-circulation model from a resolution of 0.9° latitude and 1.25° (approximately 100 km in latitude and 130 km in longitude). Output from this model was used as input for a microclimate model, which generated temperatures and wind speeds as well as soil temperatures for 1980-1999 and 2080-2099 at various heights, as well as soil temperatures at various depths and shade intensities. We also predicted the percentage of green vegetation and the percentage of shade given the angle of the sun.</p>
+    <hr>
+    <div class="row">
+        <div class="col-sm-6"><h2>Resources</h2>
+            <p class="lead text-justify">The modeling protocol, microclimate calculations, computer programs, and the evaluation process are detailed in the following [publication](http://onlinelibrary.wiley.com/doi/10.1002/ecy.1444/full), which should be cited if the data are used in publications:
+                >Levy O, Buckley LB, Keitt TH, and Angilletta MJ. 2016. A dynamically downscaled projection of past and future microclimates. Ecology 97:1888.</p>
+            <p><a class="btn btn-default" href="#" role="button">View details »</a></p></div>
+        <div class="col-sm-6"><h2>Specifications</h2>
+            <p class="lead text-justify">The data spans North America at a resolution of 36km (approximately 0.3°).  The domain was centered at 38.3°N, 99.6°W, with a grid dimension of 130 x 200 points </p>
+            <p><a class="btn btn-default" href="#" role="button">View details »</a></p></div>
+        <div class="col-sm-6"><h2>Extracting data using APIs</h2>
+            <p class="lead text-justify">We offer 3 APIs for assessing available data and retrieving data.</p>
+            <p><a class="btn btn-default" href="#" role="button">View details »</a></p></div>
+    </div>
+</div>
+<footer>
+    <div class="container text-center"><p class="pull-left">© 2014-2016 University of Washington. Buckley Lab.</p>
+        <ul class="pull-right list-inline">
+            <li><b>release</b></li>
+            <li>
+                <v>0.04</v>
+            </li>
+        </ul>
+    </div>
+</footer>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css' />
+<!-- Bootstrap core JavaScript================================================== -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID-->
+<script>(function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-XXXXX-X', 'auto');
+    ga('send', 'pageview');</script>
+</body>
+</html>
