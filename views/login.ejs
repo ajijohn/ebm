@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css' />
+    <!-- Latest compiled and minified CSS -->
+    <link rel='stylesheet' href='/stylesheets/eb.css' />
+
+
+    <!-- Bootstrap core JavaScript================================================== -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="javascripts/eb.js"></script>
+
+
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Energy Balance Modeling (beta)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">APIs</a></li>
+                <li><a href="/auth/google">Login</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="page-header"></div>
+    <form class="form-horizontal" method="POST"><input type="hidden" name="_csrf"
+                                                       value="u5Vf8pkZPi/ZxYDTY07Z3/En8ejDoLmc2ZBNw=">
+        <div class="form-group"><label class="col-sm-3 control-label" for="email">Email</label>
+            <div class="col-sm-7"><input class="form-control" type="email" name="email" id="email" placeholder="Email"
+                                         autofocus required></div>
+        </div>
+        <div class="form-group"><label class="col-sm-3 control-label" for="password">Password</label>
+            <div class="col-sm-7"><input class="form-control" type="password" name="password" id="password"
+                                         placeholder="Password" required></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-7">
+                <button class="col-sm-3 btn btn-primary" type="submit"><i class="fa fa-user"></i>Login</button>
+                <a class="btn btn-link" href="/forgot">Forgot your password?</a></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-7">
+                <hr>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-7">
+               <a class="btn btn-block btn-google btn-social" href="/auth/google"><i class="fa fa-google-plus"></i>Sign in with Google</a>
+            </div>
+    </form>
+
+
+</div><!--/.container-->
+
+<footer>
+    <p class="pull-right">©2014-2016 University of Washington. Buckley Lab.</p>
+</footer>
+
+</body>
+</html>

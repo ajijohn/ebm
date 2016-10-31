@@ -21,17 +21,20 @@
     "mongoose": "^4.6.0",
     "mongodb": "*",
     "monk": "*",
-    "passport": "0.3.2",
-    "passport-facebook": "^2.1.1",
-    "passport-github": "^1.1.0",
-    "passport-google-oauth": "^1.0.0",
+    "passport": "*",
+    "passport-facebook": "*",
+    "passport-github": "*",
+    "passport-google-oauth20":"*",
     "passport-linkedin-oauth2": "^1.4.1",
     "passport-local": "^1.0.0",
     "passport-oauth": "^1.0.0",
     "passport-openid": "^0.4.0",
     "passport-twitter": "^1.0.4",
+    "express-session":"*",
     "chalk": "^1.1.3",
     "compression": "^1.6.2",
-    "underscore":"*"
+    "underscore":"*",
+    "connect-ensure-login": "^0.1.1",
+    "connect-mongo":"*"
   }
 }
