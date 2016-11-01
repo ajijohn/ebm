@@ -10,8 +10,8 @@ var session = require('express-session');
 
 
 const MongoClient = require('mongodb').MongoClient
-const compression = require('compression');
-const MongoStore = require('connect-mongo')(session);
+var compression = require('compression');
+var MongoStore = require('connect-mongo')(session);
 
 // Load Auth Providers variables
 var auth = require('./auth.js');
