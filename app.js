@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 var monk = require('monk');
 var _ = require('underscore');
 var session = require('express-session');
-
+const flash = require('express-flash');
+const expressValidator = require('express-validator');
 
 const MongoClient = require('mongodb').MongoClient
 var compression = require('compression');
@@ -94,7 +95,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(expressValidator());
 // required for passport session
 app.use(session({
     secret: 'secrettexthere',
@@ -115,6 +116,12 @@ app.use(function(req,res,next){
 
 app.use( passport.initialize());
 app.use( passport.session());
+app.use(flash());
+
+app.use(function(req, res, next)  {
+    res.locals.user = req.user;
+next();
+});
 
 app.use('/',routes);
 app.use('/users', users);

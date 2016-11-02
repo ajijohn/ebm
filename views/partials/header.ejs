@@ -7,16 +7,16 @@
             <a class="navbar-brand" href="/"><i class="fa fa-google-plus-circle"></i>E B M (beta)</a></div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/microclim">Microclim</a></li>
-                <li><a href="/APIs">APIs</a></li>
+                <li <%if (title=="home") { %>class="active"  <% }  %>><a href="/">Home</a></li>
+                <li <%if (title=="microclim") { %>class="active"  <% }  %>><a href="/microclim">Microclim</a></li>
+                <li <%if (title=="APIs") { %>class="active"  <% }  %>><a href="/APIs">APIs</a></li>
                 <li><a href="/">Help</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <%if (!user) { %>
 
                 <li><a href="/login">Login</a></li>
-                <li class="active"><a href="/signup">Create Account</a></li>
+                <!-- <li class="active" disabled><a href="/signup">Create Account</a></li> -->
 
                 <% } else{ %>
 
@@ -32,7 +32,7 @@
                         <i class="caret"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/account">My Account</a></li>
+                        <!--<li disabled><a href="/account">My Account</a></li>-->
                         <li class="divider"></li>
                         <li><a href="/logout">Logout</a></li>
                     </ul>
