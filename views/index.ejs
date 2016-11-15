@@ -55,7 +55,7 @@
                     <div class="card-box">
 
                         <!--<span class="text-muted">Something else</span> -->
-                        <form id="extractform" method="post"  class="form-inline">
+                        <form id="extractform" method="post"  class="form-inline" data-parsley-validate="">
 
                             <div class="form-group">
 
@@ -95,17 +95,17 @@
                                 <label class="control-label input-group">Locations</label>
                                 <span class="text-muted">select the geographic bounding box</span>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" id="latN" name="latN" placeholder="LatN">
+                                    <input type="number" class="form-control" id="latN" name="latN" placeholder="LatN" type="number" step="any" data-parsley-trigger="change" required="">
                                     <label for="lat" class="control-label">degrees N Lat</label>
                                     <span class="input-group-addon"></span>
-                                    <input type="number" class="form-control" id="latS" name="latS" placeholder="LatS">
+                                    <input type="number" class="form-control" id="latS" name="latS" placeholder="LatS" type="number" step="any" data-parsley-trigger="change" required="">
                                     <label for="lng" class="control-label">degrees S Lat</label>
                                 </div><hr/>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" id="lonW" name="lonW" placeholder="LonW">
+                                    <input type="number" class="form-control" id="lonW" name="lonW" placeholder="LonW" type="number" step="any"  data-parsley-trigger="change" required="">
                                     <label for="lat" class="control-label">degrees E Lat</label>
                                     <span class="input-group-addon"></span>
-                                    <input type="number" class="form-control" id="lonE" name="lonE" placeholder="LonE">
+                                    <input type="number" class="form-control" id="lonE" name="lonE" placeholder="LonE" type="number" step="any" data-parsley-trigger="change" required="">
                                     <label for="lng" class="control-label">degrees W Lon</label>
                                 </div>
                             </div>
@@ -162,13 +162,13 @@
 
                             <div class="form-group">
                                 <label for="email" class="control-label input-group">Email address</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="<%= user.email%>" value="<%= user.email%>">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="<%= user.email%>" value="<%= user.email%>" required>
                             </div>
 
                             <br />
                             <div class="form-group">
                                 <!-- Submit/Cancel button !-->
-                                <button type="button" class="btn btn-success btn-lg save">Process</button>
+                                <button type="button" class="btn btn-success btn-lg save" value="validate">Process</button>
                                 <button type="reset" class="btn btn-warning btn-lg reset">Cancel</button>
                             </div>
 
@@ -295,37 +295,10 @@
     var drawControl = new L.Control.Draw({
         position: 'topleft',
         draw: {
-            polygon: {
-                shapeOptions: {
-                    color: 'purple'
-                },
-                allowIntersection: false,
-                drawError: {
-                    color: 'orange',
-                    timeout: 1000
-                },
-                showArea: true,
-                metric: false,
-                repeatMode: true
-            },
-            polyline: {
-                shapeOptions: {
-                    color: 'red'
-                }
-            },
-            rect: {
-                shapeOptions: {
-                    color: 'green'
-                }
-            },
-            circle: {
-                shapeOptions: {
-                    color: 'steelblue'
-                }
-            },
-            marker: {
-                icon: greenIcon
-            }
+            polygon: false, // Turns off this drawing tool,
+            polyline:false, // Turns off this drawing tool,
+            circle:false, // Turns off this drawing tool,
+            marker: false, // Turns off this drawing tool
         },
         edit: {
             featureGroup: drawnItems

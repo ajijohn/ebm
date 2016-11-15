@@ -120,9 +120,10 @@ $(function () {
         },
         save: function (e) {
             var self = this;
+            self.$el.find('.alert-container').empty();
             $(".overlay").show();
 
-            if (self.$el.find('form').parsley('validate')  != '') {
+            if($('#extractform').parsley().validate()) {
                 self.$el.find('.alert-container').empty();
 
                 stfmtdt = moment(self.$el.find('#stdate').val()).utc().format("YYYYMMDD");
