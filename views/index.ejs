@@ -89,7 +89,57 @@
 
                             </div>
 
+                            <br />
 
+                            <div class="form-group">
+                                <label for="shadelevel" class="control-label input-group">Shade Level</label>
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-default active">
+                                        <input type="radio" name="shadelevel" value="0" checked>0%
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="shadelevel" value="25" >25%
+                                    </label>
+                                    <label class="btn btn-default" >
+                                        <input type="radio" name="shadelevel" value="50">50%
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="shadelevel" value="75" >75%
+                                    </label>
+                                    <label class="btn btn-default" >
+                                        <input type="radio" name="shadelevel" value="100">100%
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="hod" class="control-label input-group">Height or depth(m)</label>
+                                    <select id="hod" class="selectpicker">
+                                        <option>0.03</option>
+                                        <option>0.06</option>
+                                        <option>0.09</option>
+                                        <option>0.12</option>
+                                        <option>0.15</option>
+                                        <option>0.18</option>
+                                        <option>0.21</option>
+                                        <option>0.24</option>
+                                        <option>0.27</option>
+                                        <option>0.30</option>
+                                        <option>0.48</option>
+                                        <option>0.66</option>
+                                        <option>0.84</option>
+                                        <option>1.02</option>
+                                        <option>1.20</option>
+                                        <option>1.38</option>
+                                        <option>1.56</option>
+                                        <option>1.74</option>
+                                        <option>1.92</option>
+                             </select>
+
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label class="control-label input-group">Locations</label>
@@ -113,6 +163,20 @@
 
                             <div class="form-group ">
                                 <label class="control-label input-group">Time periods</label>
+
+                                <br />
+
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-default active">
+                                        <input type="radio" name="tp" value="past" checked>Past
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="tp" value="future" >Future
+                                    </label>
+                                 </div>
+
+                                <hr />
+
                                 <div class="input-group">
                                     <input type="text" class="form-control datepicker"  id="stdate" name="stdate" placeholder="Start Date" required>
                                     <label for="stdate" class="control-label">Start Date</label>
@@ -127,7 +191,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="interval" class="control-label input-group">Interval</label>
-                                    <select id="interval" class="selectpicker" disabled>
+                                    <select id="interval" class="selectpicker">
                                         <option>Hourly</option>
                                         <option>6 Hourly</option>
                                         <option>12 Hourly</option>
@@ -136,7 +200,7 @@
                                         <option>Annual</option>
                                     </select>
                                     <label for="aggregation" class="control-label input-group">Aggregation Metric</label>
-                                    <select id="aggregation" class="selectpicker" disabled>
+                                    <select id="aggregation" class="selectpicker">
                                         <option>Instantaneous</option>
                                         <option>Max</option>
                                         <option>Min</option>
