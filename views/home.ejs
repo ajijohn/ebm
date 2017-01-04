@@ -17,24 +17,111 @@
 
 <div class="container">
     <div class="page-header"></div>
-    <h1>Microclimate data</h1>
-    <p class="lead text-justify">We provide microclimatic data for ecological forecasting.  The data describes microclimates and vegetation for the past and the future at spatial and temporal resolutions of 36 km (approximately 0.3°) and 1 h, respectively. [Levy *et al*. (2016)](http://onlinelibrary.wiley.com/doi/10.1002/ecy.1444/full) used the [Weather Research & Forecasting](http://www.wrf-model.org/) model to downscale published, bias-corrected predictions of a global-circulation model from a resolution of 0.9° latitude and 1.25° (approximately 100 km in latitude and 130 km in longitude). Output from this model was used as input for a microclimate model, which generated temperatures and wind speeds as well as soil temperatures for 1980-1999 and 2080-2099 at various heights, as well as soil temperatures at various depths and shade intensities. We also predicted the percentage of green vegetation and the percentage of shade given the angle of the sun.</p>
+    <h1>Microclimate <data></data></h1>
+    <p class="lead text-justify">We provide microclimatic data for ecological forecasting.  The data describes microclimates and vegetation for the past and the future at spatial and temporal resolutions of 36 km (approximately 0.3°) and 1 h, respectively. [Levy *et al*. (2016)](<a target="_blank" href="http://onlinelibrary.wiley.com/doi/10.1002/ecy.1444/full">http://onlinelibrary.wiley.com/doi/10.1002/ecy.1444/full</a>) used the [Weather Research & Forecasting](<a target="_blank" href="http://www.wrf-model.org/">http://www.wrf-model.org/</a>) model to downscale published, bias-corrected predictions of a global-circulation model from a resolution of 0.9° latitude and 1.25° (approximately 100 km in latitude and 130 km in longitude). Output from this model was used as input for a microclimate model, which generated temperatures and wind speeds as well as soil temperatures for 1980-1999 and 2080-2099 at various heights, as well as soil temperatures at various depths and shade intensities. We also predicted the percentage of green vegetation and the percentage of shade given the angle of the sun.</p>
     <hr>
     <div class="row">
-        <div class="col-sm-6"><h2>Resources</h2>
-            <p class="lead text-justify">The modeling protocol, microclimate calculations, computer programs, and the evaluation process are detailed in the following [publication](http://onlinelibrary.wiley.com/doi/10.1002/ecy.1444/full), which should be cited if the data are used in publications:
-                >Levy O, Buckley LB, Keitt TH, and Angilletta MJ. 2016. A dynamically downscaled projection of past and future microclimates. Ecology 97:1888.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p></div>
         <div class="col-sm-6"><h2>Specifications</h2>
-            <p class="lead text-justify">The data spans North America at a resolution of 36km (approximately 0.3°).  The domain was centered at 38.3°N, 99.6°W, with a grid dimension of 130 x 200 points </p>
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p></div>
+            <p class="lead text-justify">The data spans North America at a resolution of 36km (approximately 0.3°). Hourly data for 17 metrics is available for a past (1980-1999) and future (2080-2099) time period. Data are available as instantaneous, max, min, or mean values across various time intervals (1hr,  6hrs,  12hrs, daily, monthly, or yearly). </p>
+            <!--If overflow, use this-->
+            <!--<p><a class="btn btn-default" href="#" role="button">View details »</a></p> -->
+        </div>
+
+        <div class="col-sm-6"><h2>Resources</h2>
+            <p class="lead text-justify">The modeling protocol, microclimate calculations, computer programs, and the evaluation process are detailed in the following [publication](<a target="_blank" href="http://onlinelibrary.wiley.com/doi/10.1002/ecy.1444/full">Link</a>), which should be cited if the data are used in publications:
+                >Levy O, Buckley LB, Keitt TH, and Angilletta MJ. 2016. A dynamically downscaled projection of past and future microclimates. Ecology 97:1888.</br>
+
+                The data is also [published](<a target="_blank" href="https://knb.ecoinformatics.org/#view/doi:10.5063/F11834DP">Link</a>) by The Knowledge Network for Biocomplexity:
+                > Levy O, Buckley LB, Keitt TH, and Angilletta MJ. 2016. Data from a dynamically downscaled projection of past and future microclimates covering North America from 1980–1999 and 2080–2099. KNB Data Repository. doi:10.5063/F1Z899CZ.<p></p>
+        </div>
+
+
+
         <div class="col-sm-6"><h2>Extracting data using APIs</h2>
             <p class="lead text-justify">We offer 3 APIs for assessing available data and retrieving data.</p>
-            <p><a class="btn btn-default" href="/APIs" role="button">View details »</a></p></div>
+            <p><a class="btn btn-default" href="/APIs" role="button">View details »</a></p>
+        </div>
+
+
     </div>
+
+    <div class="row">
+    <div class="col-lg-12"><h2>Detail Specifications</h2>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Extent and resolution</div>
+        <p class="lead text-justify">The data spans North America at a resolution of 36km (approximately 0.3°).  The domain was centered at 38.3°N, 99.6°W, with a grid dimension of 130 x 200 points </p>
+
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Time period</div>
+            <p class="lead text-justify">Hourly data is available for a past (1980-1999) and future (2080-2099) time period. </p>
+
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Time period</div>
+            <p class="lead text-justify">Shade (%): 0, 25, 50, 75, 100 </br>
+                 Height or depth (m): 0.03, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27, 0.30, 0.48, 0.66, 0.84, 1.02, 1.20, 1.38, 1.56, 1.74, 1.92</p>
+
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Aggregation</div>
+            <p class="lead text-justify">Data is available at intervals of 1hr,  6hrs,  12hrs, daily, monthly, or yearly.  Users can select among the following aggregation metrics across time: instantaneous, max, min, mean.  We use the following conventions for time aggregation:</p>
+            <ul class="list-group h5">
+                <li class="list-group-item">For 6-hr data, the segments of time are 1-6, 7-12, 13-18, 19-00 hrs</li>
+                <li class="list-group-item">For 12-hr data, the segments of time are 1-12, 13-00 hrs</li>
+                <li class="list-group-item">A day begins in hour=1 and ends in hour=0 of the next day.</li>
+                <li class="list-group-item">For monthly data, a month begins in day 1 1:00am and ends at the zero hour of the next month.</li>
+                <li class="list-group-item">Instantaneous values are at the beginning of a segment.</li>
+            </ul>
+        </div>
+
+        <div class="panel panel-success">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Variable Details</div>
+
+            <!-- Table -->
+            <table class="table h5 text-justify">
+                <thead> <tr> <th>#</th> <th>Variable</th> <th>Description</th> <th>Units</th><th>Dimensions</th> <th>Source</th> </tr> </thead>
+                 <tbody>
+                  <tr> <th scope=row>1</th> <td>ALBEDO</td> <td>surface albedo</td> <td>dec. %</td><td>time</td> <td>WRF</td> </tr>
+                  <tr> <th scope=row>2</th> <td>BGAP</td> <td>gap between canopies (the fraction of area where visible solar radiation can reach the ground)</td> <td>dec. %</td><td>time</td> <td>WRF</td> </tr>
+                  <tr> <th scope=row>3</th> <td>FVEG</td> <td>fraction of green vegetation </td> <td>dec. %</td><td>time</td> <td>WRF</td> </tr>
+                  <tr> <th scope=row>4</th> <td>GLW</td> <td>downward flux of near-infrared radiation </td> <td>W m<sup>-2</sup></td><td>time</td> <td>WRF</td> </tr>
+                  <tr> <th scope=row>5</th> <td>ISNOW</td> <td>number of snow layers  </td> <td><td>time</td> <td>WRF</td> </tr>
+                  <tr> <th scope=row>6</th> <td>SWDOWN</td> <td>downward flux of visible radiation</td><td>W m<sup>-2</sup></td><td>time</td> <td>WRF</td> </tr>
+                  <tr> <th scope=row>7</th> <td>TAH</td> <td>air temperature in canopy</td><td>K</td><td>time</td> <td>WRF</td> </tr>
+                  <tr> <th scope=row>8</th> <td>Tair</td> <td>air temperature</td><td>K</td><td>time, shade, height</td> <td>Microclimate</td> </tr>
+                  <tr> <th scope=row>9</th> <td>Tsurface</td> <td>surface temperature</td><td>K</td><td>time, shade</td> <td>Microclimate</td> </tr>
+                  <tr> <th scope=row>10</th> <td>Tsoil</td> <td>soil/snow temperature</td><td>K</td><td>time, shade, depth</td> <td>Microclimate</td> </tr>
+                  <tr> <th scope=row>11</th> <td>TV</td> <td>temperature of a leaf in the vegetation  </td><td>K</td><td>time</td> <td>WRF</td> </tr>
+                  <tr> <th scope=row>12</th> <td>UV</td> <td>wind velocity</td><td>m s<sup>-1</sup> </td><td>time, height</td> <td>Microclimate</td> </tr>
+                  <tr> <th scope=row>13</th> <td>WGAP</td> <td>gap within the canopy (the fraction of visible solar radiation that can reach the ground through the canopy) </td><td>dec. %  </td><td>time</td> <td>WRF</td> </tr>
+                  <tr> <th scope=row>14</th> <td>TG</td> <td>temperature of bulk ground  </td><td>K</td><td>time</td> <td>WRF</td> </tr>
+                  <tr> <th scope=row>15</th> <td>T2</td> <td>temperature above bare surface (2-m height)  </td><td>K</td><td>time</td> <td>WRF</td> </tr>
+                  <tr> <th scope=row>16</th> <td>QAIR</td> <td>specific humidity at surface (2-m height) </td><td>kg kg<sup>-1</sup> </td><td>time</td> <td>WRF</td> </tr>
+                  <tr> <th scope=row>17</th> <td>SMOIS</td> <td>soil water </td><td>m<sup>3</sup>/m<sup>3</sup> </td><td>time, height</td> <td>WRF</td> </tr>
+
+                 </tbody>
+            </table>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Output Format</div>
+            <p class="lead text-justify">We are currently serving the microclimate data in either NetCDF or CSV format. We use the following naming convention for output:</p></br>
+            <p class="lead text-justify">    [varname]_[shade]_[height/depth]_[interval]_[aggregation]_[startdate]_[enddate]_[creation time].[nc/csv]</br></br>
+                Shade and height/depth are added to the file name only if they are part of the dimensions of the selected variable.  The selection parameters are also included as global attributes in each output NetCDF file and as header information for each csv file.</p>
+
+        </div>
+
+    </div>
+    </div>
+
 </div>
 <% include ./partials/footer %>
-
 
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css' />
 <!-- Bootstrap core JavaScript================================================== -->
