@@ -92,6 +92,13 @@ $(function () {
                   '</div>'+
 
 
+                      '<div class="col-xs-4">'+
+                  '<a  class="btn btn-default btn-lg pull-left disabled" data-placement="top"'+
+                  'data-original-title=".btn .btn-default .btn-lg">'+
+                  element.email+
+                  '</a>'+
+                  '</div>'+
+
                     '</div> '+
                     '</div>';
 

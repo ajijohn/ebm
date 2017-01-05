@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
 router.get('/', function(req, res, next) {
     var db = req.db;
     var requests = db.get('requests');
-    requests.find({},{},function(e,rqsts){
+    requests.find({email: req.user.email },{},function(e,rqsts){
         res.json(201, rqsts);
     });
 });
