@@ -64,25 +64,25 @@
                                 <select class="selectpicker" id="variable" name="variable" data-header="Select a variable">
 
                                     <optgroup label="WRF">
-                                        <option disabled>Albedo</option>
-                                        <option disabled>BGAP</option>
-                                        <option disabled>FVEG</option>
-                                        <option disabled>GLW</option>
-                                        <option disabled>ISNOW</option>
-                                        <option disabled>SWDOWN</option>
-                                        <option disabled>TAH</option>
-                                        <option disabled>TV</option>
-                                        <option disabled>WGAP</option>
-                                        <option disabled>TG</option>
-                                        <option disabled>T2</option>
-                                        <option disabled>QAIR</option>
-                                        <optiondisabled>SMOIS</optiondisabled>
+                                        <option>Albedo</option>
+                                        <option>BGAP</option>
+                                        <option>FVEG</option>
+                                        <option>GLW</option>
+                                        <option>ISNOW</option>
+                                        <option>SWDOWN</option>
+                                        <option>TAH</option>
+                                        <option>TV</option>
+                                        <option>WGAP</option>
+                                        <option>TG</option>
+                                        <option>T2</option>
+                                        <option>QAIR</option>
+                                        <option>SMOIS</option>
                                     </optgroup>
                                     <optgroup label="Microclimate">
                                         <option>Tair</option>
                                         <option>Tsurface</option>
-                                        <option disabled>Tsoil</option>
-                                        <option disabled>UV</option>
+                                        <option>Tsoil</option>
+                                        <option>UV</option>
                                     </optgroup>
 
                                 </select>
@@ -98,16 +98,16 @@
                                         <input type="radio" name="shadelevel" value="0" checked>0%
                                     </label>
                                     <label class="btn btn-default">
-                                        <input type="radio" name="shadelevel" value="25" >25%
+                                        <input type="radio" name="shadelevel" value="1" >25%
                                     </label>
                                     <label class="btn btn-default" >
-                                        <input type="radio" name="shadelevel" value="50">50%
+                                        <input type="radio" name="shadelevel" value="2">50%
                                     </label>
                                     <label class="btn btn-default">
-                                        <input type="radio" name="shadelevel" value="75" >75%
+                                        <input type="radio" name="shadelevel" value="3" >75%
                                     </label>
                                     <label class="btn btn-default" >
-                                        <input type="radio" name="shadelevel" value="100">100%
+                                        <input type="radio" name="shadelevel" value="4">100%
                                     </label>
                                 </div>
                             </div>
@@ -117,25 +117,25 @@
                                 <div class="form-group">
                                     <label for="hod" class="control-label input-group">Height or depth(m)</label>
                                     <select id="hod" class="selectpicker">
-                                        <option>0.03</option>
-                                        <option>0.06</option>
-                                        <option>0.09</option>
-                                        <option>0.12</option>
-                                        <option>0.15</option>
-                                        <option>0.18</option>
-                                        <option>0.21</option>
-                                        <option>0.24</option>
-                                        <option>0.27</option>
-                                        <option>0.30</option>
-                                        <option>0.48</option>
-                                        <option>0.66</option>
-                                        <option>0.84</option>
-                                        <option>1.02</option>
-                                        <option>1.20</option>
-                                        <option>1.38</option>
-                                        <option>1.56</option>
-                                        <option>1.74</option>
-                                        <option>1.92</option>
+                                        <option value="0">0.03</option>
+                                        <option value="1">0.06</option>
+                                        <option value="2">0.09</option>
+                                        <option value="3">0.12</option>
+                                        <option value="4">0.15</option>
+                                        <option value="5">0.18</option>
+                                        <option value="6">0.21</option>
+                                        <option value="7">0.24</option>
+                                        <option value="8">0.27</option>
+                                        <option value="9">0.30</option>
+                                        <option value="10">0.48</option>
+                                        <option value="11">0.66</option>
+                                        <option value="12">0.84</option>
+                                        <option value="13">1.02</option>
+                                        <option value="14">1.20</option>
+                                        <option value="15">1.38</option>
+                                        <option value="16">1.56</option>
+                                        <option value="17">1.74</option>
+                                        <option value="18">1.92</option>
                              </select>
 
                                 </div>
@@ -192,19 +192,18 @@
                                 <div class="form-group">
                                     <label for="interval" class="control-label input-group">Interval</label>
                                     <select id="interval" class="selectpicker">
-                                        <option>Hourly</option>
-                                        <option>6 Hourly</option>
-                                        <option>12 Hourly</option>
-                                        <option>Daily</option>
-                                        <option>Monthly</option>
-                                        <option>Annual</option>
-                                    </select>
+                                        <option value="0">Hourly</option>
+                                        <option value="1">6 Hourly</option>
+                                        <option value="2">12 Hourly</option>
+                                        <option value="3">Daily</option>
+                                        <option value="4">Monthly</option>
+                                     </select>
                                     <label for="aggregation" class="control-label input-group">Aggregation Metric</label>
                                     <select id="aggregation" class="selectpicker">
-                                        <option>Instantaneous</option>
-                                        <option>Max</option>
-                                        <option>Min</option>
-                                        <option>Mean</option>
+                                        <option value="0">Instantaneous</option>
+                                        <option value="1">Max</option>
+                                        <option value="2">Min</option>
+                                        <option value="3">Mean</option>
                                     </select>
                                 </div>
                             </div>

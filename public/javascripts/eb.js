@@ -140,6 +140,9 @@ $(function () {
                     variable: self.$el.find('#variable').val(),
                     dateperformed: moment(new Date()).utc().format("MM/DD/YYYY HH:mm:ss Z"),
 
+                    shadelevel:self.$el.find('input:radio[name=shadelevel]').val(),
+                    hod:self.$el.find('#hod').val(),
+
                     //latS,latN,lonW,lonE
                     latN: self.$el.find('#latN').val(),
                     latS: self.$el.find('#latS').val(),
@@ -149,7 +152,8 @@ $(function () {
                     startdate: stfmtdt,
                     enddate: endfmtdt,
 
-
+                    interval:self.$el.find('#interval').val(),
+                    aggregation:self.$el.find('#aggregation').val(),
 
                     file: self.$el.find('input:radio[name=file]').val(),
                     email: self.$el.find('#email').val()

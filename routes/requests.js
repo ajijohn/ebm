@@ -71,20 +71,30 @@ router.post('/', function(req, res, next) {
     var email = req.body.email;
     var dateperformed = req.body.dateperformed;
 
+
+    var shadelevel = req.body.shadelevel;
+    var hod = req.body.hod;
+    var interval = req.body.interval;
+    var aggregation = req.body.aggregation;
+
+
     //latS,latN,lonW,lonE
     var new_request = {  misc:"",
                          email:email,
                          status:"OPEN",
-                         aggregationmetric:"",
                          lats:[latS,latN],
                          timelogged:dateperformed,
-                          longs:[lonW,lonE],
+                         longs:[lonW,lonE],
                          variable:[variable],
                          interval:"",
-                          text:"",
-                          enddate:eddate,
-                          outputformat:file,
-                          startdate:stdate};
+                         text:"",
+                         shadelevel:shadelevel,
+                         hod:hod,
+                         interval:interval,
+                         aggregation:aggregation,
+                         enddate:eddate,
+                         outputformat:file,
+                         startdate:stdate};
 
     //Using the {w:1} option ensure you get the error back if the document fails to insert correctly.
     requests.insert(new_request, {w:1}, function(err, result) {});
