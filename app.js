@@ -18,7 +18,7 @@ var MongoStore = require('connect-mongo')(session);
 var auth = require('./auth.js');
 
 //Authentication
-var passport         = require( 'passport' ),GoogleStrategy   = require( 'passport-google-oauth20' ).Strategy;
+var passport = require( 'passport' ),GoogleStrategy   = require( 'passport-google-oauth20' ).Strategy;
 
 
 
@@ -73,13 +73,55 @@ passport.use(new GoogleStrategy({
 
 // Passport session setup.
 passport.serializeUser(function(user, done) {
+    //Store the User
+    //Called only when the user is granted the access first time
+    ldbs.store(user, function(err, user){
+        if(err) {return next(err);}
+        // User stored
+    });
+
     done(null, user);
 });
 
+//In case of Third Party Login - Google and LinkedIn etc, the obj would be the user object
 passport.deserializeUser(function(obj, done) {
     done(null, obj);
 });
 
+const ldbs = {
+    store: function(user, cb){
+        // store the user
+        var users = db.get('users');
+
+        //Insert only if the user does not exist
+
+        users.find({'user.email':user.email}, {}).then(function (doc) {
+
+        if(doc.length == 0) {
+            users.insert({user: user}, {w: 1}, function (err, object) {
+                    if (err) {
+                        //TODO - remove when started logging to file
+                        console.warn(err.message);  // returns error if no matching object found
+                    } else {
+                        //TODO - remove when started logging to file
+                        console.dir(object);
+                    }
+                }
+            );
+
+            //anything extra which might be needed
+        }
+        else
+        {
+            //any operation which might be required if user does exist
+            //TODO maybe if the same user uses a separate service still associated with the same email
+        }
+        // only if the user exists
+        });
+
+        cb(null, user);
+    }
+};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -96,6 +138,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressValidator());
+
 // required for passport session
 app.use(session({
     secret: 'secrettexthere',
@@ -148,12 +191,6 @@ app.get(
     }
 );
 
-// GET /auth/google/callback
-app.get( '/auth/google/callback',
-    passport.authenticate( 'google', {
-      successRedirect: '/',
-      failureRedirect: '/login'
-    }));
 
 app.get('/logout', function(req, res){
   req.logout();
