@@ -1,5 +1,13 @@
 var express = require('express');
 var router = express.Router();
+const jwt = require('jsonwebtoken');
+const expressJwt = require('express-jwt');
+
+
+
+var corpsec = process.env.API_SEC || "default";
+const authenticate = expressJwt({secret : corpsec});
+
 
 /* GET microclim page. */
 router.get('/',function(req, res, next) {
@@ -9,6 +17,11 @@ router.get('/',function(req, res, next) {
 /* GET api page. */
 router.get('/APIs',function(req, res, next) {
   res.render('apis', { title: 'APIs' });
+});
+
+/* GET account page. */
+router.get('/account',function(req, res, next) {
+    res.render('accounts', { title: 'Profile' });
 });
 
 
@@ -73,6 +86,49 @@ router.get('/microclim',ensureAuthenticated,function(req, res, next) {
 /* GET login page. */
 router.get('/login', function(req, res, next) {res.render('login', { title: 'login' });
 });
+
+/* Sample Request */
+router.get('/ply', authenticate, function(req, res) {
+    res.status(200).json(req.user);
+});
+
+router.post('/auth', serialize, generateToken, function(req, res, next) {
+
+    res.status(200).json({
+        user: req.user,
+        token: req.token
+    });
+
+});
+
+function serialize(req, res, next) {
+    ldb.validateAPICall(req.body.apikey,req.body.apisecret, function(err, user){
+        if(err) {return next(err);}
+        // we store the updated information in req.user again
+        req.user = {
+            id: user.id
+        };
+        next();
+    });
+}
+
+const ldb = {
+    validateAPICall: function(apikey,apisecret, cb){
+        // TODO find the user for the passed apikey and apisec
+        cb(null, user);
+    }
+};
+
+
+function generateToken(req, res, next) {
+    req.token = jwt.sign({
+        id: req.user.id,
+    }, corpsec, {
+        expiresIn: '2h'
+    });
+    next();
+}
+
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
