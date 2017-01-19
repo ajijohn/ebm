@@ -37,6 +37,9 @@
     "connect-ensure-login": "^0.1.1",
     "connect-mongo":"*",
     "express-flash":"*",
-    "express-validator":"*"
+    "express-validator":"*",
+    "jsonwebtoken":"*",
+    "hat":"*",
+    "express-jwt":"*"
   }
 }
