@@ -77,12 +77,12 @@ $(function () {
                 var htmla=
                   '<div class="well">'+
                    '<div class="row">'+
-                    '<div class="col-xs-4">'+
-                    '<a class="btn btn-default btn-lg pull-left" data-placement="top"'+
-                    'data-original-title=".btn .btn-default .btn-lg">'  +
-                        element._id +
-                    '</a> '+
-                    '</div>' +
+
+                  '<div class="col-xs-4">'+
+                  '<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> '+
+                    element._id +
+                '</button> ' +
+                  '</div>'+
 
                   '<div class="col-xs-4">'+
                   '<a  class="btn btn-default btn-lg pull-left disabled" data-placement="top"'+
@@ -98,6 +98,9 @@ $(function () {
                   element.email+
                   '</a>'+
                   '</div>'+
+
+
+
 
                     '</div> '+
                     '</div>';
@@ -172,6 +175,45 @@ $(function () {
         }
     });
     new MainView();
+
+
+    var AccountView = Backbone.View.extend({
+        el: $('#account'),
+
+        events: {
+            "click .apkey": "apkey"
+        },
+
+
+        initialize: function () {
+            var self = this;
+        },
+        reset: function(){
+
+        },
+        apkey: function (e) {
+            var self = this;
+
+            $.get('/users/account/apikey' , data, function (result) {
+                if (result.error == null) {
+                    //no error
+                    //TODO show message that key was generated (flash message)
+                    //self.$el.find('.alert-container').append(self.alertSuccessTemplate());
+                    self.$el.find('#apikey').val(result.apikey)
+
+                } else {
+                    //error
+                    //TODO show message that key was generated(flash message)
+                    //self.$el.find('.alert-container').append(self.alertDangerTemplate());
+                }
+
+            })
+
+
+
+        }
+    });
+    new AccountView();
 
 
 });
