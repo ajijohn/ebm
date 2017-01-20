@@ -87,7 +87,7 @@ router.get('/microclim',ensureAuthenticated,function(req, res, next) {
 router.get('/login', function(req, res, next) {res.render('login', { title: 'login' });
 });
 
-/* Sample Request */
+/* Sample Request which is secured */
 router.get('/ply', authenticate, function(req, res) {
     res.status(200).json(req.user);
 });
@@ -102,20 +102,46 @@ router.post('/auth', serialize, generateToken, function(req, res, next) {
 });
 
 function serialize(req, res, next) {
-    ldb.validateAPICall(req.body.apikey,req.body.apisecret, function(err, user){
+    var db = req.db;
+    var users = db.get('users');
+
+    ldb.validateAPICall(users, req.body.apikey,req.body.apisecret, function(err, user){
         if(err) {return next(err);}
         // we store the updated information in req.user again
         req.user = {
-            id: user.id
+            id: user.user.id
         };
         next();
     });
 }
 
 const ldb = {
-    validateAPICall: function(apikey,apisecret, cb){
+    validateAPICall: function(users, apikey,apisecret, cb){
         // TODO find the user for the passed apikey and apisec
-        cb(null, user);
+
+
+        users.findOne({'apisecret':apisecret,'apikey':apikey}).then(function(user){
+
+
+            if (user == null){
+                // no user with that key or secret
+                // TODO, fix the feedback
+                var err = new Error();
+                err.status = 401;
+                err.message= "Authentication error";
+
+                cb(err,null);
+            }
+            else
+            {
+                cb(null, user);
+            }
+
+
+        });
+
+
+        //cb(null, user);
     }
 };
 
