@@ -23,6 +23,8 @@ var passport = require( 'passport' ),GoogleStrategy   = require( 'passport-googl
 
 
 //TODO load the models
+var cauth = require('./routes/coreauth');
+var apis = require('./routes/apis');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var requests = require('./routes/requests');
@@ -98,6 +100,7 @@ const ldbs = {
         users.find({'user.email':user.email}, {}).then(function (doc) {
 
         if(doc.length == 0) {
+            //TODO Possibly populate the api key and secret for a new user
             users.insert({user: user}, {w: 1}, function (err, object) {
                     if (err) {
                         //TODO - remove when started logging to file
@@ -169,6 +172,9 @@ next();
 app.use('/',routes);
 app.use('/users', users);
 app.use('/requests', requests);
+app.use('/microclim', apis);
+app.use('/api', cauth);
+
 
 // GET /auth/google
 app.get('/auth/google', passport.authenticate('google', { scope: [
