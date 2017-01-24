@@ -86,7 +86,6 @@ router.post('/', function(req, res, next) {
                          timelogged:dateperformed,
                          longs:[lonW,lonE],
                          variable:[variable],
-                         interval:"",
                          text:"",
                          shadelevel:shadelevel,
                          hod:hod,
@@ -97,11 +96,29 @@ router.post('/', function(req, res, next) {
                          startdate:stdate};
 
     //Using the {w:1} option ensure you get the error back if the document fails to insert correctly.
-    requests.insert(new_request, {w:1}, function(err, result) {});
+    //TODO handle error
+    requests.insert(new_request, {w:1}, function(err, request_added) {
 
-    res.json(201, {
-        success: 'Request logged'
+        //Request logged
+        if(request_added)
+        {
+            res.json(201, {
+                success: 'Request logged',
+                request_id: request_added._id.toString()
+            });
+        }
+        else
+        {
+            res.json(500, {
+                error: 'Request not logged.'
+            });
+
+        }
+
     });
+
+
+
 
 
 });
