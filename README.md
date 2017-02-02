@@ -1,5 +1,8 @@
-## Synopsis
 
+## Synopsis
+#### UI for Microclimatic data for ecological forecasting
+
+[![Build Status](https://travis-ci.org/trenchproject/ebm.svg)](https://travis-ci.org/trenchproject/ebm)
 
 ## API Reference
 
