@@ -30,6 +30,11 @@ router.get('/apis', authenticate, function(req, res) {
                "service_id":"list_apis",
                "service_brief":"Lists avaliable API endpoints.",
                "service_endpoint":"GET /apis"
+           },
+           {
+               "service_id":"retrieve_microclim_requests",
+               "service_brief":"Retrieve all requests.",
+               "service_endpoint":"GET /requests"
            }
             ]
 
