@@ -78,7 +78,7 @@ router.get('/apis', authenticate, function(req, res) {
 router.all('/request', authenticate, function(req, res) {
     //find the user's email
     //res.status(200).json(req.user);
-    //TODO - Don't support HTTP method Delete
+    //TODO - Don't support HTTP method Delete or PUT
 
     var db = req.db;
     var users = db.get('users');
@@ -162,7 +162,8 @@ router.all('/request', authenticate, function(req, res) {
  *     }
  *
  */
-router.get('/status/:requestId', authenticate, function(req, res) {
+router.get('/status', authenticate, function(req, res) {
+    requestId= req.query.requestId
     console.log(req.user);
     res.status(200).json({"id":req.params.requestId});
 });
@@ -196,5 +197,16 @@ router.get('/fetch/:requestId', authenticate, function(req, res) {
     console.log(req.user);
     res.status(200).json({"id":req.params.requestId});
 });
+
+router.get('/poke', authenticate, function(req, res) {
+    console.log(req.user);
+    res.status(200).json({"service":"online"});
+});
+
+router.get('/requests', authenticate, function(req, res) {
+    console.log(req.user);
+    res.status(200).json({"job":"details"});
+});
+
 
 module.exports = router;
