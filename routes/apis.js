@@ -203,6 +203,28 @@ router.get('/poke', authenticate, function(req, res) {
     res.status(200).json({"service":"online"});
 });
 
+/**
+ * @api {get} /microclim/requests Get requests of the current user
+ * @apiName retrieve_microclim_requests
+ * @apiGroup Microclim APIs
+ *
+ * @apiParam None
+ *
+ * @apiSuccess {String} Json encompassing requests
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *     }
+ *
+ * @apiError RequestNotFound The extraction request was not found.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "error": "RequestNotFound"
+ *     }
+ */
 router.get('/requests', authenticate, function(req, res) {
     console.log(req.user);
     res.status(200).json({"job":"details"});
