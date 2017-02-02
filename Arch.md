@@ -1,6 +1,6 @@
 # Architecture and Process Flow
 
-[![N|Solid](https://github.com/ajijohn/ebm/blob/774815ff68b6c41f7667c2ea8f92ccf7b776fd9e/public/images/flow-ebs.png)]()
+[![N|Solid](https://github.com/trenchproject/ebm/blob/774815ff68b6c41f7667c2ea8f92ccf7b776fd9e/public/images/Process-Flow.png)]()
 
 microclim.org is a cloud-enabled, responsive, ExpressJS powered HTML5 Micro Climate Export site.
 
@@ -29,7 +29,7 @@ on GitHub.
 
 ## Process Flow
 
-[![N|Solid](https://github.com/ajijohn/ebm/blob/774815ff68b6c41f7667c2ea8f92ccf7b776fd9e/public/images/Process-Flow.png)]()
+[![N|Solid](https://github.com/trenchproject/ebm/blob/774815ff68b6c41f7667c2ea8f92ccf7b776fd9e/public/images/Process-Flow.png)]()
 
 ### UX
 UX is served by nodeJS powered by expressJS/ejs/OSM Maps. Goal of UX is to be responsive foremost, and then easier learning curve.
