@@ -29,12 +29,12 @@ router.get('/apis', authenticate, function(req, res) {
            {
                "service_id":"list_apis",
                "service_brief":"Lists avaliable API endpoints.",
-               "service_endpoint":"GET /apis"
+               "service_endpoint":"GET /microclim/apis"
            },
            {
                "service_id":"retrieve_microclim_requests",
                "service_brief":"Retrieve all requests.",
-               "service_endpoint":"GET /requests"
+               "service_endpoint":"GET /microclim/requests"
            }
             ]
 
@@ -155,7 +155,7 @@ router.all('/request', authenticate, function(req, res) {
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
- *       "status": "PROCESSED"
+ *       "status": "Processed"
  *     }
  *
  * @apiError RequestNotFound The Request id was not found.
@@ -169,8 +169,37 @@ router.all('/request', authenticate, function(req, res) {
  */
 router.get('/status', authenticate, function(req, res) {
     requestId= req.query.requestId
+    //Request by
     console.log(req.user);
-    res.status(200).json({"id":req.params.requestId});
+    //res.status(200).json({"id":req.params.requestId});
+
+    var db = req.db;
+    var users = db.get('users');
+    var requests = db.get('requests')
+
+    //Pull the details of the request
+    //
+    requests.findOne({_id:requestId}).then(function(request){
+
+            //Request fetched
+            if(request)
+            {
+                res.json(200, {
+                    success: 'Processed',
+                    request: request
+                });
+            }
+            else
+            {
+                res.json(404, {
+                    error: 'RequestNotFound.'
+                });
+
+            }
+
+    });
+
+
 });
 
 /**
