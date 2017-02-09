@@ -35,6 +35,11 @@ router.get('/apis', authenticate, function(req, res) {
                "service_id":"retrieve_microclim_requests",
                "service_brief":"Retrieve all requests.",
                "service_endpoint":"GET /microclim/requests"
+           },
+           {
+               "service_id":"retrieve_microclim_health",
+               "service_brief":"Retrieve the health of the API.",
+               "service_endpoint":"GET /microclim/poke"
            }
             ]
 
@@ -149,13 +154,15 @@ router.all('/request', authenticate, function(req, res) {
  *
  * @apiParam {String} id Extraction Request ID.
  *
- * @apiSuccess {String} 'PROCESSED' - Request completed successfully
+ * @apiSuccess {String} 'EMAILED' - Request completed successfully
+ * @apiSuccess {String} 'OPEN' - Request created but not picked up yet
  * @apiSuccess {String} 'ERROR'  - Request errored
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
- *       "status": "Processed"
+ *       {"status":"EMAILED",
+ *       }
  *     }
  *
  * @apiError RequestNotFound The Request id was not found.
@@ -171,10 +178,8 @@ router.get('/status', authenticate, function(req, res) {
     requestId= req.query.requestId
     //Request by
     console.log(req.user);
-    //res.status(200).json({"id":req.params.requestId});
 
     var db = req.db;
-    var users = db.get('users');
     var requests = db.get('requests')
 
     //Pull the details of the request
@@ -185,8 +190,7 @@ router.get('/status', authenticate, function(req, res) {
             if(request)
             {
                 res.json(200, {
-                    success: 'Processed',
-                    request: request
+                    status: request.status
                 });
             }
             else
@@ -209,14 +213,32 @@ router.get('/status', authenticate, function(req, res) {
  *
  * @apiParam {String} id Extraction Request ID.
  *
- * @apiSuccess {String} Link to the extracted file
- * @apiSuccess {String} Type of the file
+ * @apiSuccess {String} Link to the extracted files and Request metadata
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
- *       "file_name": "https://",
- *       "file_type": "CSV"
+ *        "files" :[],
+ *        "request":{"_id":"589ce9a4b2df447c910f7d59",
+ *                  "aggregation":"0",
+ *                  "email":"huckleylab@gmail.com",
+ *                  "enddate":"19810131",
+ *                  "hod":"0",
+ *                  "interval":"0",
+ *                  "lats":["39.431950321168635",
+ *                  "40.451127265872316"],
+ *                  "longs":["-108.08349609375",
+ *                  "-106.5399169921875"],
+ *                  "misc":"",
+ *                  "outputformat":"csv",
+ *                  "shadelevel":"0",
+ *                  "startdate":"19810101",
+ *                  "status":"EMAILED",
+ *                  "text":"",
+ *                  "timelogged":"02/09/2017 22:10:29 +00:00",
+ *                  "variable":["ALBEDO"]
+ *                  }
+
  *     }
  *
  * @apiError RequestNotFound The extraction request was not found.
@@ -227,12 +249,63 @@ router.get('/status', authenticate, function(req, res) {
  *       "error": "RequestNotFound"
  *     }
  */
-router.get('/fetch/:requestId', authenticate, function(req, res) {
+router.get('/fetch', authenticate, function(req, res) {
     console.log(req.user);
-    res.status(200).json({"id":req.params.requestId});
-});
+    requestId= req.query.requestId
 
+    res.status(200).json({"id":req.params.requestId});
+
+
+    var db = req.db;
+    var users = db.get('users');
+    var requests = db.get('requests')
+
+    //Pull the details of the request
+    //TODO Get the list of generated files from storage repository
+    requests.findOne({_id:requestId}).then(function(request){
+
+        //Request fetched
+        if(request)
+        {
+            res.json(200, {
+                request: request
+            });
+        }
+        else
+        {
+            res.json(404, {
+                error: 'RequestNotFound.'
+            });
+
+        }
+
+    });
+
+});
+/**
+ * @api {get} /microclim/poke Get health check of the service
+ * @apiName retrieve_microclim_health
+ * @apiGroup Microclim APIs
+ *
+ * @apiParam None
+ *
+ * @apiSuccess {String} Json encompassing health
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *         "service":"online"
+ *     }
+ *
+ * @apiError Internal Server Error
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 500 Internal Server Error
+ *     {
+ *     }
+ */
 router.get('/poke', authenticate, function(req, res) {
+    //Request by
     console.log(req.user);
     res.status(200).json({"service":"online"});
 });
@@ -249,19 +322,57 @@ router.get('/poke', authenticate, function(req, res) {
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
+ *         requests:[{...},{...}]
  *     }
  *
  * @apiError RequestNotFound The extraction request was not found.
  *
  * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
+ *     HTTP/1.1 500 Not Found
  *     {
- *       "error": "RequestNotFound"
+ *       "error": "RequestsNotReturned"
  *     }
  */
 router.get('/requests', authenticate, function(req, res) {
     console.log(req.user);
-    res.status(200).json({"job":"details"});
+
+    var db = req.db;
+    var users = db.get('users');
+    var requests = db.get('requests');
+
+    users.findOne({'user.id':req.user.id}).then(function(user){
+
+
+        api_request.email = user.user.email;
+
+        try {
+
+                // Get a cursor of all the requests for the user
+                var cursor = requests.find({'email':user.user.email});
+
+                // Populate the requests
+                var requests = [];
+
+               // Iterate over the requests cursor
+                while(cursor.hasNext()) {
+                        requests.push(cursor.next());
+                }
+
+            res.json(200, {
+                 requests: requests
+            });
+
+        }
+        catch (e) {
+            // TODO statements to handle any exceptions
+            //logMyErrors(e);
+            res.json(500, {
+                error: 'RequestsNotReturned'
+            });
+        }
+
+    });
+
 });
 
 
