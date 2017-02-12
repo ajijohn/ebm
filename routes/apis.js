@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var _ = require('underscore');
 
 const expressJwt = require('express-jwt');
 
@@ -253,15 +254,42 @@ router.get('/fetch', authenticate, function(req, res) {
     console.log(req.user);
     requestId= req.query.requestId
 
-    res.status(200).json({"id":req.params.requestId});
-
 
     var db = req.db;
     var users = db.get('users');
     var requests = db.get('requests')
+    var AWS = require('aws-sdk');
+    var s3 = new AWS.S3();
+
+    var params = {
+       // Bucket: 'microclim/' + requestId
+        Bucket: 'microclim/'
+    };
+    s3.listObjects(params, function(err, data) {
+
+        if (err) {
+            console.log(err, err.stack); // an error occurred
+            res.json(404, {
+                error: 'RequestNotFound.'
+            });
+
+
+        }
+        else {
+            console.log(data);           // successful response
+            var mkeys = _.filter(data.Contents, function(keyEntry){
+                return keyEntry.Key.indexOf(requestId) !== -1;
+            });
+
+            res.json(200, {
+                files: mkeys
+            });
+        }
+    });
 
     //Pull the details of the request
-    //TODO Get the list of generated files from storage repository
+    //TODO Get the corresponding request and add it to the json
+    /*
     requests.findOne({_id:requestId}).then(function(request){
 
         //Request fetched
@@ -279,7 +307,7 @@ router.get('/fetch', authenticate, function(req, res) {
 
         }
 
-    });
+    });*/
 
 });
 /**
