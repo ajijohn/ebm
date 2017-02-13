@@ -24,7 +24,7 @@ router.get('/apis', authenticate, function(req, res) {
             },
            {
                "service_id":"retrieve_microclim",
-               "service_brief":"Get details of a microclim request.",
+               "service_brief":"Get details of a microclim request including the generated files.",
                "service_endpoint":"GET(or POST) /microclim/fetch"
            },
            {
@@ -41,6 +41,11 @@ router.get('/apis', authenticate, function(req, res) {
                "service_id":"retrieve_microclim_health",
                "service_brief":"Retrieve the health of the API.",
                "service_endpoint":"GET /microclim/poke"
+           },
+           {
+               "service_id":"retrieve_microclim_file",
+               "service_brief":"Retrieve the generated file.",
+               "service_endpoint":"GET /microclim/download"
            }
             ]
 
@@ -262,7 +267,6 @@ router.get('/fetch', authenticate, function(req, res) {
     var s3 = new AWS.S3();
 
     var params = {
-       // Bucket: 'microclim/' + requestId
         Bucket: 'microclim/'
     };
     s3.listObjects(params, function(err, data) {
@@ -308,6 +312,71 @@ router.get('/fetch', authenticate, function(req, res) {
         }
 
     });*/
+
+});
+
+/**
+ * @api {get} /microclim/download Download Microclim Generated Artifact
+ * @apiName retrieve_microclim_file
+ * @apiGroup Microclim APIs
+ *
+ * @apiParam {String} fileKey Extraction Request ID.
+ *
+ * @apiSuccess {String} Artifact streamed
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *        "files" :[],
+ *     }
+ *
+ * @apiError RequestNotFound The extraction request was not found.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "error": "RequestNotFound"
+ *     }
+ */
+router.get('/download', authenticate, function(req, res) {
+    console.log(req.user);
+    requestId= req.query.requestId
+    requestfileKey= req.query.fileKey
+
+
+    var db = req.db;
+    var users = db.get('users');
+    var requests = db.get('requests')
+    var AWS = require('aws-sdk');
+    var fs = require('fs');
+    var s3 = new AWS.S3();
+
+    var params = {
+              Bucket: '/microclim'
+    };
+
+    //Form the whole path
+
+    if(requestfileKey)
+         params.Key =  requestId + '/' +  requestfileKey;
+
+    try
+    {
+          res.attachment(requestfileKey);
+          var fileStream = s3.getObject(params).createReadStream();
+          fileStream.pipe(res);
+    }
+    catch (e) {
+         // TODO statements to handle any exceptions
+             //logMyErrors(e);
+              res.json(500, {
+               error: 'RequestsNotReturned'
+           });
+     }
+
+
+
+
 
 });
 /**
