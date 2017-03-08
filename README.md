@@ -6,7 +6,10 @@
 
 ## API Reference
 
-Under Dev
+Refer to 
+
+* [R API ]https://github.com/trenchproject/microclimRapi
+* [Python API] https://github.com/trenchproject/microclim-api
 
 ## Requirements
 
@@ -23,10 +26,14 @@ setup auth.js with API Keys for Google/Twitter/LinkedIn
 
 ```sh
 $ git clone git://github.com/trenchproject/ebm.git
+$ cd ebm
 $ npm install
+
 ```
 ```sh
 $ npm start
+
+$ npm install -g forever
 ```
 
 Then visit [http://localhost:3000/](http://localhost:3000/)
