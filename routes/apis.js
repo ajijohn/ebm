@@ -356,9 +356,10 @@ router.get('/download', authenticate, function(req, res) {
     };
 
     //Form the whole path
-
+    //TODO decide if Request Id and File Key is required
     if(requestfileKey)
-         params.Key =  requestId + '/' +  requestfileKey;
+        // params.Key =  requestId + '/' +  requestfileKey;
+        params.Key =  requestfileKey;
 
     try
     {
