@@ -216,4 +216,12 @@ $(function () {
     new AccountView();
 
 
+    //Indicate user the avaliable time period
+    $('input[name="tp"]').change( function() {
+         if($(this).val()=='future')
+            $("#years").text('Available time period - 2080-2099');
+        else
+            $("#years").text('Available time period - 1980-1999');
+    })
+
 });
