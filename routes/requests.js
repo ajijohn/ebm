@@ -58,7 +58,10 @@ router.post('/', function(req, res, next) {
      */
 
 
-    var variable = req.body.variable;
+    // If not multiple select
+    //var variable = req.body.variable;
+    // If  multiple select
+    var variable=req.body["variable[]"];
     var latN = req.body.latN;
     var latS = req.body.latS;
     var lonW = req.body.lonW;
@@ -85,7 +88,7 @@ router.post('/', function(req, res, next) {
                          lats:[latS,latN],
                          timelogged:dateperformed,
                          longs:[lonW,lonE],
-                         variable:[variable],
+                         variable:variable,
                          text:"",
                          shadelevel:shadelevel,
                          hod:hod,
