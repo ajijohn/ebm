@@ -80,6 +80,8 @@ router.post('/', function(req, res, next) {
     var interval = req.body.interval;
     var aggregation = req.body.aggregation;
 
+    if(variable !=null && !Array.isArray(variable))
+        variable=[variable];
 
     //latS,latN,lonW,lonE
     var new_request = {  misc:"",
