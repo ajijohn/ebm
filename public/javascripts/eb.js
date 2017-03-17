@@ -43,6 +43,19 @@ $(function () {
         }
     });
 
+    // Create Request View
+    var RequestView = Backbone.View.extend({
+
+        tagName: 'tr',
+
+        template: _.template($('#process-tpl').html()),
+
+        render: function() {
+            this.$el.html(this.template(this.model.attributes));
+            return this;
+        }
+
+    });
 
 
     var RequestsView = Backbone.View.extend({
@@ -54,7 +67,8 @@ $(function () {
             var self = this;
             self.ExtRequestCollection = new ExtRequestCollection();
              // for Backbone >= 1.0
-            this.ExtRequestCollection.on("sync", this.render, this);
+           this.ExtRequestCollection.on("sync", this.render, this);
+            this.render();
 
         },
 
@@ -70,34 +84,54 @@ $(function () {
         render: function () {
             var self = this;
 
+            //TODO Preferred way - to debug
+            /*
+            self.ExtRequestCollection.each(function(model) {
+                var requestView = new RequestView({
+                    model: model
+                });
+
+                this.$el.append(requestView.render().el);
+            }.bind(this));
+
+            return this;*/
+
+            /*
+            _.each(self.ExtRequestCollection.models, function (element, index) {
+                self.$el.append(self.requestsTemplate(element.attributes));
+            })
+            */
+
+
+            //backup
             _.each(self.ExtRequestCollection.toJSON(), function (element, index) {
                 //TODO - NOT WORKING for some reason, to look into it
-               // self.$el.append(self.requestsTemplate(element.attributes));
+                // self.$el.append(self.requestsTemplate(element));
 
                 var htmla=
-                  '<div class="well">'+
-                   '<div class="row">'+
+                    '<div class="well">'+
+                    '<div class="row">'+
 
-                  '<div class="col-xs-4">'+
-                  '<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> '+
+                    '<div class="col-xs-4">'+
+                    '<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> '+
                     element._id +
-                '</button> ' +
-                  '</div>'+
+                    '</button> ' +
+                    '</div>'+
 
-                  '<div class="col-xs-4">'+
-                  '<a  class="btn btn-default btn-lg pull-left disabled" data-placement="top"'+
-                  'data-original-title=".btn .btn-default .btn-lg">'+
-                  element.status+
-                  '</a>'+
-                  '</div>'+
+                    '<div class="col-xs-4">'+
+                    '<a  class="btn btn-default btn-lg pull-left disabled" data-placement="top"'+
+                    'data-original-title=".btn .btn-default .btn-lg">'+
+                    element.status+
+                    '</a>'+
+                    '</div>'+
 
 
-                      '<div class="col-xs-4">'+
-                  '<a  class="btn btn-default btn-lg pull-left disabled" data-placement="top"'+
-                  'data-original-title=".btn .btn-default .btn-lg">'+
-                  element.email+
-                  '</a>'+
-                  '</div>'+
+                    '<div class="col-xs-4">'+
+                    '<a  class="btn btn-default btn-lg pull-left disabled" data-placement="top"'+
+                    'data-original-title=".btn .btn-default .btn-lg">'+
+                    element.email+
+                    '</a>'+
+                    '</div>'+
 
 
 
@@ -107,6 +141,8 @@ $(function () {
 
                 self.$el.append(htmla);
             })
+
+
 
         }
     });

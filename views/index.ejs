@@ -264,26 +264,7 @@
             <hr>
 
 
-            <!--/.container new -->
 
-            <script type="text/template" id="process-tpl">
-                <div class="well">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="{{=name}}" class="btn btn-default btn-lg pull-left" data-placement="top"
-                               data-original-title=".btn .btn-default .btn-lg">
-                                {{==name }}
-                            </a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a href="{{= startdate}}" class="nohover">
-                                <icon class="icon-cog icon-2x text-success"></icon>
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-            </script>
 
             <div class="row">
                 <div class="col-md-12">
@@ -326,6 +307,27 @@
     </div>
 </div><!--/.container-->
 <% include ./partials/footer %>
+<% include ./partials/request %>
+<!--/.container new -->
+
+<script type="text/template" id="process-tpl">
+    <div class="well">
+        <div class="row">
+            <div class="col-xs-6">
+                <a href="/" class="btn btn-default btn-lg pull-left" data-placement="top"
+                   data-original-title=".btn .btn-default .btn-lg">
+                    {{=startdate}}
+                </a>
+            </div>
+            <div class="col-xs-6">
+                <a href="{{= startdate}}" class="nohover">
+                    <icon class="icon-cog icon-2x text-success"></icon>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</script>
 
 <script>
     var map = L.map('map').setView([39.70005491693909,-106.22817993164061 ], 10);
