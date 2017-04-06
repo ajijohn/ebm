@@ -60,7 +60,7 @@ router.get('/apis', authenticate, function(req, res) {
  * @apiName query_microclim
  * @apiGroup Microclim APIs
  *
- * @apiParam {String} variable Microclimate Variable.
+ * @apiParam {String} Microclimate variable(s) comma separated.
  * @apiParam {Number} latN Bounding box Lat N.
  * @apiParam {Number} latS Bounding box Lat S.
  * @apiParam {Number} lonW Bounding box Lat W.
@@ -103,6 +103,9 @@ router.all('/request', authenticate, function(req, res) {
     var d = new Date();
     var dateperformed = d.toString();
 
+    //Separate the variables if multiple sent
+    var variable_array = req.body.variable.split(',');
+
     //latS,latN,lonW,lonE
     var api_request = {  misc:"",
         email:"",
@@ -110,7 +113,7 @@ router.all('/request', authenticate, function(req, res) {
         lats:[req.body.latS,req.body.latN],
         timelogged:dateperformed,
         longs:[req.body.lonW,req.body.lonE],
-        variable:[req.body.variable],
+        variable:variable_array,
         text:"",
         shadelevel:req.body.shadelevel,
         hod:req.body.hod,
