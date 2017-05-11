@@ -113,7 +113,14 @@ $(function () {
                     '<div class="row">'+
 
                     '<div class="col-xs-4">'+
-                    '<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> '+
+                    '<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" ' +
+                    'data-request-id="' + element._id + '" ' +
+                    'data-lats-id="' + element.lats + '" ' +
+                    'data-longs-id="' + element.longs + '" ' +
+                    'data-variable-id="' + element.variable + '" ' +
+                    'data-startdate-id="' + element.startdate + '" ' +
+                    'data-enddate-id="' + element.enddate + '" ' +
+                    'data-target="#myModal"> '+
                     element._id +
                     '</button> ' +
                     '</div>'+
@@ -259,5 +266,25 @@ $(function () {
         else
             $("#years").text('Available time period - 1980-1999');
     })
+
+    //triggered when modal is about to be shown
+    $('#myModal').on('show.bs.modal', function(e) {
+
+        //get data-id attribute of the clicked element
+        var requestId = $(e.relatedTarget).data('request-id');
+        var latsId = $(e.relatedTarget).data('lats-id');
+        var longsId = $(e.relatedTarget).data('longs-id');
+        var variableId = $(e.relatedTarget).data('variable-id');
+        var startdate = $(e.relatedTarget).data('startdate-id');
+        var enddate = $(e.relatedTarget).data('enddate-id');
+
+        //populate the textbox
+        $(e.currentTarget).find('input[name="requestId"]').val(requestId);
+        $(e.currentTarget).find('input[name="latsId"]').val(latsId);
+        $(e.currentTarget).find('input[name="longsId"]').val(longsId);
+        $(e.currentTarget).find('input[name="variableId"]').val(variableId);
+        $(e.currentTarget).find('input[name="startdate"]').val(startdate);
+        $(e.currentTarget).find('input[name="enddate"]').val(enddate);
+    });
 
 });
