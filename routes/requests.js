@@ -98,7 +98,8 @@ router.post('/', function(req, res, next) {
                          aggregation:aggregation,
                          enddate:eddate,
                          outputformat:file,
-                         startdate:stdate};
+                         startdate:stdate,
+                         status_message:""};
 
     //Using the {w:1} option ensure you get the error back if the document fails to insert correctly.
     //TODO handle error

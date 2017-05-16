@@ -22,7 +22,8 @@ $(function () {
             text:"",
             enddate:"",
             outputformat:"",
-            startdate:""
+            startdate:"",
+            stsmsg:""
         }
     });
 
@@ -120,6 +121,8 @@ $(function () {
                     'data-variable-id="' + element.variable + '" ' +
                     'data-startdate-id="' + element.startdate + '" ' +
                     'data-enddate-id="' + element.enddate + '" ' +
+                    'data-status-id="' + element.status + '" ' +
+                    'data-stsmsg-id="' + element.status_message + '" ' +
                     'data-target="#myModal"> '+
                     element._id +
                     '</button> ' +
@@ -277,6 +280,8 @@ $(function () {
         var variableId = $(e.relatedTarget).data('variable-id');
         var startdate = $(e.relatedTarget).data('startdate-id');
         var enddate = $(e.relatedTarget).data('enddate-id');
+        var status = $(e.relatedTarget).data('status-id');
+        var stsmsg = $(e.relatedTarget).data('stsmsg-id');
 
         //populate the textbox
         $(e.currentTarget).find('input[name="requestId"]').val(requestId);
@@ -285,6 +290,8 @@ $(function () {
         $(e.currentTarget).find('input[name="variableId"]').val(variableId);
         $(e.currentTarget).find('input[name="startdate"]').val(startdate);
         $(e.currentTarget).find('input[name="enddate"]').val(enddate);
+        $(e.currentTarget).find('input[name="status"]').val(status);
+        $(e.currentTarget).find('input[name="stsmsg"]').val(stsmsg);
     });
 
 });
