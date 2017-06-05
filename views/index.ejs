@@ -93,21 +93,21 @@
 
                             <div class="form-group">
                                 <label for="shadelevel" class="control-label input-group">Shade Level</label>
-                                <div class="btn-group" data-toggle="buttons">
+                                <div class="btn-group shade" data-toggle="buttons" id="shade" name="shade">
                                     <label class="btn btn-default active">
-                                        <input type="radio" name="shadelevel" value="0" checked>0%
+                                        <input type="radio" id="shadelevel" name="shadelevel" value="0" checked >0%
                                     </label>
                                     <label class="btn btn-default">
-                                        <input type="radio" name="shadelevel" value="1" >25%
+                                        <input type="radio" id="shadelevel" name="shadelevel" value="1" >25%
                                     </label>
                                     <label class="btn btn-default" >
-                                        <input type="radio" name="shadelevel" value="2">50%
+                                        <input type="radio" id="shadelevel" name="shadelevel" value="2">50%
                                     </label>
                                     <label class="btn btn-default">
-                                        <input type="radio" name="shadelevel" value="3" >75%
+                                        <input type="radio" id="shadelevel" name="shadelevel" value="3" >75%
                                     </label>
                                     <label class="btn btn-default" >
-                                        <input type="radio" name="shadelevel" value="4">100%
+                                        <input type="radio" id="shadelevel" name="shadelevel" value="4">100%
                                     </label>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="hod" class="control-label input-group">Height or depth(m)</label>
-                                    <select id="hod" class="selectpicker">
+                                    <select id="hod" name="hod" class="selectpicker">
                                         <option value="0">0.03</option>
                                         <option value="1">0.06</option>
                                         <option value="2">0.09</option>

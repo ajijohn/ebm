@@ -6,6 +6,9 @@ $(function () {
 
 
 
+    $("#shade label").attr("disabled", true);
+    $('#hod').attr('disabled', 'disabled');
+
 
     var ExtRequest = Backbone.Model.extend({
 
@@ -293,5 +296,45 @@ $(function () {
         $(e.currentTarget).find('input[name="status"]').val(status);
         $(e.currentTarget).find('input[name="stsmsg"]').val(stsmsg);
     });
+
+    //Add  events pertaining to dropdown
+    $('#variable').on('hidden.bs.select', function (e) {
+
+        var selectedVariables = $('select#variable').val()
+
+
+        //Enable height
+        if(_.contains(selectedVariables, 'SMOIS') || _.contains(selectedVariables, 'WIND10'))
+        {
+            $('#hod').removeAttr("disabled");
+            $('#hod').selectpicker('refresh');
+        }
+
+        //Enable shade
+        if(_.contains(selectedVariables, 'Tsurface'))
+        {
+            $("#shade label").removeAttr("disabled");
+        }
+
+        //Enable shade and height
+        if(_.contains(selectedVariables, 'Tair'))
+        {
+            $('#hod').removeAttr("disabled");
+            $("#shade label").removeAttr("disabled");
+            $('#hod').selectpicker('refresh');
+        }
+
+        //Enable shade and depth
+        if(_.contains(selectedVariables, 'Tsoil'))
+        {
+            $('#hod').removeAttr("disabled");
+            $("#shade label").removeAttr("disabled");
+            $('#hod').selectpicker('refresh');
+        }
+
+
+
+    });
+
 
 });
