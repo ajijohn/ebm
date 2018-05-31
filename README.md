@@ -110,6 +110,9 @@ varname <- ncatt_get(ncin, 0, "varname")
 $ npm test
 ```
 
+## DOI
+[![DOI](https://zenodo.org/badge/67786449.svg)](https://zenodo.org/badge/latestdoi/67786449)
+
 ## License
 
 Apache
