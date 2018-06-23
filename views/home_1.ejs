@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><%= title %></title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+<!-- Navigation -->
+<% include ./partials/header_1 %>
+<!-- Header -->
+<header class="masthead d-flex">
+    <div class="container text-center my-auto">
+        <h1 class="mb-1">Microclim</h1>
+        <h3 class="mb-5">
+            <em>A service to subset microclimate data</em>
+        </h3>
+        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+    </div>
+    <div class="overlay"></div>
+</header>
+
+<!-- About -->
+<section class="content-section bg-light" id="about">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h2>Interactive Web/API based service to download microclimate data</h2>
+                <p class="lead mb-5 text-center">We provide microclimatic data for ecological forecasting.  The data describes microclimates and vegetation for the past and the future at spatial and temporal resolutions of 36 km (approximately 0.3°) and 1 h, respectively. [Levy <i>et al.</i> (2016)](<a target="_blank" href="http://onlinelibrary.wiley.com/doi/10.1002/ecy.1444/full">http://onlinelibrary.wiley.com/doi/10.1002/ecy.1444/full</a>) used the [Weather Research & Forecasting](<a target="_blank" href="http://www.wrf-model.org/">http://www.wrf-model.org/</a>) model to downscale published, bias-corrected predictions of a global-circulation model from a resolution of 0.9° latitude and 1.25° (approximately 100 km in latitude and 130 km in longitude). Output from this model was used as input for a microclimate model, which generated temperatures and wind speeds as well as soil temperatures for 1980-1999 and 2080-2099 at various heights, as well as soil temperatures at various depths and shade intensities. We also predicted the percentage of green vegetation and the percentage of shade given the angle of the sun.
+
+                <a href="https://unsplash.com/">Unsplash</a>!</p>
+                <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">What We Offer</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="content-section bg-primary text-white text-center" id="services">
+    <div class="container">
+        <div class="content-section-heading">
+            <h3 class="text-secondary mb-0">Services</h3>
+            <h2 class="mb-5">What We Offer</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="icon-screen-smartphone"></i>
+            </span>
+                <h4>
+                    <strong>Responsive</strong>
+                </h4>
+                <p class="text-faded mb-0">Looks great on any screen size!</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="icon-pencil"></i>
+            </span>
+                <h4>
+                    <strong>Web App</strong>
+                </h4>
+                <p class="text-faded mb-0">Interactive filtering</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="icon-like"></i>
+            </span>
+                <h4>
+                    <strong>APIs</strong>
+                </h4>
+                <p class="text-faded mb-0">Availiable in R and Python
+                    <i class="fa fa-heart"></i></p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="icon-mustache"></i>
+            </span>
+                <h4>
+                    <strong>Community built</strong>
+                </h4>
+                <p class="text-faded mb-0">Open-sourced from the get-go</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Call to Action -->
+<section class="callout content-section bg-primary text-white" id="action">
+    <div class="container text-center">
+        <h2 class="mb-4">Ready to explore?</h2>
+        <a href="/microclim" class="btn btn-xl btn-light mr-4">Try it now!</a>
+        <a href="https://github.com/trenchproject/ebm" class="btn btn-xl btn-dark">Take me to the source!</a>
+    </div>
+</section>
+
+
+
+<% include ./partials/footer_1 %>
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+</a>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="js/stylish-portfolio.min.js"></script>
+
+</body>
+
+</html>

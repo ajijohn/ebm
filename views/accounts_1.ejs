@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="MFD51vYyzp+LTqq27woifqWjX2rwLcg5OKxGw=">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><%= title %></title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/eb.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.css" />
+    <link rel="stylesheet" href="https://cdn.rawgit.com/wyuenho/backgrid/master/lib/backgrid.css" />
+    <link rel="stylesheet" href="https://cdn.rawgit.com/wyuenho/backgrid-select-all/master/backgrid-select-all.css" />
+    <!-- select -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" />
+
+
+</head>
+
+<body id="page-top">
+<!-- Navigation -->
+<% include ./partials/header_1 %>
+
+<!-- My Account -->
+<section class="content-section bg-light" id="myaccount">
+<div id="account" class="container">
+    <div class="page-header"></div>
+    <h3>Profile Information</h3>
+    <hr>
+    <form class="form-horizontal" action="/account/profile" method="POST"><input type="hidden" name="_csrf"
+                                                                                 value="w6iL0h295l9OQbXx/nOr20zXxeab4mU3doMKY=">
+        <div class="form-group"><label class="col-sm-3 control-label" for="email">Email</label>
+            <div class="col-sm-7"><input class="form-control" type="email" name="email" id="email"
+                                         value="<%= user.email%>"></div>
+        </div>
+        <div class="form-group"><label class="col-sm-3 control-label" for="name">Name</label>
+            <div class="col-sm-7"><input class="form-control" type="text" name="name" id="name" value="<%= user.displayName%>"></div>
+        </div>
+        <div class="form-group"><label class="col-sm-3 control-label">Gender</label>
+            <div class="col-sm-6"><label class="radio col-sm-3"><input type="radio" name="gender" value="male"
+                                                                       data-toggle="radio"><span>Male</span></label><label
+                        class="radio col-sm-3"><input type="radio" name="gender" value="female" data-toggle="radio"><span>Female</span></label><label
+                        class="radio col-sm-3"><input type="radio" name="gender" value="other" data-toggle="radio"><span>Other</span></label>
+            </div>
+        </div>
+        <div class="form-group"><label class="col-sm-3 control-label" for="location">Location</label>
+            <div class="col-sm-7"><input class="form-control" type="text" name="location" id="location" value="<%= user.location%>"></div>
+        </div>
+        <div class="form-group"><label class="col-sm-3 control-label" for="location">University</label>
+            <div class="col-sm-7"><input class="form-control" type="text" name="university" id="university"></div>
+        </div>
+        <div class="form-group"><label class="col-sm-3 control-label" for="website">Website</label>
+            <div class="col-sm-7"><input class="form-control" type="text" name="website" id="website"></div>
+        </div>
+        <div class="form-group"><label class="col-sm-3 control-label">Gravatar</label>
+            <div class="col-sm-4"><img class="profile"
+                                       src="<%= user.image %>"
+                                       width="100" height="100"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-4">
+                <button class="btn btn btn-primary" type="submit"><i class="fa fa-pencil"></i>Update Profile</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="page-header"><h3>API Keys</h3></div>
+    <form class="form-horizontal" action="/account/password" method="POST"><input type="hidden" name="_csrf"
+                                                                                  value="w6iL0h295l9OQbXx/nOr20zXxeab4mU3doMKY=">
+        <div class="form-group row">
+            <label class="col-sm-3 control-label" for="apikey">API Key</label>
+            <div class="col-sm-7"><input class="form-control" type="text" name="apikey" id="apikey"></div>
+            <button type="button" class="btn btn-success apkey">Refresh</button>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 control-label" for="apisec">API Secret</label>
+            <div class="col-sm-7"><input class="form-control" type="text" name="apisec"
+                                         id="apisec"></div>
+            <button type="button" class="btn btn-success apsec">Refresh</button>
+        </div>
+
+    </form>
+
+</div>
+</section>
+<% include ./partials/footer_1 %>
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+</a>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="https://cdn.rawgit.com/jashkenas/underscore/1.5.2/underscore.js"></script>
+<script src="js/stylish-portfolio.min.js"></script>
+<script src="javascripts/account.js"></script>
+<script src="https://cdn.rawgit.com/jashkenas/backbone/1.1.0/backbone.js"></script>
+
+</body>
+
+</html>
