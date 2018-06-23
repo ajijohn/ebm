@@ -81,43 +81,22 @@ $(function () {
         refresh: function () {
             var self = this;
             //Remove existing collection - maybe another elegant way!
-            $('#requests-main-dp .well').remove();
+            $('#requests-main-dp #requests-main-well-item').remove();
             self.ExtRequestCollection.fetch({reset: true});
         },
 
         render: function () {
             var self = this;
 
-            //TODO Preferred way - to debug
-            /*
-            self.ExtRequestCollection.each(function(model) {
-                var requestView = new RequestView({
-                    model: model
-                });
-
-                this.$el.append(requestView.render().el);
-            }.bind(this));
-
-            return this;*/
-
-            /*
-            _.each(self.ExtRequestCollection.models, function (element, index) {
-                self.$el.append(self.requestsTemplate(element.attributes));
-            })
-            */
-
-
-            //backup
             _.each(self.ExtRequestCollection.toJSON(), function (element, index) {
                 //TODO - NOT WORKING for some reason, to look into it
                 // self.$el.append(self.requestsTemplate(element));
 
                 var htmla=
-                    '<div class="well">'+
-                    '<div class="row">'+
-
-                    '<div class="col-xs-4">'+
-                    '<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" ' +
+                    '<div class="form-group row" id="requests-main-well-item">' +
+                    '<div class="btn-group btn-group-toggle" >'+
+                    '<div class="col-sm-12">'+
+                    '<button type="button" class="btn btn-primary btn-md center-block" data-toggle="modal" ' +
                     'data-request-id="' + element._id + '" ' +
                     'data-lats-id="' + element.lats + '" ' +
                     'data-longs-id="' + element.longs + '" ' +
@@ -144,13 +123,12 @@ $(function () {
                     'data-original-title=".btn .btn-default .btn-lg">'+
                     moment(element.timelogged).utc().format("MM/DD/YYYY HH:mm") +
                     '</a>'+
-                    '</div>'+
+                    '</div>' +
+                    '</div>' +
+
+                    '</div>'
 
 
-
-
-                    '</div> '+
-                    '</div>';
 
                 self.$el.append(htmla);
             })

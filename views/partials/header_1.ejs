@@ -9,13 +9,13 @@
         <li class="sidebar-nav-item">
             <a class="js-scroll-trigger" href="/">Home</a>
         </li>
-        <li <%if (title=="home") { %> class="sidebar-nav-item"  <% }  else { %> class="display:none" <%  } %>  >
-            <a class="js-scroll-trigger" href="#about">About</a>
+        <li <%if (title=="home") { %> class="sidebar-nav-item"  <% }  else { %> class="visibility: hidden;" <%  } %>  >
+            <a  <%if (title=="home") { %> class="js-scroll-trigger"  <% }  else { %> class="d-none" <%  } %> href="#about">About</a>
         </li>
-        <li <%if (title=="home") { %> class="sidebar-nav-item"  <% }  else { %> class="display:none" <%  } %>  >
+        <li <%if (title=="home") { %> class="sidebar-nav-item"  <% }  else { %> class="d-none" <%  } %>  >
             <a class="js-scroll-trigger" href="#services">Services</a>
         </li>
-        <li <%if (title=="home") { %> class="sidebar-nav-item"  <% }  else { %> class="display:none" <%  } %>  >
+        <li <%if (title=="home") { %> class="sidebar-nav-item"  <% }  else { %> class="d-none" <%  } %>  >
             <a class="js-scroll-trigger" href="#action">Dashboard</a>
         </li>
 
@@ -32,22 +32,23 @@
 
         <% } else{ %>
 
-        <li class="dropdown active">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <% if (user.image) { %>
                 <img src="<%= user.image %>">
                 <% } else { %>
                 <img src="<%=user.gravatar(60)%>">
 
                 <% }%>
-                <span><%= user.email%></span>
+                <%= user.email%>
                 <i class="caret"></i>
             </a>
-            <ul class="dropdown-menu">
-                <li><a href="/account">My Account</a></li>
-                <li class="divider"></li>
-                <li><a href="/logout">Logout</a></li>
-            </ul>
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/account">My Account</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
         </li>
 
         <% } %>

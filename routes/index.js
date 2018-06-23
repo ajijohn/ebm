@@ -11,7 +11,7 @@ const authenticate = expressJwt({secret : corpsec});
 
 /* GET microclim page. */
 router.get('/',function(req, res, next) {
-  res.render('home', { title: 'home'});
+  res.render('home_1', { title: 'home'});
 });
 
 /* GET api page. */
@@ -21,7 +21,7 @@ router.get('/APIs',function(req, res, next) {
 
 /* GET account page. */
 router.get('/account',function(req, res, next) {
-    res.render('accounts', { title: 'Profile' });
+    res.render('accounts_1', { title: 'Profile' });
 });
 
 
@@ -80,13 +80,21 @@ router.post('/signup', function(req, res, next) {
 
 /* GET microclim page. */
 router.get('/microclim',ensureAuthenticated,function(req, res, next) {
-  res.render('index', { title: 'microclim' });
+  res.render('index_1', { title: 'microclim' });
 });
 
 /* GET login page. */
-router.get('/login', function(req, res, next) {res.render('login', { title: 'login' });
+router.get('/login', function(req, res, next) {res.render('login_1', { title: 'login' });
 });
 
+
+/* GET tos page. */
+router.get('/tos', function(req, res, next) {res.render('tos_1', { title: 'tos' });
+});
+
+/* GET pp page. */
+router.get('/pp', function(req, res, next) {res.render('pp_1', { title: 'pp' });
+});
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }

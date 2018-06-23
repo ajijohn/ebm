@@ -160,7 +160,37 @@ router.post('/account/apisecret',ensureAuthenticated,function(req, res, next) {
 
 
 
+/* POST user profile update - fetch user and update. */
+router.post('/account/profile',ensureAuthenticated,function(req, res, next) {
 
+
+
+    var db = req.db;
+    var users = db.get('users');
+
+    users.findAndModify({ query: {'user.email':req.user.email},
+        update: { $set: {location: req.body.location ,university: req.body.university, website: req.body.website }}, new:true}).then(function(user){
+
+
+        if (user == null){
+            // rare case , user not updated, send blank
+            // TODO, fix the feedback
+            res.status(500).json({
+                msg: 'User not found'
+            });
+        }
+        else
+        {
+            res.status(200).json({
+                apisec: 'User profile updated'
+            });
+        }
+
+
+    });
+
+
+});
 
 
 function ensureAuthenticated(req, res, next) {
