@@ -95,7 +95,12 @@ $(function () {
         updpro: function (e) {
             var self = this;
 
-            $.post('/users/account/profile' , function (result) {
+            var data = {
+                location: self.$el.find('#location]').val(),
+                university: self.$el.find('#university]').val(),
+                website: self.$el.find('#website').val()
+            };
+            $.post('/users/account/profile' ,data, function (result) {
                 if (result.error == null) {
                     //no error
                     //TODO show message that key was generated (flash message)
