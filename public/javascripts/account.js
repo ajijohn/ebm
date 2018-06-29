@@ -10,7 +10,8 @@ $(function () {
 
         events: {
             "click .apkey": "apkey",
-            "click .apsec": "apsec"
+            "click .apsec": "apsec",
+            "click .updpro": "updpro"
         },
 
 
@@ -90,7 +91,26 @@ $(function () {
             })
 
         }
+        ,
+        updpro: function (e) {
+            var self = this;
 
+            $.post('/users/account/profile' , function (result) {
+                if (result.error == null) {
+                    //no error
+                    //TODO show message that key was generated (flash message)
+                    //self.$el.find('.alert-container').append(self.alertSuccessTemplate());
+                    self.$el.find('#university').val(result.user.university)
+
+                } else {
+                    //error
+                    //TODO show message that key was generated(flash message)
+                    //self.$el.find('.alert-container').append(self.alertDangerTemplate());
+                }
+
+            })
+
+        }
 
     });
     new AccountView();

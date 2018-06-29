@@ -182,7 +182,7 @@ router.post('/account/profile',ensureAuthenticated,function(req, res, next) {
         else
         {
             res.status(200).json({
-                apisec: 'User profile updated'
+                user: user
             });
         }
 
