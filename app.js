@@ -191,7 +191,7 @@ app.get(
 
     // Redirect back to the original page, if any
     function (req, res) {
-      var redirect = req.session.oauth2return || '/';
+      var redirect = req.session.oauth2return || '/microclim';
       delete req.session.oauth2return;
       res.redirect(redirect);
     }
