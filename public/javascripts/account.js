@@ -96,8 +96,8 @@ $(function () {
             var self = this;
 
             var data = {
-                location: self.$el.find('#location]').val(),
-                university: self.$el.find('#university]').val(),
+                location: self.$el.find('#location').val(),
+                university: self.$el.find('#university').val(),
                 website: self.$el.find('#website').val()
             };
             $.post('/users/account/profile' ,data, function (result) {
