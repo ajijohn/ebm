@@ -49,6 +49,24 @@ $(function () {
                 }
 
             })
+
+            //Pull user account info and show
+            $.get('/users/account/profile' , function (result) {
+                if (result.error == null) {
+                    //no error
+                    //TODO show message that key was generated (flash message)
+                    //self.$el.find('.alert-container').append(self.alertSuccessTemplate());
+                    self.$el.find('#location').val(result.user.location)
+                    self.$el.find('#university').val(result.user.university)
+                    self.$el.find('#website').val(result.user.website)
+
+                } else {
+                    //error
+                    //TODO show message that key was generated(flash message)
+                    //self.$el.find('.alert-container').append(self.alertDangerTemplate());
+                }
+
+            })
         },
         reset: function(){
 

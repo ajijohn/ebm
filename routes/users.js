@@ -192,6 +192,42 @@ router.post('/account/profile',ensureAuthenticated,function(req, res, next) {
 
 });
 
+/* Get user profile  - fetch user. */
+router.get('/account/profile',ensureAuthenticated,function(req, res, next) {
+
+
+
+    /*var apisec= jwt.sign({
+     data: req.user.id
+     }, corpsec, { expiresIn: '365d' }); */
+
+    var apisec=  hat();
+    var db = req.db;
+    var users = db.get('users');
+
+    users.findOne({'user.email':req.user.email}).then(function(user){
+
+
+        if (user == null){
+            // rare case , user not updated, send blank
+            // TODO, fix the feedback
+            res.status(200).json({
+                user: ''
+            });
+        }
+        else
+        {
+            res.status(200).json({
+                user: user
+            });
+        }
+
+
+    });
+
+
+
+});
 
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
