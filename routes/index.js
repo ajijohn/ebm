@@ -92,10 +92,18 @@ router.get('/login', function(req, res, next) {res.render('login_1', { title: 'l
 router.get('/tos', function(req, res, next) {res.render('tos_1', { title: 'tos' });
 });
 
+
 /* GET pp page. */
 router.get('/pp', function(req, res, next) {res.render('pp_1', { title: 'pp' });
 });
 
+/* GET detailed descriptions page. */
+router.get('/des', function(req, res, next) {res.render('dspec_1', { title: 'des' });
+});
+
+/* GET detailed descriptions page. */
+router.get('/usage', function(req, res, next) {res.render('usage_1', { title: 'usage' });
+});
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login');
