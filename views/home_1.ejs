@@ -28,30 +28,19 @@
 <% include ./partials/header_1 %>
 <!-- Header -->
 <header class="masthead d-flex">
-    <div class="container text-center my-auto">
+    <div class="container text-left my-0">
         <h1 class="mb-1">Microclim</h1>
         <h3 class="mb-5">
-            <em>A service to subset microclimate data</em>
+            <em>Interactive Web/API based service to download microclimate data</em>
         </h3>
-        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+        <p class="lead mb-5 text-center">We provide microclimatic data for ecological forecasting. The data describes microclimates and vegetation for the past and the future at spatial and temporal resolutions of 36 km (approximately 0.3°) and 1 h, respectively. <a target="_blank" href="http://onlinelibrary.wiley.com/doi/10.1002/ecy.1444/full">Levy <i>et al.</i> (2016)</a> used the <a target="_blank" href="http://www.wrf-model.org/">Weather Research & Forecasting</a> model to downscale published, bias-corrected predictions of a global-circulation model from a resolution of 0.9° latitude and 1.25° (approximately 100 km in latitude and 130 km in longitude). Output from this model was used as input for a microclimate model, which generated temperatures and wind speeds as well as soil temperatures for 1980-1999 and 2080-2099 at various heights, as well as soil temperatures at various depths and shade intensities. We also predicted the percentage of green vegetation and the percentage of shade given the angle of the sun.
+
+        </p>
+        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#services">Find Out More</a>
     </div>
     <div class="overlay"></div>
 </header>
 
-<!-- About -->
-<section class="content-section bg-light" id="about">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-lg-10 mx-auto">
-                <h2>Interactive Web/API based service to download microclimate data</h2>
-                <p class="lead mb-5 text-center">We provide microclimatic data for ecological forecasting.  The data describes microclimates and vegetation for the past and the future at spatial and temporal resolutions of 36 km (approximately 0.3°) and 1 h, respectively. [Levy <i>et al.</i> (2016)](<a target="_blank" href="http://onlinelibrary.wiley.com/doi/10.1002/ecy.1444/full">http://onlinelibrary.wiley.com/doi/10.1002/ecy.1444/full</a>) used the (<a target="_blank" href="http://www.wrf-model.org/">Weather Research & Forecasting</a>) model to downscale published, bias-corrected predictions of a global-circulation model from a resolution of 0.9° latitude and 1.25° (approximately 100 km in latitude and 130 km in longitude). Output from this model was used as input for a microclimate model, which generated temperatures and wind speeds as well as soil temperatures for 1980-1999 and 2080-2099 at various heights, as well as soil temperatures at various depths and shade intensities. We also predicted the percentage of green vegetation and the percentage of shade given the angle of the sun.
-
-                </p>
-                <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">Description of services</a>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Services -->
 <section class="content-section bg-primary text-white text-center" id="services">

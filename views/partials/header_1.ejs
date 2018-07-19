@@ -1,6 +1,7 @@
-<a class="menu-toggle rounded" href="#">
+<a class="menu-toggle rounded navbar-brand" href="#" aria-label="Microclim">
     <i class="fa fa-bars"></i>
 </a>
+
 <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
@@ -9,13 +10,11 @@
         <li class="sidebar-nav-item">
             <a class="js-scroll-trigger" href="/">Home</a>
         </li>
-        <li <%if (title=="home") { %> class="sidebar-nav-item"  <% }  else { %> class="visibility: hidden;" <%  } %>  >
-            <a  <%if (title=="home") { %> class="js-scroll-trigger"  <% }  else { %> class="d-none" <%  } %> href="#about">About</a>
-        </li>
-        <li <%if (title=="home") { %> class="sidebar-nav-item"  <% }  else { %> class="d-none" <%  } %>  >
+
+        <li <%if (title=="home"  ) { %> class="sidebar-nav-item"  <% }  else { %> class="d-none" <%  } %>  >
             <a class="js-scroll-trigger" href="#services">Services</a>
         </li>
-        <li <%if (title=="home") { %> class="sidebar-nav-item"  <% }  else { %> class="d-none" <%  } %>  >
+        <li <%if (title=="home" || title=="usage" || title=="des" ) { %> class="sidebar-nav-item"  <% }  else { %> class="d-none" <%  } %>  >
             <a class="js-scroll-trigger" href="/microclim">Dashboard</a>
         </li>
 

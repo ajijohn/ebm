@@ -28,59 +28,106 @@
 <% include ./partials/header_1 %>
 
 <!-- Usage -->
-<section class="content-section bg-light" id="usage">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-lg-10 mx-auto">
-                <h2>Usage</h2>
-                <h3>General information</h3>
-                <div class="col-lg-12">
+<section class="bg-light" id="usage">
+    <div class="container-fluid">
+       <div class="row flex-xl-nowrap">
 
-                    <div class="panel panel-info">
-                        <div class="panel-title">User profile</div>
-                        <p class="lead text-justify">Microclim.org does not have inbuilt authentication and authorization feature, but relies on Google to get a new user registered to the site.
-                            Once a new user authorizes(via Google) to share their credentials with Microclim.org, user name and email id is passed to us, and that we store till the user is associated with Microclim.org site.  </p>
 
-                    </div>
 
-                    <div class="panel panel-info">
-                        <div class="panel-title">API token and secret</div>
-                        <p class="lead text-justify">API token and secret is required for all interactions with Microclim.org using API libraries. The API secret and key can be found under 'My Account' page which can be accssed on clicking user name once you have been authenticated.
-                            On first time around, user has to click the 'Refresh' button for the system to assign a new token and secret.</p>
+            <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+                <h1 class="bd-title" id="content">Usage</h1>
+                <p class="lead text-justify">Documentation and example usecase highlighting the use of our R API toolkit</p>
+                <h2 id="inline-code">Pre-reqs</h2>
+                <p class="lead text-justify">Install/load the required libraries</p>
+                <pre><code>
 
-                    </div>
+                    library(devtools)
+                    devtools::install_github("trenchproject/microclimRapi")
+                    library(microclimRapi)
 
-                    <div class="panel panel-info">
-                        <div class="panel-title">Variables selection and limitations</div>
-                        <p class="lead text-justify">Multiple variable selection is permitted, and is availiable through API and Web App. However, the time-period is suggested to be within 5 years either in past or future. Please reach out to us if you feel the justifiable need for all 20 years of data.  </p>
+                </code></pre>
+                <h2 id="inline-code">Key/Secret</h2>
 
-                    </div>
+                <p class="lead text-justify">Key/Secret is found under <code class="highlighter-rouge">&nbsp;My account </code> on the menu. Fetch the token to be used for all interactions using the API key and secret.</p>
 
-                    <div class="panel panel-info">
-                        <div class="panel-title">Applicability of variables and dimensions</div>
-                        <p class="lead text-justify">Height and shade filter is dependent on the variable being selected. Web App has the applicability option weaved in i.e. the height and shade would be disabled/enabled accordingly, and when used via API, NA is used when not applicable. API routines currently do not validate the applicability of height/shade on invocation.</p>
+                 <figure class="highlight"><pre><code class="language-html" data-lang="javascript">
+                      api_token = getToken('88eb4af7c20dd74742aed57b2c77aff1', '39becfd7fab41b51ea5c55ed0137ec3a',
+                      'microclim.org/')
 
-                    </div>
+                        </code></pre>
+                </figure>
 
-                </div>
+                <h2 id="code-blocks">Prepare Request Parameters</h2>
 
-                <h3>Client libraries</h3>
-                <div class="col-lg-12">
+                <p class="lead text-justify">Let us now prepare a sample request to get hourly mean of the following microclimate variables for one year (1981): GLW, SWDOWN, TAH, Tair and Tsurface. We use decimal latitudes and longitudes to specify a bounding box surrounding the Eagle Nest Wilderness Area in Colorado, USA.</p>
 
-                    <div class="panel panel-info">
-                        <div class="panel-heading">R and Python</div>
-                        <p class="lead text-justify">Since the APIs are based on REST, you have the ability to use any language which support REST API framework. However, we officialy support and R and Python, and details can be found at below mentioned respective GitHub repositories..</p></br>
-                        <ul class="list-group h4">
-                            <li class="list-group-item"><a href="https://github.com/trenchproject/microclimRapi" target="_blank">Official R API library</a></li>
-                            <li class="list-group-item"><a href="https://github.com/trenchproject/microclim-api" target="_blank">Official Python API library</a></li>
-                        </ul>
-                    </div>
 
-                </div>
+                <figure class="highlight">
+                        <pre><code class="language-html" data-lang="html">
+                        mr <- microclimRapi:::MicroclimRequest$new(
+                              latS = "39.48178546986059",
+                              latN="39.890772566959534",
+                              lonW="-106.51519775390625",
+                              lonE="-106.03317260742188",
+                              variable="GLW,SWDOWN,TAH,Tair,Tsurface",
+                              shadelevel=0,
+                              hod=0,
+                              interval=0,
+                              aggregation=3,
+                              stdate="19810101",
+                              eddate="19811231",
+                              file="csv")
 
-            </div>
+                        </code></pre>
+                </figure>
+
+                <h2 id="variables">Place Extraction Request</h2>
+
+                <p class="lead text-justify">Place the request</p>
+
+                 <figure class="highlight"><pre><code class="language-html" data-lang="html">
+
+                        ext_req= ma$request(mr)
+
+                        </code></pre>
+                 </figure>
+
+                <h2 id="user-input">Download</h2>
+
+                <p class="lead text-justify">Once processed, the request transitions to status <code class="highlighter-rouge"> 'EMAILED'</code>, indicating that the files have been emailed to the user and are also available to download via the API. We will now fetch the files into our workspace for processing.</p>
+
+
+                <figure class="highlight"><pre><code class="language-html" data-lang="html">
+                         for (i in 1:10){
+                                print(paste("dowloading file", ftch_req$files[[i]]$Key))
+                                ncD <-  ma$download('59134752aa6be7679f737d41',ftch_req$files[[i]]$Key)
+                                writeBin(ncD, strsplit(ftch_req$files[[i]]$Key, "/")[[1]][2])
+                                }
+
+
+                        </code></pre></figure>
+
+                <h2 id="sample-output">Runnable code on GitHub Project page</h2>
+
+                <p class="lead text-justify">Since the APIs are based on REST, you have the ability to use any language which support REST API framework. However, we officialy support and R and Python, and details can be found at below mentioned respective GitHub repositories..</p></br>
+                <ul class="list-group h4">
+                    <li class="list-group-item"><a href="https://github.com/trenchproject/microclimRapi" target="_blank">Official R API library</a></li>
+                    <li class="list-group-item"><a href="https://github.com/trenchproject/microclim-api" target="_blank">Official Python API library</a></li>
+                </ul>
+
+
+
+            </main>
+
+
         </div>
+
+
+
     </div>
+
+
+
 </section>
 
 <% include ./partials/footer_1 %>
