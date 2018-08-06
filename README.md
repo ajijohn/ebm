@@ -14,7 +14,7 @@ Refer to
 API keys are to requested prior to interacting with APIs.
 
 ## Binder
-Jupyter+R: [![Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/binder-examples/r/master?filepath=index.ipynb)
+Jupyter+R: [![Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/trenchproject/ebm/master?filepath=index.ipynb)
 
 ## Requirements
 
