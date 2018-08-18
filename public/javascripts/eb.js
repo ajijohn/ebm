@@ -245,10 +245,36 @@ $(function () {
 
     //Indicate user the avaliable time period
     $('input[name="tp"]').change( function() {
-         if($(this).val()=='future')
-            $("#years").text('Available time period - 2080-2099');
-        else
-            $("#years").text('Available time period - 1980-1999');
+         if($(this).val()=='future') {
+             $("#years").text('Available time period - 2080-2099');
+             $('#eddate').datepicker('setStartDate', '01/01/2080');
+             $('#eddate').datepicker('setEndDate', '12/31/2099');
+
+             $('#stdate').datepicker('setStartDate', '01/01/2080');
+             $('#stdate').datepicker('setEndDate', '12/31/2099');
+
+             $('.datepicker').datepicker("setDate", "01/01/2080");
+
+             $('#stdate').datepicker('update');
+             $('#eddate').datepicker('update');
+
+         }
+        else {
+             $("#years").text('Available time period - 1980-1999');
+
+             $('#eddate').datepicker('setStartDate', '01/01/1980');
+             $('#eddate').datepicker('setEndDate', '12/31/1999');
+
+             $('#stdate').datepicker('setStartDate', '01/01/1980');
+             $('#stdate').datepicker('setEndDate', '12/31/1999');
+
+             $('.datepicker').datepicker("setDate", "01/01/1980");
+
+             $('#stdate').datepicker('update');
+             $('#eddate').datepicker('update');
+
+         }
+
     })
 
     //triggered when modal is about to be shown
@@ -313,6 +339,20 @@ $(function () {
 
 
     });
+
+    //Date routine checks
+    $("#stdate").datepicker({
+        autoclose: true,
+    }).on('changeDate', function (selected) {
+        var minDate = new Date(selected.date.valueOf());
+
+    });
+
+    $("#eddate").datepicker()
+        .on('changeDate', function (selected) {
+            var maxDate = new Date(selected.date.valueOf());
+
+        });
 
 
 });
