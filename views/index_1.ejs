@@ -176,7 +176,7 @@
 
                             <div class="form-group row">
                                 <label for="stdate" class="col-sm-auto col-form-label">Start Date</label>
-                                <div class="col-xs-3 btn-group btn-group-toggle">
+                                <div class="col-xs-3 btn-group btn-group-toggle input-group input-daterange">
 
                                     <input type="text" class="form-control datepicker"  id="stdate" name="stdate" placeholder="Start Date" required>
                                     <span class="input-group-addon"></span>
@@ -343,7 +343,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
 
 <script>
     var map = L.map('map').setView([39.70005491693909,-106.22817993164061 ], 10);
@@ -441,7 +441,7 @@
 
     });
 
-    $('.datepicker').datepicker("setDate", "01/01/1981");
+    $('.datepicker').datepicker("setDate", "01/01/1980");
 
 </script>
 
