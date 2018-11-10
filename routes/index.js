@@ -19,11 +19,6 @@ router.get('/APIs',function(req, res, next) {
   res.render('apis', { title: 'APIs' });
 });
 
-/* GET account page. */
-router.get('/account',function(req, res, next) {
-    res.render('accounts_1', { title: 'Profile' });
-});
-
 
 router.get('/signup',function(req, res, next) {
   res.render('signup', { title: 'signup' });
@@ -82,6 +77,12 @@ router.post('/signup', function(req, res, next) {
 router.get('/microclim',ensureAuthenticated,function(req, res, next) {
   res.render('index_1', { title: 'microclim' });
 });
+
+/* GET account page. */
+router.get('/account',ensureAuthenticated,function(req, res, next) {
+    res.render('accounts_1', { title: 'Profile' });
+});
+
 
 /* GET login page. */
 router.get('/login', function(req, res, next) {res.render('login_1', { title: 'login' });
