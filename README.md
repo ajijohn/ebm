@@ -25,6 +25,22 @@ Jupyter+R: [![Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v
 ```sh
 setup auth.js with API Keys for Google/Twitter/LinkedIn
 ```
+## Dependencies
+Needs MongoDB
+
+```sh
+sudo apt install -y mongodb
+```
+
+Verify the service’s status:
+```sh
+sudo systemctl status mongodb
+```
+To restart MongoDB
+
+```sh
+sudo systemctl restart mongodb
+```
 
 
 ## Install
@@ -35,6 +51,22 @@ $ cd ebm
 $ npm install
 
 ```
+if not found/npm not installed - do the below for Ubuntu
+
+```sh
+sudo apt update
+sudo apt install nodejs
+sudo apt install npm
+```
+
+Check the node version
+
+```sh
+nodejs -v
+```
+
+We have tested on 10.19
+
 ```sh
 $ npm start
 
