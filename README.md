@@ -2,14 +2,14 @@
 ## Introduction
 #### UI for Microclimatic data for ecological forecasting
 
-[![Build Status](https://travis-ci.org/trenchproject/ebm.svg)](https://travis-ci.org/trenchproject/ebm)
+[![Build Status](https://travis-ci.org/ajijohn/ebm.svg)](https://travis-ci.org/trenchproject/ebm)
 
 ## API Reference
 
 Refer to 
 
-* [R API ]https://github.com/trenchproject/microclimRapi
-* [Python API] https://github.com/trenchproject/microclim-api
+* [R API ]https://github.com/ajijohn/microclimRapi
+* [Python API] https://github.com/ajijohn/microclim-api
 
 API keys are to requested prior to interacting with APIs.
 
