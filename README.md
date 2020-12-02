@@ -73,6 +73,11 @@ $ npm start
 $ npm install -g forever
 ```
 
+## Starting the app
+```sh
+forever start bin/www
+```
+
 Then visit [http://localhost:3000/](http://localhost:3000/)
 
 ## Communication
