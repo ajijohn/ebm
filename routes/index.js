@@ -6,7 +6,7 @@ const expressJwt = require('express-jwt');
 
 
 var corpsec = process.env.API_SEC || "default";
-const authenticate = expressJwt({secret : corpsec});
+const authenticate = expressJwt({secret : corpsec, algorithms: ['RS256']});
 
 
 /* GET microclim page. */
