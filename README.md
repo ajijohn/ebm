@@ -41,6 +41,14 @@ To restart MongoDB
 ```sh
 sudo systemctl restart mongodb
 ```
+Use  MongoDB shell to create the database and the collections
+```sh
+mongo 
+```
+
+- Create a database 'ebm'
+    - Create collections 'post','requests','sessions','users'
+
 
 
 ## Install
