@@ -3,9 +3,6 @@
  * Supports Main Page
  */
 $(function () {
-
-
-
     $("#shade label").attr("disabled", true);
     $('#hod').attr('disabled', 'disabled');
 
@@ -13,26 +10,26 @@ $(function () {
     var ExtRequest = Backbone.Model.extend({
 
         defaults: {
-            misc:"",
-            email:"",
-            status:"",
-            aggregationmetric:"",
-            lats:[],
-            timelogged:"",
-            longs:[],
-            variable:[],
-            interval:"",
-            text:"",
-            enddate:"",
-            outputformat:"",
-            startdate:"",
-            stsmsg:""
+            misc: "",
+            email: "",
+            status: "",
+            aggregationmetric: "",
+            lats: [],
+            timelogged: "",
+            longs: [],
+            variable: [],
+            interval: "",
+            text: "",
+            enddate: "",
+            outputformat: "",
+            startdate: "",
+            stsmsg: ""
         }
     });
 
     var ExtRequestCollection = Backbone.Collection.extend({
         model: ExtRequest,
-        url: '/requests/' ,
+        url: '/requests/',
 
         initialize: function () {
             this.fetch();
@@ -54,7 +51,7 @@ $(function () {
 
         template: _.template($('#process-tpl').html()),
 
-        render: function() {
+        render: function () {
             this.$el.html(this.template(this.model.attributes));
             return this;
         }
@@ -70,8 +67,8 @@ $(function () {
         initialize: function () {
             var self = this;
             self.ExtRequestCollection = new ExtRequestCollection();
-             // for Backbone >= 1.0
-           this.ExtRequestCollection.on("sync", this.render, this);
+            // for Backbone >= 1.0
+            this.ExtRequestCollection.on("sync", this.render, this);
             this.render();
 
         },
@@ -82,7 +79,7 @@ $(function () {
             var self = this;
             //Remove existing collection - maybe another elegant way!
             $('#requests-main-dp #requests-main-well-item').remove();
-            self.ExtRequestCollection.fetch({reset: true});
+            self.ExtRequestCollection.fetch({ reset: true });
         },
 
         render: function () {
@@ -92,10 +89,10 @@ $(function () {
                 //TODO - NOT WORKING for some reason, to look into it
                 // self.$el.append(self.requestsTemplate(element));
 
-                var htmla=
+                var htmla =
                     '<div class="form-group row" id="requests-main-well-item">' +
-                    '<div class="btn-group btn-group-toggle" >'+
-                    '<div class="col-sm-12">'+
+                    '<div class="btn-group btn-group-toggle" >' +
+                    '<div class="col-sm-12">' +
                     '<button type="button" class="btn btn-primary btn-md center-block" data-toggle="modal" ' +
                     'data-request-id="' + element._id + '" ' +
                     'data-lats-id="' + element.lats + '" ' +
@@ -105,24 +102,24 @@ $(function () {
                     'data-enddate-id="' + element.enddate + '" ' +
                     'data-status-id="' + element.status + '" ' +
                     'data-stsmsg-id="' + element.status_message + '" ' +
-                    'data-target="#myModal"> '+
+                    'data-target="#myModal"> ' +
                     element._id +
                     '</button> ' +
-                    '</div>'+
+                    '</div>' +
 
-                    '<div class="col-xs-4">'+
-                    '<a  class="btn btn-default btn-lg pull-left disabled" data-placement="top"'+
-                    'data-original-title=".btn .btn-default .btn-lg">'+
-                    element.status+
-                    '</a>'+
-                    '</div>'+
+                    '<div class="col-xs-4">' +
+                    '<a  class="btn btn-default btn-lg pull-left disabled" data-placement="top"' +
+                    'data-original-title=".btn .btn-default .btn-lg">' +
+                    element.status +
+                    '</a>' +
+                    '</div>' +
 
 
-                    '<div class="col-xs-4">'+
-                    '<a  class="btn btn-default btn-lg pull-left disabled" data-placement="top"'+
-                    'data-original-title=".btn .btn-default .btn-lg">'+
+                    '<div class="col-xs-4">' +
+                    '<a  class="btn btn-default btn-lg pull-left disabled" data-placement="top"' +
+                    'data-original-title=".btn .btn-default .btn-lg">' +
                     moment(element.timelogged).utc().format("MM/DD/YYYY HH:mm") +
-                    '</a>'+
+                    '</a>' +
                     '</div>' +
                     '</div>' +
 
@@ -152,7 +149,7 @@ $(function () {
         initialize: function () {
             var self = this;
         },
-        reset: function(){
+        reset: function () {
 
         },
         save: function (e) {
@@ -160,7 +157,7 @@ $(function () {
             self.$el.find('.alert-container').empty();
             $(".overlay").show();
 
-            if($('#extractform').parsley().validate()) {
+            if ($('#extractform').parsley().validate()) {
                 self.$el.find('.alert-container').empty();
 
                 stfmtdt = moment(self.$el.find('#stdate').val()).utc().format("YYYYMMDD");
@@ -170,8 +167,8 @@ $(function () {
                     variable: self.$el.find('#variable').val(),
                     dateperformed: moment(new Date()).utc().format("MM/DD/YYYY HH:mm:ss Z"),
 
-                    shadelevel:self.$el.find('input:radio[name=shadelevel]').val(),
-                    hod:self.$el.find('#hod').val(),
+                    shadelevel: self.$el.find('input:radio[name=shadelevel]').val(),
+                    hod: self.$el.find('#hod').val(),
 
                     //latS,latN,lonW,lonE
                     latN: self.$el.find('#latN').val(),
@@ -182,14 +179,14 @@ $(function () {
                     startdate: stfmtdt,
                     enddate: endfmtdt,
 
-                    interval:self.$el.find('#interval').val(),
-                    aggregation:self.$el.find('#aggregation').val(),
+                    interval: self.$el.find('#interval').val(),
+                    aggregation: self.$el.find('#aggregation').val(),
 
                     file: self.$el.find('input:radio[name=file]').val(),
                     email: self.$el.find('#email').val()
                 };
 
-                $.post('/requests/' , data, function (result) {
+                $.post('/requests/', data, function (result) {
                     if (result.error == null) {
                         self.$el.find('.alert-container').append(self.alertSuccessTemplate());
                         $('#extractform')[0].reset();
@@ -215,13 +212,13 @@ $(function () {
         initialize: function () {
             var self = this;
         },
-        reset: function(){
+        reset: function () {
 
         },
         apkey: function (e) {
             var self = this;
 
-            $.get('/users/account/apikey' , data, function (result) {
+            $.get('/users/account/apikey', data, function (result) {
                 if (result.error == null) {
                     //no error
                     //TODO show message that key was generated (flash message)
@@ -234,7 +231,7 @@ $(function () {
                     //self.$el.find('.alert-container').append(self.alertDangerTemplate());
                 }
 
-            })
+            });
 
 
 
@@ -242,43 +239,52 @@ $(function () {
     });
     new AccountView();
 
-
     //Indicate user the avaliable time period
-    $('input[name="tp"]').change( function() {
-         if($(this).val()=='future') {
-             $("#years").text('Available time period - 2080-2099');
-             $('#eddate').datepicker('setStartDate', '01/01/2080');
-             $('#eddate').datepicker('setEndDate', '12/31/2099');
+    $('input[name="tp"]').change(function () {
+        if ($(this).val() == 'past') {
+            $("#years").text('Available time period - 1980-1999');
 
-             $('#stdate').datepicker('setStartDate', '01/01/2080');
-             $('#stdate').datepicker('setEndDate', '12/31/2099');
+            $('#eddate').datepicker('setStartDate', '01/01/1980');
+            $('#eddate').datepicker('setEndDate', '12/31/1999');
 
-             $('.datepicker').datepicker("setDate", "01/01/2080");
+            $('#stdate').datepicker('setStartDate', '01/01/1980');
+            $('#stdate').datepicker('setEndDate', '12/31/1999');
 
-             $('#stdate').datepicker('update');
-             $('#eddate').datepicker('update');
+            $('.datepicker').datepicker("setDate", "01/01/1980");
 
-         }
-        else {
-             $("#years").text('Available time period - 1980-1999');
+            $('#stdate').datepicker('update');
+            $('#eddate').datepicker('update');
+        }
+        if ($(this).val() == 'future') {
+            $("#years").text('Available time period - 2080-2099');
+            $('#eddate').datepicker('setStartDate', '01/01/2080');
+            $('#eddate').datepicker('setEndDate', '12/31/2099');
 
-             $('#eddate').datepicker('setStartDate', '01/01/1980');
-             $('#eddate').datepicker('setEndDate', '12/31/1999');
+            $('#stdate').datepicker('setStartDate', '01/01/2080');
+            $('#stdate').datepicker('setEndDate', '12/31/2099');
 
-             $('#stdate').datepicker('setStartDate', '01/01/1980');
-             $('#stdate').datepicker('setEndDate', '12/31/1999');
+            $('.datepicker').datepicker("setDate", "01/01/2080");
 
-             $('.datepicker').datepicker("setDate", "01/01/1980");
+            $('#stdate').datepicker('update');
+            $('#eddate').datepicker('update');
 
-             $('#stdate').datepicker('update');
-             $('#eddate').datepicker('update');
+        }
+    });
+   
+    $('#eddate').datepicker('setStartDate', '01/01/1980');
+    $('#eddate').datepicker('setEndDate', '12/31/1999');
 
-         }
+    $('#stdate').datepicker('setStartDate', '01/01/1980');
+    $('#stdate').datepicker('setEndDate', '12/31/1999');
 
-    })
+    $('.datepicker').datepicker("setDate", "01/01/1980");
+
+    $('#stdate').datepicker('update');
+    $('#eddate').datepicker('update');
+    
 
     //triggered when modal is about to be shown
-    $('#myModal').on('show.bs.modal', function(e) {
+    $('#myModal').on('show.bs.modal', function (e) {
 
         //get data-id attribute of the clicked element
         var requestId = $(e.relatedTarget).data('request-id');
@@ -299,38 +305,35 @@ $(function () {
         $(e.currentTarget).find('input[name="enddate"]').val(enddate);
         $(e.currentTarget).find('input[name="status"]').val(status);
         $(e.currentTarget).find('input[name="stsmsg"]').val(stsmsg);
+        
     });
 
     //Add  events pertaining to dropdown
     $('#variable').on('hidden.bs.select', function (e) {
 
         var selectedVariables = $('select#variable').val()
-
+        $('#variable').parsley().destroy();
 
         //Enable height
-        if(_.contains(selectedVariables, 'SMOIS') || _.contains(selectedVariables, 'WIND10'))
-        {
+        if (_.contains(selectedVariables, 'SMOIS') || _.contains(selectedVariables, 'WIND10')) {
             $('#hod').removeAttr("disabled");
             $('#hod').selectpicker('refresh');
         }
 
         //Enable shade
-        if(_.contains(selectedVariables, 'Tsurface'))
-        {
+        if (_.contains(selectedVariables, 'Tsurface')) {
             $("#shade label").removeAttr("disabled");
         }
 
         //Enable shade and height
-        if(_.contains(selectedVariables, 'Tair'))
-        {
+        if (_.contains(selectedVariables, 'Tair')) {
             $('#hod').removeAttr("disabled");
             $("#shade label").removeAttr("disabled");
             $('#hod').selectpicker('refresh');
         }
 
         //Enable shade and depth
-        if(_.contains(selectedVariables, 'Tsoil'))
-        {
+        if (_.contains(selectedVariables, 'Tsoil')) {
             $('#hod').removeAttr("disabled");
             $("#shade label").removeAttr("disabled");
             $('#hod').selectpicker('refresh');
@@ -339,20 +342,16 @@ $(function () {
 
 
     });
-
     //Date routine checks
     $("#stdate").datepicker({
         autoclose: true,
     }).on('changeDate', function (selected) {
-        var minDate = new Date(selected.date.valueOf());
-
+      var minDate = new Date(selected.date.valueOf());
     });
 
     $("#eddate").datepicker()
         .on('changeDate', function (selected) {
             var maxDate = new Date(selected.date.valueOf());
-
         });
-
-
 });
+

@@ -4,18 +4,21 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="width=640, initial-scale=0.47, maximum-scale=1.0, user-scalable=1" name="viewport">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><%= title %></title>
+    <title>
+        <%= title %>
+    </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+        rel="stylesheet" type="text/css">
     <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -26,93 +29,99 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/wyuenho/backgrid/master/lib/backgrid.css" />
     <link rel="stylesheet" href="https://cdn.rawgit.com/wyuenho/backgrid-select-all/master/backgrid-select-all.css" />
     <!-- select -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css" />
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" />
+    <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" />
 
 
 </head>
 
 <body id="page-top">
-<!-- Navigation -->
-<% include ./partials/header_1 %>
+    <!-- Navigation -->
+    <% include ./partials/header_1 %>
 
-<!-- Microclim -->
-<section class="content-section bg-light" id="microclim">
-    <div class="container text-center">
-        <div class="row">
-           <div class="col-lg-10 mx-auto"><h2>Web Dashboard</h2></div>
-            <div class="row card-box">
-                <div class="col-lg-6 col-md-6">
-                    <div id="map" style="width: 500px; height: 650px"></div>
-                  <!--<span class="text-muted">Something else</span> -->
-                </div>
+        <!-- Microclim -->
+        <section class="content-section bg-light" id="microclim">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2>Web Dashboard</h2>
+                    </div>
+                    <div class="row card-box">
+                        <div class="col-lg-6 col-md-6">
+                            <div id="map" style="width: 500px; height: 650px"></div>
+                            <!--<span class="text-muted">Something else</span> -->
+                        </div>
 
-                 <div id="main" class="col-lg-6 col-md-auto">
+                        <div id="main" class="col-lg-6 col-md-auto">
 
-                     <!-- <div class="card-box"> -->
+                            <!-- <div class="card-box"> -->
 
-                        <!--<span class="text-muted">Something else</span> -->
-                        <form id="extractform" method="post"  class="form-inline" data-parsley-validate="">
+                            <!--<span class="text-muted">Something else</span> -->
+                            <form id="extractform" method="post" class="form-inline" data-parsley-validate="">
 
-                            <div class="form-group">
-
-                                <label for="variable" class="col-sm-auto col-form-label" >Variable</label>
-
-                                <select class="selectpicker" id="variable" name="variable" data-header="Select a variable" multiple required>
-
-                                    <optgroup label="WRF">
-                                        <option>ALBEDO</option>
-                                        <option>BGAP</option>
-                                        <option>FVEG</option>
-                                        <option>GLW</option>
-                                        <option>ISNOW</option>
-                                        <option>SWDOWN</option>
-                                        <option>TAH</option>
-                                        <option>TV</option>
-                                        <option>WGAP</option>
-                                        <option>TG</option>
-                                        <option>T2</option>
-                                        <option>QAIR</option>
-                                        <option>SMOIS</option>
-                                    </optgroup>
-                                    <optgroup label="Microclimate">
-                                        <option>Tair</option>
-                                        <option>Tsurface</option>
-                                        <option>Tsoil</option>
-                                        <option>UV</option>
-                                    </optgroup>
-
-                                </select>
-
-                            </div>
-
-                            <br />
-
-
-                            <div class="form-group row">
-                                <label for="shadelevel" class="col-sm-auto col-form-label">Shade Level</label>
-                                <div class="col-md-auto btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-secondary  active form-check-label">
-                                        <input class="form-check-input" type="radio" id="shadelevel" name="shadelevel" value="0" checked >0%
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                        <input class="form-check-input" type="radio" id="shadelevel" name="shadelevel" value="1" >25%
-                                    </label>
-                                    <label class="btn btn-secondary" >
-                                        <input class="form-check-input" type="radio" id="shadelevel" name="shadelevel" value="2">50%
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                        <input class="form-check-input" type="radio" id="shadelevel" name="shadelevel" value="3" >75%
-                                    </label>
-                                    <label class="btn btn-secondary" >
-                                        <input class="form-check-input" type="radio" id="shadelevel" name="shadelevel" value="4">100%
-                                    </label>
+                                <div class="form-group row">
+                                    <label for="variable" class="col-sm-auto col-form-label">Variable</label>
+                                        <select class="selectpicker" id="variable" name="variable"
+                                            data-header="Select a variable" multiple data-parsley-required="true" data-parsley-errors-container=".eroors">
+                                            
+                                            <optgroup label="WRF">
+                                                <option>ALBEDO</option>
+                                                <option>BGAP</option>
+                                                <option>FVEG</option>
+                                                <option>GLW</option>
+                                                <option>ISNOW</option>
+                                                <option>SWDOWN</option>
+                                                <option>TAH</option>
+                                                <option>TV</option>
+                                                <option>WGAP</option>
+                                                <option>TG</option>
+                                                <option>T2</option>
+                                                <option>QAIR</option>
+                                                <option>SMOIS</option>
+                                            </optgroup>
+                                            <optgroup label="Microclimate">
+                                                <option>Tair</option>
+                                                <option>Tsurface</option>
+                                                <option>Tsoil</option>
+                                                <option>UV</option>
+                                            </optgroup>
+                                        </select>    
+                                        <div class="col-sm-auto" id="errors1">
+                                            <div class="eroors"></div>    
+                                        </div> 
+                                       
                                 </div>
-                            </div>
+                                <div class="form-group row">
+                                    <label for="shadelevel" class="col-sm-auto col-form-label">Shade Level</label>
+                                    <div class="col-md-auto btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn btn-secondary  active form-check-label">
+                                            <input class="form-check-input" type="radio" id="shadelevel"
+                                                name="shadelevel" value="0" checked>0%
+                                        </label>
+                                        <label class="btn btn-secondary">
+                                            <input class="form-check-input" type="radio" id="shadelevel"
+                                                name="shadelevel" value="1">25%
+                                        </label>
+                                        <label class="btn btn-secondary">
+                                            <input class="form-check-input" type="radio" id="shadelevel"
+                                                name="shadelevel" value="2">50%
+                                        </label>
+                                        <label class="btn btn-secondary">
+                                            <input class="form-check-input" type="radio" id="shadelevel"
+                                                name="shadelevel" value="3">75%
+                                        </label>
+                                        <label class="btn btn-secondary">
+                                            <input class="form-check-input" type="radio" id="shadelevel"
+                                                name="shadelevel" value="4">100%
+                                        </label>
+                                    </div>
+                                </div>
 
 
-                            <div class="form-group row">
-                                    <label for="hod" class="col-sm-auto col-form-label" >Height or depth(m)</label>
+                                <div class="form-group row">
+                                    <label for="hod" class="col-sm-auto col-form-label">Height or depth(m)</label>
                                     <select id="hod" name="hod" class="selectpicker">
                                         <option value="0">0.03</option>
                                         <option value="1">0.06</option>
@@ -135,63 +144,95 @@
                                         <option value="18">1.92</option>
                                     </select>
 
-                            </div>
-
-
-                            <div class="form-group row">
-                                <label class="col-sm-auto col-form-label">Locations</label>
-                                <span class="text-muted">select the geographic bounding box(Degrees)</span>
-                                <div class="col-sm-10">
-                                <div class="row">
-                                    <input type="number" class="form-control" id="latN" name="latN" placeholder="LatN" type="number" step="any" data-parsley-trigger="change" required="">
-                                    <label for="latN" class="col-sm-auto col-form-label">N Lat</label>
-                                    <span class="input-group-addon"></span>
-                                    <input type="number" class="form-control" id="latS" name="latS" placeholder="LatS" type="number" step="any" data-parsley-trigger="change" required="">
-                                    <label for="latS" class="col-sm-auto col-form-label">S Lat</label>
                                 </div>
-                                <div class="row">
-                                    <input type="number" class="form-control" id="lonW" name="lonW" placeholder="LonW" type="number" step="any"  data-parsley-trigger="change" required="">
-                                    <label for="lonW" class="col-sm-auto col-form-label">E Lon</label>
-                                    <span class="input-group-addon"></span>
-                                    <input type="number" class="form-control" id="lonE" name="lonE" placeholder="LonE" type="number" step="any" data-parsley-trigger="change" required="">
-                                    <label for="lonE" class="col-sm-auto col-form-label">W Lon</label>
-                                </div>
-                                </div>
-                            </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-auto col-form-label">Locations</label>
+                                    <span class="text-muted">select the geographic bounding box(Degrees)</span>
+                                    <div class="col-sm-10" id="row2">
+                                        <div class="row" id="row1">
+                                            <div class="form-group row">
+                                                <label for="latN" class="col-sm-auto col-form-label">N Lat</label>
+                                                <div class="col-md-auto">
+                                                    <input type="number" class="form-control" id="latN" name="latN"
+                                                        placeholder="LatN" type="number" step="any"
+                                                        data-parsley-trigger="change" required="">
+                                                </div>
 
+                                            </div>
+                                            <span class="input-group-addon"></span>
+                                            <div class="form-group row" id="row1">
+                                                <label for="latS" class="col-sm-auto col-form-label">S Lat</label>
+                                                <div class="col-md-auto">
+                                                    <input type="number" class="form-control" id="latS" name="latS"
+                                                        placeholder="LatS" type="number" step="any"
+                                                        data-parsley-trigger="change" required="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" id="row3">
+                                            <div class="form-group row">
+                                                <label for="lonW" class="col-sm-auto col-form-label">W Lon</label>
+                                                <div class="col-md-auto">
+                                                    <input type="number" class="form-control" id="lonW" name="lonW"
+                                                        placeholder="LonW" type="number" step="any"
+                                                        data-parsley-trigger="change" required="">
+                                                </div>
 
-
-                            <div class="form-group row">
-                                <label for="tp" class="col-sm-auto col-form-label">Time periods</label>
-                                <div class="col-md-auto btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-primary active">
-                                        <input type="radio" name="tp" value="past" autocomplete="off" checked>Past
-                                    </label>
-                                    <label class="btn btn-primary">
-                                        <input type="radio" name="tp" value="future" autocomplete="off" >Future
-                                    </label>
-                                </div>
-                                <button type="button" class="btn btn-danger" name="years" id="years" value="past">Available time period - 1980-1999</button>
-                            </div>
-
-                            <div class="form-group row">
-                                <button type="button"  class="btn btn-primary" disabled>Limit only two years when using Past/Future</button>
-
-                            </div>
-                            <div class="form-group row">
-                                <label for="stdate" class="col-sm-auto col-form-label">Start Date</label>
-                                <div class="col-xs-3 btn-group btn-group-toggle input-group input-daterange">
-
-                                    <input type="text" class="form-control datepicker"  id="stdate" name="stdate" placeholder="Start Date" required>
-                                    <span class="input-group-addon"></span>
-                                    <label for="eddate" class="col-sm-auto col-form-label">End Date</label>
-                                    <input type="text" class="form-control datepicker" data-date-end-date="1y" id="eddate" name="eddate" placeholder="End Date" required>
+                                            </div>
+                                            <span class="input-group-addon"></span>
+                                            <div class="form-group row" id="row4">
+                                                <label for="lonE" class="col-sm-auto col-form-label">E Lon</label>
+                                                <div class="col-md-auto">
+                                                    <input type="number" class="form-control" id="lonE" name="lonE"
+                                                        placeholder="LonE" type="number" step="any"
+                                                        data-parsley-trigger="change" required="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </div>
 
-                            </div>
+                                <div class="form-group row">
+                                    <label for="tp" class="col-sm-auto col-form-label">Time periods</label>
+                                    <div class="col-md-auto btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn btn-primary active">
+                                            <input type="radio" name="tp" value="past" autocomplete="off" checked>Past
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="tp" value="future" autocomplete="off">Future
+                                        </label>
+                                    </div>
+                                    <button type="button" class="btn btn-danger" name="years" id="years"
+                                        value="past">Available time period - 1980-1999</button>
+                                </div>
 
-                            <div class="form-group row">
+                                <div class="form-group row">
+                                    <button type="button" class="btn btn-primary" disabled>Limit only two years when
+                                        using Past/Future</button>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="stdate" class="col-sm-auto col-form-label">Start Date</label>
+                                    <div class="col-xs-3 btn-group btn-group-toggle input-group input-daterange">
+                                        <div class="col-md-auto" id="row5">
+                                            <input type="text" class="form-control datepicker" id="stdate" name="stdate"
+                                                placeholder="Start Date" required>
+                                        </div>
+                                        <span class="input-group-addon"></span>
+                                        <label for="eddate" class="col-sm-auto col-form-label"
+                                            style="margin-left: -10px;">End Date</label>
+                                        <div class="col-md-auto" id="row5">
+                                            <input type="text" class="form-control datepicker" data-date-end-date="1y"
+                                                id="eddate" name="eddate" placeholder="End Date" required>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row">
                                     <label for="interval" class="col-sm-auto col-form-label">Interval</label>
                                     <select id="interval" class="selectpicker">
                                         <option value="0">Hourly</option>
@@ -201,8 +242,9 @@
                                         <option value="4">Monthly</option>
                                     </select>
                                 </div>
-                                <div  class="form-group row">
-                                    <label for="aggregation" class="col-sm-auto col-form-label">Aggregation Metric</label>
+                                <div class="form-group row">
+                                    <label for="aggregation" class="col-sm-auto col-form-label">Aggregation
+                                        Metric</label>
                                     <select id="aggregation" class="selectpicker">
                                         <option value="0">Instantaneous</option>
                                         <option value="1">Max</option>
@@ -212,46 +254,50 @@
                                 </div>
 
 
-                            <div class="form-group row">
-                                <label for="file" class="col-sm-auto col-form-label">Output file format</label>
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-primary active">
-                                        <input type="radio" name="file" id="file" value="1" autocomplete="off" checked>CSV
-                                    </label>
-                                    <label class="btn btn-primary  disabled">
-                                        <input type="radio" name="file" id="file"  value="3" autocomplete="off">JSON
-                                    </label>
-                                    <label class="btn btn-primary disabled" >
-                                        <input type="radio" name="file" id="file"  value="2" autocomplete="off">netCDF
-                                    </label>
+                                <div class="form-group row">
+                                    <label for="file" class="col-sm-auto col-form-label">Output file format</label>
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn btn-primary active">
+                                            <input type="radio" name="file" id="file" value="1" autocomplete="off"
+                                                checked>CSV
+                                        </label>
+                                        <label class="btn btn-primary  disabled">
+                                            <input type="radio" name="file" id="file" value="3" autocomplete="off">JSON
+                                        </label>
+                                        <label class="btn btn-primary disabled">
+                                            <input type="radio" name="file" id="file" value="2"
+                                                autocomplete="off">netCDF
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group row">
-                                <label for="email" class="col-sm-auto col-form-label">Email address</label>
-                                <div class="col-md-auto">
+                                <div class="form-group row">
+                                    <label for="email" class="col-sm-auto col-form-label">Email address</label>
+                                    <div class="col-md-auto">
 
-                                  <input type="email" class="form-control" id="email" name="email" placeholder="<%= user.email%>" value="<%= user.email%>" required>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            placeholder="<%= user.email%>" value="<%= user.email%>" required>
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-auto btn-group btn-group-toggle" data-toggle="buttons">
+                                        <!-- Submit/Cancel button !-->
+                                        <button type="button" class="btn btn-success btn-lg save"
+                                            value="validate">Process</button>
+                                        <span class="input-group-addon"></span>
+                                        <button type="reset" class="btn btn-warning btn-lg reset">Cancel</button>
+                                    </div>
 
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                             <div class="col-md-auto btn-group btn-group-toggle" data-toggle="buttons">
-                                    <!-- Submit/Cancel button !-->
-                                    <button type="button" class="btn btn-success btn-lg save" value="validate">Process</button>
-                                    <span class="input-group-addon"></span>
-                                    <button type="reset" class="btn btn-warning btn-lg reset">Cancel</button>
-                             </div>
 
-                            </div>
-
-                        </form>
+                            </form>
 
 
-                        <!--</div> -->
-                         <!-- card box end -->
+                            <!--</div> -->
+                            <!-- card box end -->
 
-                    <script type="text/template" id="alert-success-tpl">
+                            <script type="text/template" id="alert-success-tpl">
                         <div class="alert alert-success">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                             <i class="icon-check"></i> Request has been successful!
@@ -259,69 +305,72 @@
                     </script>
 
 
-                    <script type="text/template" id="alert-danger-tpl">
+                            <script type="text/template" id="alert-danger-tpl">
                         <div class="alert alert-danger">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                             <i class="icon-ban-circle"></i> Error! Please try again.
                         </div>
                     </script>
 
-                    <div class="alert-container"></div>
+                            <div class="alert-container"></div>
 
-                </div>
-                <!-- main -->
+                        </div>
+                        <!-- main -->
 
-            </div>
+                    </div>
 
-            <hr>
-            <div class="col-lg-10 mx-auto"><h2>Requests</h2></div>
-            <div class="row">
-             <div class="col-lg-6 col-md-6">
+                    <hr>
+                    <div class="col-lg-10 mx-auto">
+                        <h2>Requests</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
 
-                 <div class="body text-align-left" id="requests-main-dp">
+                            <div class="body text-align-left" id="requests-main-dp">
 
                                 <div class="row" id="requests-main">
                                     <div class="col-xs-6">
-                                        <a  id="refresh" name="refresh" class="btn btn-toolbar btn-sm pull-right refresh" data-placement="top"
+                                        <a id="refresh" name="refresh" class="btn btn-toolbar btn-sm pull-right refresh"
+                                            data-placement="top"
                                             data-original-title=".btn .btn-default .btn-sm">refresh</a>
                                     </div>
                                 </div>
 
-                 </div>
+                            </div>
 
-               </div>
+                        </div>
+                    </div>
+                    <!-- End Requests-->
+
+                    <div class="overlay">
+                        <div id="loading-img"></div>
+                    </div>
+                    <!--/.container new -->
+
+                </div>
             </div>
-            <!-- End Requests-->
-
-            <div class="overlay">
-                <div id="loading-img"></div>
-            </div>
-            <!--/.container new -->
-
-        </div>
-    </div>
 
 
-</section>
+        </section>
 
-<% include ./partials/footer_1 %>
-<% include ./partials/request %>
+        <% include ./partials/footer_1 %>
+            <% include ./partials/request %>
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
-    <i class="fa fa-angle-up"></i>
-</a>
+                <!-- Scroll to Top Button-->
+                <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
 
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                <!-- Bootstrap core JavaScript -->
+                <script src="vendor/jquery/jquery.min.js"></script>
+                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Plugin JavaScript -->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+                <!-- Plugin JavaScript -->
+                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for this template -->
+                <!-- Custom scripts for this template -->
 
-<script type="text/template" id="process-tpl">
+                <script type="text/template" id="process-tpl">
     <div class="well">
         <div class="row">
             <div class="col-xs-6">
@@ -342,121 +391,135 @@
 
 
 
-<script src="js/stylish-portfolio.min.js"></script>
-<script src="javascripts/eb.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+                <script src="js/stylish-portfolio.min.js"></script>
+                <script src="javascripts/eb.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js"></script>
+                <script
+                    src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+                <script
+                    src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
 
-<script>
-    var map = L.map('map').setView([39.70005491693909,-106.22817993164061 ], 10);
-    mapLink =
-        '<a href="http://openstreetmap.org">OpenStreetMap</a>';
-    L.tileLayer(
-        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; ' + mapLink + ' Contributors',
-            maxZoom: 18
-        }).addTo(map);
+                <script>
+                    var map = L.map('map').setView([39.70005491693909, -106.22817993164061], 10);
+                    mapLink =
+                        '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+                    L.tileLayer(
+                        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; ' + mapLink + ' Contributors',
+                        maxZoom: 18
+                    }).addTo(map);
 
-    var LeafIcon = L.Icon.extend({
-        options: {
-            shadowUrl:
-                'http://leafletjs.com/docs/images/leaf-shadow.png',
-            iconSize:     [38, 95],
-            shadowSize:   [50, 64],
-            iconAnchor:   [22, 94],
-            shadowAnchor: [4, 62],
-            popupAnchor:  [-3, -76]
-        }
-    });
+                    var LeafIcon = L.Icon.extend({
+                        options: {
+                            shadowUrl:
+                                'http://leafletjs.com/docs/images/leaf-shadow.png',
+                            iconSize: [38, 95],
+                            shadowSize: [50, 64],
+                            iconAnchor: [22, 94],
+                            shadowAnchor: [4, 62],
+                            popupAnchor: [-3, -76]
+                        }
+                    });
 
-    var greenIcon = new LeafIcon({
-        iconUrl: 'http://leafletjs.com/docs/images/leaf-green.png'
-    });
+                    var greenIcon = new LeafIcon({
+                        iconUrl: 'http://leafletjs.com/docs/images/leaf-green.png'
+                    });
 
-    var drawnItems = new L.FeatureGroup();
-    map.addLayer(drawnItems);
+                    var drawnItems = new L.FeatureGroup();
+                    map.addLayer(drawnItems);
 
-    var drawControl = new L.Control.Draw({
-        position: 'topleft',
-        draw: {
-            polygon: false, // Turns off this drawing tool,
-            polyline:false, // Turns off this drawing tool,
-            circle:false, // Turns off this drawing tool,
-            marker: false, // Turns off this drawing tool
-        },
-        edit: {
-            featureGroup: drawnItems
-        }
-    });
-    map.addControl(drawControl);
+                    var drawControl = new L.Control.Draw({
+                        position: 'topleft',
+                        draw: {
+                            polygon: false, // Turns off this drawing tool,
+                            polyline: false, // Turns off this drawing tool,
+                            circle: false, // Turns off this drawing tool,
+                            marker: false, // Turns off this drawing tool
+                        },
+                        edit: {
+                            featureGroup: drawnItems
+                        }
+                    });
+                    map.addControl(drawControl);
 
-    map.on('draw:created', function (e) {
-        var type = e.layerType,
-            layer = e.layer;
+                    map.on('draw:created', function (e) {
+                        var type = e.layerType,
+                            layer = e.layer;
 
-        if (type === 'marker') {
-            layer.bindPopup('A popup!');
-            console.log("Marker created")
-        }
+                        if (type === 'marker') {
+                            layer.bindPopup('A popup!');
+                            console.log("Marker created")
+                        }
 
-        if (type === 'polygon' || type=="rectangle") {
+                        if (type === 'polygon' || type == "rectangle") {
 
-            var width = layer.getBounds().getEast() - layer.getBounds().getWest();
-            var height = layer.getBounds().getNorth() - layer.getBounds().getSouth();
+                            var width = layer.getBounds().getEast() - layer.getBounds().getWest();
+                            var height = layer.getBounds().getNorth() - layer.getBounds().getSouth();
 
-            var lats = []; var lngs = [];
+                            var lats = []; var lngs = [];
 
-            //coordinates of the polygon
-            for (var i = 0; i < layer._latlngs.length; i++)  {
-                lats.push(layer._latlngs[i].lat);
-                lngs.push(layer._latlngs[i].lng);
+                            //coordinates of the polygon
+                            for (var i = 0; i < layer._latlngs.length; i++) {
+                                lats.push(layer._latlngs[i].lat);
+                                lngs.push(layer._latlngs[i].lng);
 
-            }
+                            }
 
-            //Show the bounding box
-            //$("#lat").val( layer.getBounds().getCenter().lat );
-            //$("#lng").val( layer.getBounds().getCenter().lng );
+                            //Show the bounding box
+                            $("#lat").val(layer.getBounds().getCenter().lat);
+                            $("#lng").val(layer.getBounds().getCenter().lng);
 
-            //latS,latN,lonW,lonE
-            $("#latS").val( layer.getBounds().getSouth());
-            $("#latN").val( layer.getBounds().getNorth());
+                            //latS,latN,lonW,lonE
+                            $("#latS").val(layer.getBounds().getSouth());
+                            $("#latN").val(layer.getBounds().getNorth());
 
-            $("#lonW").val(layer.getBounds().getWest());
-            $("#lonE").val(layer.getBounds().getEast());
+                            $("#lonW").val(layer.getBounds().getWest());
+                            $("#lonE").val(layer.getBounds().getEast());
+
+                            $("#latS").parsley().destroy();
+                            $("#latN").parsley().destroy();
+                            $("#lonW").parsley().destroy();
+                            $("#lonE").parsley().destroy();
 
 
+                        }
 
-        }
+                        drawnItems.addLayer(layer);
 
-        drawnItems.addLayer(layer);
+                        //Clear the drawing layer after pressing submit/cancel
+                        $(".reset").on("click", function () {
+                            $("#latS").val(" ");
+                            $("#latN").val(" ");
+                            $("#lonW").val(" ");
+                            $("#lonE").val(" ");
+                            drawnItems.removeLayer(layer);
 
-        //Clear the drawing layer after pressing submit/cancel
-        $(".reset").on("click", function() {
+                        });
+                        $(".leaflet-draw-edit-remove").on("click", function () {
+                            $("#latS").val(" ");
+                            $("#latN").val(" ");
+                            $("#lonW").val(" ");
+                            $("#lonE").val(" ");
+                        });
 
-            drawnItems.removeLayer(layer);
-        });
+                        $(".save").on("click", function () {
+                            drawnItems.removeLayer(layer);
 
-        $(".save").on("click", function() {
+                        });
+                    });
+                   
+                  
+                </script>
 
-            drawnItems.removeLayer(layer);
-        });
-
-    });
-
-    $('.datepicker').datepicker("setDate", "01/01/1980");
-
-</script>
-
-<!-- check !-->
-<script src="https://cdn.rawgit.com/jashkenas/underscore/1.5.2/underscore.js"></script>
-<script src="https://cdn.rawgit.com/jashkenas/backbone/1.1.0/backbone.js"></script>
-<script src="https://cdn.rawgit.com/wyuenho/backbone-pageable/master/lib/backbone-pageable.js"></script>
-<script src="https://cdn.rawgit.com/wyuenho/backgrid/master/lib/backgrid.js"></script>
-<script src="https://cdn.rawgit.com/wyuenho/backgrid-filter/master/backgrid-filter.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.4.4/parsley.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment.min.js"></script>
+                <!-- check !-->
+                <script src="https://cdn.rawgit.com/jashkenas/underscore/1.5.2/underscore.js"></script>
+                <script src="https://cdn.rawgit.com/jashkenas/backbone/1.1.0/backbone.js"></script>
+                <script src="https://cdn.rawgit.com/wyuenho/backbone-pageable/master/lib/backbone-pageable.js"></script>
+                <script src="https://cdn.rawgit.com/wyuenho/backgrid/master/lib/backgrid.js"></script>
+                <script src="https://cdn.rawgit.com/wyuenho/backgrid-filter/master/backgrid-filter.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.4.4/parsley.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment.min.js"></script>
 
 </body>
 

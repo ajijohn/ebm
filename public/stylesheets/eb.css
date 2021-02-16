@@ -15,6 +15,7 @@ footer {
 
 .card-box {
     padding: 10px;
+    padding-right: 50px;
     border: 1px solid rgba(54, 64, 74, 0.08);
     -webkit-border-radius: 5px;
     border-radius: 5px;
@@ -155,3 +156,30 @@ input[type="button"].btn-block {
 .fa-google-plus-circle:before,
 .fa-google-plus-official:before {
     content: ""; }
+#main{
+    margin-left:-40px;
+}
+#errors1{
+    transform: translate(-120%, 100%);
+}
+#row1{
+    margin-left: 3px;
+}
+#row2{
+    margin-top: 20px;
+}
+#row3{
+    margin-top: 30px; 
+    margin-left:-2px;
+}
+#row4{
+    margin-left:-2px;
+}
+.parsley-required {
+    list-style-type: none;
+    margin-left: -40px;
+    color: tomato;
+}
+#row5{
+    margin-left: -15px;
+}
