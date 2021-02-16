@@ -54,7 +54,7 @@ mongo
 ## Install
 
 ```sh
-$ git clone git://github.com/trenchproject/ebm.git
+$ git clone git://github.com/ajijohn/ebm.git
 $ cd ebm
 $ npm install
 
