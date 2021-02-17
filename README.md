@@ -2,7 +2,7 @@
 ## Introduction
 #### UI for Microclimatic data for ecological forecasting
 
-[![Build Status](https://travis-ci.org/ajijohn/ebm.svg)](https://travis-ci.org/trenchproject/ebm)
+[![Build Status](https://travis-ci.org/ajijohn/ebm.svg)](https://travis-ci.org/ajijohn/ebm)
 
 ## API Reference
 
@@ -14,7 +14,7 @@ Refer to
 API keys are to requested prior to interacting with APIs.
 
 ## Binder
-Jupyter+R: [![Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/trenchproject/ebm/master?filepath=index.ipynb)
+Jupyter+R: [![Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/ajijohn/ebm/master?filepath=index.ipynb)
 
 ## Requirements
 
