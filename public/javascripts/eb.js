@@ -182,8 +182,11 @@ $(function () {
                     interval: self.$el.find('#interval').val(),
                     aggregation: self.$el.find('#aggregation').val(),
 
-                    file: self.$el.find('input:radio[name=file]').val(),
-                    email: self.$el.find('#email').val()
+                    file: self.$el.find('input:radio[name=file]:checked').val(),
+
+                    email: self.$el.find('#email').val(),
+
+                    sourcetype: self.$el.find('#sourcetype').val()
                 };
 
                 $.post('/requests/', data, function (result) {
@@ -309,10 +312,11 @@ $(function () {
     });
 
     //Add  events pertaining to dropdown
-    $('#variable').on('hidden.bs.select', function (e) {
+   $('#variable').on('hidden.bs.select', function (e) {
 
         var selectedVariables = $('select#variable').val()
         $('#variable').parsley().destroy();
+    
 
         //Enable height
         if (_.contains(selectedVariables, 'SMOIS') || _.contains(selectedVariables, 'WIND10')) {
@@ -338,10 +342,8 @@ $(function () {
             $("#shade label").removeAttr("disabled");
             $('#hod').selectpicker('refresh');
         }
-
-
-
     });
+
     //Date routine checks
     $("#stdate").datepicker({
         autoclose: true,

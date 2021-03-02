@@ -62,36 +62,48 @@
                             <form id="extractform" method="post" class="form-inline" data-parsley-validate="">
 
                                 <div class="form-group row">
+                                    <label for="sourcetype" class="col-sm-auto col-form-label" id="sourcet">Source
+                                    </label>
+                                    <select class="selectpicker" id="sourcetype" name="sourcetype">
+                                        <option></option>
+                                        <option value="ERA5">ERA5</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="form-group row">
                                     <label for="variable" class="col-sm-auto col-form-label">Variable</label>
-                                        <select class="selectpicker" id="variable" name="variable"
-                                            data-header="Select a variable" multiple data-parsley-required="true" data-parsley-errors-container=".eroors">
+                                    <select class="selectpicker" id="variable" name="variable"
+                                        data-header="Select a variable" multiple data-parsley-required="true"
+                                        data-parsley-errors-container=".eroors">
+
+                                        <optgroup label="WRF">
                                             
-                                            <optgroup label="WRF">
-                                                <option>ALBEDO</option>
-                                                <option>BGAP</option>
-                                                <option>FVEG</option>
-                                                <option>GLW</option>
-                                                <option>ISNOW</option>
-                                                <option>SWDOWN</option>
-                                                <option>TAH</option>
-                                                <option>TV</option>
-                                                <option>WGAP</option>
-                                                <option>TG</option>
-                                                <option>T2</option>
-                                                <option>QAIR</option>
-                                                <option>SMOIS</option>
-                                            </optgroup>
-                                            <optgroup label="Microclimate">
-                                                <option>Tair</option>
-                                                <option>Tsurface</option>
-                                                <option>Tsoil</option>
-                                                <option>UV</option>
-                                            </optgroup>
-                                        </select>    
-                                        <div class="col-sm-auto" id="errors1">
-                                            <div class="eroors"></div>    
-                                        </div> 
-                                       
+                                            <option>ALBEDO</option>
+                                            <option>BGAP</option>
+                                            <option>FVEG</option>
+                                            <option>GLW</option>
+                                            <option>ISNOW</option>
+                                            <option>SWDOWN</option>
+                                            <option>TAH</option>
+                                            <option>TV</option>
+                                            <option>WGAP</option>
+                                            <option>TG</option>
+                                            <option>T2</option>
+                                            <option>QAIR</option>
+                                            <option>SMOIS</option>
+                                        </optgroup>
+                                        <optgroup label="Microclimate">
+                                            <option>Tair</option>
+                                            <option>Tsurface</option>
+                                            <option>Tsoil</option>
+                                            <option>UV</option>
+                                        </optgroup>
+                                    </select>
+                                    <div class="col-sm-auto" id="errors1">
+                                        <div class="eroors"></div>
+                                    </div>
+
                                 </div>
                                 <div class="form-group row">
                                     <label for="shadelevel" class="col-sm-auto col-form-label">Shade Level</label>
@@ -257,16 +269,22 @@
                                 <div class="form-group row">
                                     <label for="file" class="col-sm-auto col-form-label">Output file format</label>
                                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                        <label class="btn btn-primary active">
-                                            <input type="radio" name="file" id="file" value="1" autocomplete="off"
+
+                                        <label class="btn btn-primary" id="file1">
+                                            <input type="radio" name="file" id="file1" value="CSV" autocomplete="off"
                                                 checked>CSV
                                         </label>
-                                        <label class="btn btn-primary  disabled">
-                                            <input type="radio" name="file" id="file" value="3" autocomplete="off">JSON
+                                        <label class="btn btn-primary" id="file2">
+                                            <input type="radio" name="file" id="file2" value="JSON" autocomplete="off"
+                                                checked>JSON
                                         </label>
-                                        <label class="btn btn-primary disabled">
-                                            <input type="radio" name="file" id="file" value="2"
-                                                autocomplete="off">netCDF
+                                        <label class="btn btn-primary" id="file3">
+                                            <input type="radio" name="file" id="file3" value="netcdf" autocomplete="off"
+                                                checked>netCDF
+                                        </label>
+                                        <label class="btn btn-primary" id="file4">
+                                            <input type="radio" name="file" id="file4" value="GRIB" autocomplete="off"
+                                                checked>GRIB
                                         </label>
                                     </div>
                                 </div>
@@ -481,8 +499,6 @@
                             $("#latN").parsley().destroy();
                             $("#lonW").parsley().destroy();
                             $("#lonE").parsley().destroy();
-
-
                         }
 
                         drawnItems.addLayer(layer);
@@ -505,11 +521,22 @@
 
                         $(".save").on("click", function () {
                             drawnItems.removeLayer(layer);
+                           /* $("#sourcetype").val('default');
+                            $("#sourcetype").selectpicker("refresh");
+                            $("#variable").val('default');
+                            $("#variable").selectpicker("refresh"); */
 
                         });
                     });
-                   
-                  
+
+                    $("#sourcetype").change("click", function () {
+                        if ($(this).val() == 'ERA5') {
+                            $('#file1').addClass('disabled');
+                            $('#file2').addClass('disabled');
+                        }
+                    });
+
+
                 </script>
 
                 <!-- check !-->
