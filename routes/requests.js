@@ -108,20 +108,21 @@ router.post('/', function (req, res, next) {
 
     //Using the {w:1} option ensure you get the error back if the document fails to insert correctly.
     //TODO handle error
-    //  const sgMail = require('@sendgrid/mail')
-    // const sgMailApiKey = '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'
-    // sgMail.setApiKey(sgMailApiKey)
+    //const sgMail = require('@sendgrid/mail')
+    //const sgMailApiKey = ''
+    //sgMail.setApiKey(sgMailApiKey)
 
     requests.insert(new_request, { w: 1 }, function (err, request_added) {
 
         //Request logged
         if (request_added) {
-            const childPython = spawn('python',['index1.py']);
+            const childPython = spawn('python', ['index1.py']);
 
             childPython.stdout.on('data', (data) => {
-                console.log(`stdout: ${data}`);
+                var result = `${data}`;
+                console.log(result);
             });
-            
+
             childPython.stderr.on(`data`, (data) => {
                 console.error(`stderr: ${data}`);
             });
@@ -129,27 +130,26 @@ router.post('/', function (req, res, next) {
             childPython.on('close', (code) => {
                 console.log(`childprocess exited with code ${code}`)
             })
-            /*
-             sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+            //sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+/*
             const msg = {
-                to: 'sapti.s@gmail.com', // Change to your recipient
-                from: 'sapti.s@innoneur.com', // Change to your verified sender
-                subject: 'Sending with SendGrid is Fun',
-                text: 'and easy to do anywhere, even with Node.js',
-                html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+                to: req.body.email, // Change to your recipient
+                from: '', // Change to your verified sender
+                subject: 'Message from send grid',
+                text: 'Message from Send Grid',
             }
-            sgMail
-                .send(msg)
-                .then(() => {
+            sgMail.send(msg)
+                .then((respose) => {
                     console.log('Email sent')
                 })
                 .catch((error) => {
                     console.error(error)
-                }) */
+                })
+            */
             res.json(201, {
                 success: 'Request logged',
                 request_id: request_added._id.toString()
-            });
+            })
         }
         else {
             res.json(500, {
@@ -159,12 +159,5 @@ router.post('/', function (req, res, next) {
         }
 
     });
-
-
-
-
-
 });
-
-
 module.exports = router;

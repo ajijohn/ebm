@@ -2,7 +2,7 @@ import cdsapi
 from pymongo import MongoClient
 import sys
 
-def fun_cds(start_date,end_date,start_month,end_month,start_day,end_day,North,South,East,West,variable,op_format):
+def fun_cds(start_date,end_date,start_month,end_month,start_day,end_day,North,South,East,West,variable,op_format,time):
     c = cdsapi.Client()
     d = c.retrieve(
         'reanalysis-era5-single-levels',
@@ -22,7 +22,7 @@ def fun_cds(start_date,end_date,start_month,end_month,start_day,end_day,North,So
             start_day,
             end_day
         ],
-        'time': '21:00',
+        'time': time,
         'format': op_format,
         'area': [
             North, West, South,
@@ -61,6 +61,18 @@ South = float(lats[1][:5])
 East = float(longs[0][:8])
 West = float(longs[1][:8])
 op_format = j['outputformat']
+interval = j['interval']
+#print(interval)
+if interval == 'Daily':
+    time = ['00:00']
+elif interval == '6 Hourly':
+    time = ['00:00','06:00','12:00','18:00']
+elif interval == '12 Hourly':
+    time = ['00:00','12:00']
+elif interval == 'Hourly':
+    time = ['00:00','01:00','02:00','03:00','04:00','05:00','06:00','07:00','08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00']
+#print(time)
+
 
 #Variables Sorting 
 variables = j['variable']
@@ -69,6 +81,8 @@ dict_variable = {'Tair':'2m_temperature','Tsurface':'skin_temperature','Tsoil':'
 for i in variables:
     variable.append(dict_variable[i])
     
+
+
 #print(variable,start_year,end_year,start_month,end_month,start_day,end_day,North,South,East,West,op_format)
 
-fun_cds(start_year,end_year,start_month,end_month,start_day,end_day,North,South,East,West,variable,op_format)
+fun_cds(start_year,end_year,start_month,end_month,start_day,end_day,North,South,East,West,variable,op_format,time)

@@ -44,5 +44,18 @@
     "passport-twitter": "~1.0.4",
     "serve-favicon": "^2.5.0",
     "underscore": "~1.12.0"
-  }
+  },
+  "description": "[![Build Status](https://travis-ci.org/ajijohn/ebm.svg)](https://travis-ci.org/ajijohn/ebm)",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajijohn/ebm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajijohn/ebm/issues"
+  },
+  "homepage": "https://github.com/ajijohn/ebm#readme"
 }

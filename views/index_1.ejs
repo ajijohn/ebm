@@ -78,26 +78,26 @@
                                         data-parsley-errors-container=".eroors">
 
                                         <optgroup label="WRF">
-                                            
-                                            <option>ALBEDO</option>
-                                            <option>BGAP</option>
-                                            <option>FVEG</option>
-                                            <option>GLW</option>
-                                            <option>ISNOW</option>
-                                            <option>SWDOWN</option>
-                                            <option>TAH</option>
-                                            <option>TV</option>
-                                            <option>WGAP</option>
-                                            <option>TG</option>
-                                            <option>T2</option>
-                                            <option>QAIR</option>
-                                            <option>SMOIS</option>
+
+                                            <option id="ALBEDO">ALBEDO</option>
+                                            <option id="BGAP">BGAP</option>
+                                            <option id="FVEG">FVEG</option>
+                                            <option id="GLW">GLW</option>
+                                            <option id="ISNOW">ISNOW</option>
+                                            <option id="SWDOWN">SWDOWN</option>
+                                            <option id="TAH">TAH</option>
+                                            <option id="TV">TV</option>
+                                            <option id="WGAP">WGAP</option>
+                                            <option id="TG">TG</option>
+                                            <option id="T2">T2</option>
+                                            <option id="QAIR">QAIR</option>
+                                            <option id="SMOIS">SMOIS</option>
                                         </optgroup>
                                         <optgroup label="Microclimate">
-                                            <option>Tair</option>
-                                            <option>Tsurface</option>
-                                            <option>Tsoil</option>
-                                            <option>UV</option>
+                                            <option id="Tair">Tair</option>
+                                            <option id="Tsurface">Tsurface</option>
+                                            <option id="Tsoil">Tsoil</option>
+                                            <option id="UV">UV</option>
                                         </optgroup>
                                     </select>
                                     <div class="col-sm-auto" id="errors1">
@@ -108,24 +108,24 @@
                                 <div class="form-group row">
                                     <label for="shadelevel" class="col-sm-auto col-form-label">Shade Level</label>
                                     <div class="col-md-auto btn-group btn-group-toggle" data-toggle="buttons">
-                                        <label class="btn btn-secondary  active form-check-label">
+                                        <label class="btn btn-secondary  active form-check-label" id="shadelevel">
                                             <input class="form-check-input" type="radio" id="shadelevel"
                                                 name="shadelevel" value="0" checked>0%
                                         </label>
-                                        <label class="btn btn-secondary">
-                                            <input class="form-check-input" type="radio" id="shadelevel"
+                                        <label class="btn btn-secondary" id="shadelevel1">
+                                            <input class="form-check-input" type="radio" id="shadelevel1"
                                                 name="shadelevel" value="1">25%
                                         </label>
-                                        <label class="btn btn-secondary">
-                                            <input class="form-check-input" type="radio" id="shadelevel"
+                                        <label class="btn btn-secondary" id="shadelevel2">
+                                            <input class="form-check-input" type="radio" id="shadelevel2"
                                                 name="shadelevel" value="2">50%
                                         </label>
-                                        <label class="btn btn-secondary">
-                                            <input class="form-check-input" type="radio" id="shadelevel"
+                                        <label class="btn btn-secondary" id="shadelevel3">
+                                            <input class="form-check-input" type="radio" id="shadelevel3"
                                                 name="shadelevel" value="3">75%
                                         </label>
-                                        <label class="btn btn-secondary">
-                                            <input class="form-check-input" type="radio" id="shadelevel"
+                                        <label class="btn btn-secondary" id="shadelevel4">
+                                            <input class="form-check-input" type="radio" id="shadelevel4"
                                                 name="shadelevel" value="4">100%
                                         </label>
                                     </div>
@@ -211,8 +211,9 @@
                                         <label class="btn btn-primary active">
                                             <input type="radio" name="tp" value="past" autocomplete="off" checked>Past
                                         </label>
-                                        <label class="btn btn-primary">
-                                            <input type="radio" name="tp" value="future" autocomplete="off">Future
+                                        <label class="btn btn-primary" id="futur">
+                                            <input type="radio" name="tp" value="future" id="futur"
+                                                autocomplete="off">Future
                                         </label>
                                     </div>
                                     <button type="button" class="btn btn-danger" name="years" id="years"
@@ -247,11 +248,11 @@
                                 <div class="form-group row">
                                     <label for="interval" class="col-sm-auto col-form-label">Interval</label>
                                     <select id="interval" class="selectpicker">
-                                        <option value="0">Hourly</option>
-                                        <option value="1">6 Hourly</option>
-                                        <option value="2">12 Hourly</option>
-                                        <option value="3">Daily</option>
-                                        <option value="4">Monthly</option>
+                                        <option value="Hourly">Hourly</option>
+                                        <option value="6 Hourly">6 Hourly</option>
+                                        <option value="12 Hourly">12 Hourly</option>
+                                        <option value="Daily">Daily</option>
+                                        <option value="Monthly" id="Monthly">Monthly</option>
                                     </select>
                                 </div>
                                 <div class="form-group row">
@@ -521,18 +522,40 @@
 
                         $(".save").on("click", function () {
                             drawnItems.removeLayer(layer);
-                           /* $("#sourcetype").val('default');
-                            $("#sourcetype").selectpicker("refresh");
-                            $("#variable").val('default');
-                            $("#variable").selectpicker("refresh"); */
+                            /* $("#sourcetype").val('default');
+                             $("#sourcetype").selectpicker("refresh");
+                             $("#variable").val('default');
+                             $("#variable").selectpicker("refresh"); */
 
                         });
                     });
 
                     $("#sourcetype").change("click", function () {
                         if ($(this).val() == 'ERA5') {
-                            $('#file1').addClass('disabled');
-                            $('#file2').addClass('disabled');
+                            $('#file1').addClass('disabled').css({ 'pointer-events': "none" });;
+                            $('#file2').addClass('disabled').css({ 'pointer-events': "none" });;
+                            $('#shadelevel').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#shadelevel1').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#shadelevel2').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#shadelevel3').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#shadelevel4').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#futur').addClass('disabled', 'true').css({ 'pointer-events': "none" });
+                            $('#ALBEDO').prop('disabled', 'true');
+                            $('#BGAP').prop('disabled', 'true');
+                            $('#FVEG').prop('disabled', 'true');
+                            $('#GLW').prop('disabled', 'true');
+                            $('#ISNOW').prop('disabled', 'true');
+                            $('#SWDOWN').prop('disabled', 'true');
+                            $('#TAH').prop('disabled', 'true');
+                            $('#TV').prop('disabled', 'true');
+                            $('#WGAP').prop('disabled', 'true');
+                            $('#TG').prop('disabled', 'true');
+                            $('#T2').prop('disabled', 'true');
+                            $('#QAIR').prop('disabled', 'true');
+                            $('#UV').prop('disabled', 'true');
+                            $('#Monthly').prop('disabled', 'true');
+                            $('#aggregation').prop('disabled', true);
+                            $('#aggregation').selectpicker('refresh');
                         }
                     });
 
