@@ -188,6 +188,8 @@ $(function () {
 
                     sourcetype: self.$el.find('#sourcetype').val()
                 };
+                $("#variable").val('').trigger('change')
+                $("#sourcetype").val('').trigger('change')
 
                 $.post('/requests/', data, function (result) {
                     if (result.error == null) {
