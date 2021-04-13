@@ -65,8 +65,9 @@
                                     <label for="sourcetype" class="col-sm-auto col-form-label" id="sourcet">Source
                                     </label>
                                     <select class="selectpicker" id="sourcetype" name="sourcetype">
-                                        <option></option>
+                                        <option value='WRF'>WRF</option>
                                         <option value="ERA5">ERA5</option>
+                                        <option value="aeris">Aeris</option>
                                     </select>
 
                                 </div>
@@ -98,6 +99,23 @@
                                             <option id="Tsurface">Tsurface</option>
                                             <option id="Tsoil">Tsoil</option>
                                             <option id="UV">UV</option>
+                                        </optgroup>
+                                        <optgroup label="ECMWF">
+                                            <option id="2m_temperature" value="2m_temperature">2m temperature</option>
+                                            <option id="skin_temperature" value="skin_temperature">Skin Temperature</option>
+                                            <option id="soil_temperature_level_1" value="soil_temperature_level_1">Soil Temperature Level 1</option>
+                                            <option id="volumetric_soil_water_layer_1" value="volumetric_soil_water_layer_1">Volumetric Soil Water Layer 1</option>
+                                            <option id="evaporation" value="evaporation">Evaporation</option>
+                                            <option id="potential_evaporation" value="potential_evaporation">Potential Evaporation</option>
+                                            <option id="surface_solar_radiation_downwards" value="surface_solar_radiation_downwards">Surface solar radiation downwards</option>
+                                            <option id="10m_u_component_of_wind" value="10m_u_component_of_wind">100m u component of wind </option>
+                                            <option id="high_vegetation_cover" value="high_vegetation_cover">High Vegetation Cover</option>
+                                        </optgroup>
+                                        <optgroup label="Real Time">
+                                            <option id="Temperature">Temperature</option>
+                                            <option id="solar_radiation">Solar Radiation</option>
+                                            <option id="wind_speed">Wind Speed</option>
+                                            <option id="wind_direction">Wind Direction</option>
                                         </optgroup>
                                     </select>
                                     <div class="col-sm-auto" id="errors1">
@@ -272,7 +290,7 @@
                                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
                                         <label class="btn btn-primary" id="file1">
-                                            <input type="radio" name="file" id="file1" value="CSV" autocomplete="off"
+                                            <input type="radio" name="file" id="file1" value="csv" autocomplete="off"
                                                 checked>CSV
                                         </label>
                                         <label class="btn btn-primary" id="file2">
@@ -522,18 +540,13 @@
 
                         $(".save").on("click", function () {
                             drawnItems.removeLayer(layer);
-                            /* $("#sourcetype").val('default');
-                             $("#sourcetype").selectpicker("refresh");
-                             $("#variable").val('default');
-                             $("#variable").selectpicker("refresh"); */
-
                         });
-                    });
+                    }); 
 
                     $("#sourcetype").change("click", function () {
                         if ($(this).val() == 'ERA5') {
-                            $('#file1').addClass('disabled').css({ 'pointer-events': "none" });;
-                            $('#file2').addClass('disabled').css({ 'pointer-events': "none" });;
+                           
+                            $('#file2').addClass('disabled').css({ 'pointer-events': "none" });
                             $('#shadelevel').addClass('disabled').css({ 'pointer-events': "none" });
                             $('#shadelevel1').addClass('disabled').css({ 'pointer-events': "none" });
                             $('#shadelevel2').addClass('disabled').css({ 'pointer-events': "none" });
@@ -552,13 +565,73 @@
                             $('#TG').prop('disabled', 'true');
                             $('#T2').prop('disabled', 'true');
                             $('#QAIR').prop('disabled', 'true');
+                            $('#SMOIS').prop('disabled', 'true');
+                            $('#UV').prop('disabled', 'true');
+                            $('#Tair').prop('disabled', 'true');
+                            $('#Tsurface').prop('disabled', 'true');
+                            $('#Tsoil').prop('disabled', 'true');
                             $('#UV').prop('disabled', 'true');
                             $('#Monthly').prop('disabled', 'true');
                             $('#aggregation').prop('disabled', true);
                             $('#aggregation').selectpicker('refresh');
+                            $('#Temperature').prop('disabled', 'true');
+                            $('#solar_radiation').prop('disabled', 'true');
+                            $('#wind_speed').prop('disabled', 'true');
+                            $('#wind_direction').prop('disabled', 'true');
+                            var today = new Date();
+                            var dd = String(today.getDate()).padStart(2, '0');
+                            var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+                            var yyyy = today.getFullYear();
+                            today = mm + '/' + dd + '/' + yyyy;
+                            $('#eddate').datepicker('setStartDate', '01/01/1980');
+                            $('#eddate').datepicker('setEndDate', today);
+                            $('#stdate').datepicker('setStartDate', '01/01/1980');
+                            $('#stdate').datepicker('setEndDate', today);
+                            $('.datepicker').datepicker("setDate", "01/01/1980");
+                            $('#stdate').datepicker('update');
+                            $('#eddate').datepicker('update');
+                        }
+                        if ($(this).val() == 'aeris'){
+                            $('#file1').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#file3').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#file4').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#shadelevel').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#shadelevel1').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#shadelevel2').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#shadelevel3').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#shadelevel4').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#Monthly').prop('disabled', 'true');
+                            $('#aggregation').prop('disabled', true);
+                            $('#aggregation').selectpicker('refresh');
+                            $('#ALBEDO').prop('disabled', 'true');
+                            $('#BGAP').prop('disabled', 'true');
+                            $('#FVEG').prop('disabled', 'true');
+                            $('#GLW').prop('disabled', 'true');
+                            $('#ISNOW').prop('disabled', 'true');
+                            $('#SWDOWN').prop('disabled', 'true');
+                            $('#TAH').prop('disabled', 'true');
+                            $('#TV').prop('disabled', 'true');
+                            $('#WGAP').prop('disabled', 'true');
+                            $('#TG').prop('disabled', 'true');
+                            $('#T2').prop('disabled', 'true');
+                            $('#QAIR').prop('disabled', 'true');
+                            $('#SMOIS').prop('disabled', 'true');
+                            $('#UV').prop('disabled', 'true');
+                            $('#Tair').prop('disabled', 'true');
+                            $('#Tsurface').prop('disabled', 'true');
+                            $('#Tsoil').prop('disabled', 'true');
+                            $('#UV').prop('disabled', 'true');
+                            $('#2m_temperature').prop('disabled', 'true');
+                            $('#skin_temperature').prop('disabled', 'true');
+                            $('#soil_temperature_level_1').prop('disabled', 'true');
+                            $('#volumetric_soil_water_layer_1').prop('disabled', 'true');
+                            $('#evaporation').prop('disabled', 'true');
+                            $('#potential_evaporation').prop('disabled', 'true');
+                            $('#high_vegetation_cover').prop('disabled', 'true');
+                            $('#10m_u_component_of_wind').prop('disabled', 'true');
+                            $('#surface_solar_radiation_downwards').prop('disabled', 'true');
                         }
                     });
-
 
                 </script>
 
