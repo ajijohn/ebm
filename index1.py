@@ -183,7 +183,7 @@ def check_new(sc):
             #print(v1,v2,v3)
             v4 =v1+v2+v3+v5
             #print(v4)
-            request = urllib.request.urlopen('https://api.aerisapi.com/observations/archive/within?p='+str(North)+','+str(South)+','+str(East)+','+str(West)+'&from='+str(start_day)+'/'+str(start_month)+'/'+str(start_year)+'&format=json&filter=allstations&limit=10&plimit=1&fields='+v4+'&client_id= client_id &client_secret= client_secret')
+            request = urllib.request.urlopen('https://api.aerisapi.com/observations/archive/within?p='+str(North)+','+str(South)+','+str(East)+','+str(West)+'&from='+str(start_month)+'/'+str(start_day)+'/'+str(start_year)+'&format=json&filter=allstations&limit=10&plimit=1&fields='+v4+'&client_id= client_id &client_secret= client_secret')
             response = request.read()
             import json
             json = json.loads(response)
