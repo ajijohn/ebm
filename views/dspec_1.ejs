@@ -72,7 +72,7 @@
 
                 </div>
 
-                <h3>Variable specifications</h3>
+                <h3>Variable specifications for WRF</h3>
                 <div class="panel panel-info">
                     <p class="lead text-justify">The available variables correspond to those of the Weather Research & Forecasting (WRF) model and the additional microclimate model. Additional details are provided in Levy et al. (2016). All variables include a time dimension and some variables include additional dimensions of height or depth above or below the surface and shade level. </p>
 
@@ -104,7 +104,48 @@
                     </tbody>
                 </table>
                </div>
+               <h3>Variable specifications for ERA5</h3>
+                <div class="panel panel-info">
+                    <p class="lead text-justify">The available variables correspond to those of the Climate Data Store(CDS) Toolbox. All variables include a time dimension.</p>
 
+                </div>
+                <div class="col-lg-12">
+
+                <!-- Table -->
+                <table class="table h5 text-justify">
+                    <thead> <tr> <th>#</th> <th>Variable</th> <th>Description</th> <th>Units</th><th>Dimensions</th> <th>Source</th> </tr> </thead>
+                    <tbody>
+                    <tr> <th scope=row>1</th> <td>100m u-component of wind</td> <td> Horizontal speed of air moving towards the east, at a height of 100 metres above the surface of the Earth</td> <td>ms<sup>-1</sup></td><td>time</td> <td>ERA5</td> </tr>
+                    <tr> <th scope=row>2</th> <td>2m Temperature</td> <td> Temperature of air at 2m above the surface of land, sea or inland waters </td> <td>K</td><td>time</td> <td>ERA5</td> </tr>
+                    <tr> <th scope=row>3</th> <td>Skin Temperature</td> <td> Temperature of the surface of the Earth </td> <td>K</td><td>time</td> <td>ERA5</td> </tr>
+                    <tr> <th scope=row>4</th> <td>Soil Temperature</td> <td> Temperature of the soil at level 1</td> <td>K</td><td>time</td> <td>ERA5</td> </tr>
+                    <tr> <th scope=row>5</th> <td>Volumetric Soil water layer 1</td> <td> Volume of water in soil layer 1 (0 - 7cm, the surface is at 0cm) </td> <td>m<sup>3</sup> m<sup>-3</sup></td>td<td>time</td> <td>ERA5</td> </tr>
+                    <tr> <th scope=row>6</th> <td>High Vegetation Cover</td> <td> Fraction of the grid box that is covered with vegetation </td><td>Dimensionless</td><td>time</td> <td>ERA5</td> </tr>
+                    <tr> <th scope=row>7</th> <td>Evaporation</td> <td>Accumulated amount of water that is evaporated from the Earth's surface</td><td>m of water equivalent</td><td>time</td> <td>ERA5</td> </tr>
+                    <tr> <th scope=row>8</th> <td>Potential Evaporation</td> <td>Amount of evaporation, under existing atmospheric conditions</td><td>m</td><td>time</td> <td>ERA5</td> </tr>
+                    <tr> <th scope=row>9</th> <td>Surface solar radiation downwards</td> <td>Amount of solar radiation that reaches a horizontal plane at the surface of the Earth</td><td>J m<sup>-2</sup></td><td>time</td> <td>ERA5</td> </tr>
+                    </tbody>
+                </table>
+               </div>
+
+               <h3>Variable specifications for Aeris</h3>
+               <div class="panel panel-info">
+                   <p class="lead text-justify">The available variables correspond to those of the Aeris Weather. All variables include a time dimension.</p>
+
+               </div>
+               <div class="col-lg-12">
+
+               <!-- Table -->
+               <table class="table h5 text-justify">
+                   <thead> <tr> <th>#</th> <th>Variable</th> <th>Description</th> <th>Units</th><th>Dimensions</th> <th>Source</th> </tr> </thead>
+                   <tbody>
+                   <tr> <th scope=row>1</th> <td>Temperature</td> <td>Temperature in Celsius</td> <td>&#8451;</td><td>time</td> <td>aeris</td> </tr>
+                   <tr> <th scope=row>2</th> <td>Solar Radiation</td> <td>Solar radiation as observed from station </td> <td>WM<sup>2</sup></td><td>time</td> <td>aeris</td> </tr>
+                   <tr> <th scope=row>3</th> <td>Wind Speed</td> <td>Speed of wind</td> <td>KPH</td><td>time</td> <td>aeris</td> </tr>
+                   <tr> <th scope=row>4</th> <td>Wind Direction</td> <td>Direction of Wind</td> <td>cardinal coordinates</td><td>time</td> <td>aeris</td> </tr>
+                   </tbody>
+               </table>
+              </div>
                 <h3>Output specifications</h3>
                 <div class="col-lg-12">
 
