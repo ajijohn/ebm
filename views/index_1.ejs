@@ -650,6 +650,18 @@
                             $('#wind_direction').prop('disabled', false);
                             $("#variable").val('').trigger('change')
                             $('#Monthly').prop('disabled', false);
+                            var today = new Date();
+                            var dd = String(today.getDate()).padStart(2, '0');
+                            var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+                            var yyyy = today.getFullYear();
+                            today = mm + '/' + dd + '/' + yyyy;
+                            $('#eddate').datepicker('setStartDate', '01/01/1980');
+                            $('#eddate').datepicker('setEndDate', today);
+                            $('#stdate').datepicker('setStartDate', '01/01/1980');
+                            $('#stdate').datepicker('setEndDate', today);
+                            $('.datepicker').datepicker("setDate", "01/01/1980");
+                            $('#stdate').datepicker('update');
+                            $('#eddate').datepicker('update');
                         }
                         if ($(this).val() == 'WRF'){
                             $('#2m_temperature').prop('disabled', 'true');
