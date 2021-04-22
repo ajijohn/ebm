@@ -128,23 +128,23 @@
                                     <div class="col-md-auto btn-group btn-group-toggle" data-toggle="buttons">
                                         <label class="btn btn-secondary  active form-check-label" id="shadelevel">
                                             <input class="form-check-input" type="radio" id="shadelevel"
-                                                name="shadelevel" value="0" checked>0%
+                                                name="shadelevel" value="0%" checked>0%
                                         </label>
                                         <label class="btn btn-secondary" id="shadelevel1">
                                             <input class="form-check-input" type="radio" id="shadelevel1"
-                                                name="shadelevel" value="1">25%
+                                                name="shadelevel" value="25%">25%
                                         </label>
                                         <label class="btn btn-secondary" id="shadelevel2">
                                             <input class="form-check-input" type="radio" id="shadelevel2"
-                                                name="shadelevel" value="2">50%
+                                                name="shadelevel" value="50%">50%
                                         </label>
                                         <label class="btn btn-secondary" id="shadelevel3">
                                             <input class="form-check-input" type="radio" id="shadelevel3"
-                                                name="shadelevel" value="3">75%
+                                                name="shadelevel" value="75%">75%
                                         </label>
                                         <label class="btn btn-secondary" id="shadelevel4">
                                             <input class="form-check-input" type="radio" id="shadelevel4"
-                                                name="shadelevel" value="4">100%
+                                                name="shadelevel" value="100%">100%
                                         </label>
                                     </div>
                                 </div>
@@ -277,10 +277,10 @@
                                     <label for="aggregation" class="col-sm-auto col-form-label">Aggregation
                                         Metric</label>
                                     <select id="aggregation" class="selectpicker">
-                                        <option value="0">Instantaneous</option>
-                                        <option value="1">Max</option>
-                                        <option value="2">Min</option>
-                                        <option value="3">Mean</option>
+                                        <option value="Instantaneous">Instantaneous</option>
+                                        <option value="Max">Max</option>
+                                        <option value="Min">Min</option>
+                                        <option value="Mean">Mean</option>
                                     </select>
                                 </div>
 
@@ -545,8 +545,11 @@
 
                     $("#sourcetype").change("click", function () {
                         if ($(this).val() == 'ERA5') {
-                           
                             $('#file2').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#file3').removeClass('disabled').css({'pointer-events':"auto"});
+                            $('#file4').removeClass('disabled').css({'pointer-events':"auto"});
+                            $('#file1').removeClass('disabled').css({'pointer-events':"auto"});
+                            $("#variable").val('').trigger('change')
                             $('#shadelevel').addClass('disabled').css({ 'pointer-events': "none" });
                             $('#shadelevel1').addClass('disabled').css({ 'pointer-events': "none" });
                             $('#shadelevel2').addClass('disabled').css({ 'pointer-events': "none" });
@@ -590,9 +593,20 @@
                             $('.datepicker').datepicker("setDate", "01/01/1980");
                             $('#stdate').datepicker('update');
                             $('#eddate').datepicker('update');
+                           
+                            $('#2m_temperature').prop('disabled', false);
+                            $('#skin_temperature').prop('disabled', false);
+                            $('#soil_temperature_level_1').prop('disabled', false);
+                            $('#volumetric_soil_water_layer_1').prop('disabled', false);
+                            $('#evaporation').prop('disabled', false);
+                            $('#potential_evaporation').prop('disabled',false);
+                            $('#high_vegetation_cover').prop('disabled',false);
+                            $('#10m_u_component_of_wind').prop('disabled',false);
+                            $('#surface_solar_radiation_downwards').prop('disabled', false);
                         }
                         if ($(this).val() == 'aeris'){
                             $('#file1').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#file2').removeClass('disabled').css({'pointer-events':"auto"});
                             $('#file3').addClass('disabled').css({ 'pointer-events': "none" });
                             $('#file4').addClass('disabled').css({ 'pointer-events': "none" });
                             $('#shadelevel').addClass('disabled').css({ 'pointer-events': "none" });
@@ -630,9 +644,84 @@
                             $('#high_vegetation_cover').prop('disabled', 'true');
                             $('#10m_u_component_of_wind').prop('disabled', 'true');
                             $('#surface_solar_radiation_downwards').prop('disabled', 'true');
+                            $('#Temperature').prop('disabled', false);
+                            $('#solar_radiation').prop('disabled', false);
+                            $('#wind_speed').prop('disabled', false);
+                            $('#wind_direction').prop('disabled', false);
+                            $("#variable").val('').trigger('change')
+                            $('#Monthly').prop('disabled', false);
+                        }
+                        if ($(this).val() == 'WRF'){
+                            $('#2m_temperature').prop('disabled', 'true');
+                            $('#skin_temperature').prop('disabled', 'true');
+                            $('#soil_temperature_level_1').prop('disabled', 'true');
+                            $('#volumetric_soil_water_layer_1').prop('disabled', 'true');
+                            $('#evaporation').prop('disabled', 'true');
+                            $('#potential_evaporation').prop('disabled', 'true');
+                            $('#high_vegetation_cover').prop('disabled', 'true');
+                            $('#10m_u_component_of_wind').prop('disabled', 'true');
+                            $('#surface_solar_radiation_downwards').prop('disabled', 'true');
+                            $('#Temperature').prop('disabled', 'true');
+                            $('#solar_radiation').prop('disabled', 'true');
+                            $('#wind_speed').prop('disabled', 'true');
+                            $('#wind_direction').prop('disabled', 'true');
+                            $('#file1').removeClass('disabled').css({'pointer-events':"auto"});
+                            $('#futur').removeClass('disabled').css({'pointer-events':"auto"});
+                            $('#file2').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#file3').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#file4').addClass('disabled').css({ 'pointer-events': "none" });
+                            $('#ALBEDO').prop('disabled', false);
+                            $('#BGAP').prop('disabled', false);
+                            $('#FVEG').prop('disabled',false);
+                            $('#GLW').prop('disabled',false);
+                            $('#ISNOW').prop('disabled', false);
+                            $('#SWDOWN').prop('disabled',false);
+                            $('#TAH').prop('disabled', false);
+                            $('#TV').prop('disabled', false);
+                            $('#WGAP').prop('disabled',false);
+                            $('#TG').prop('disabled', false);
+                            $('#T2').prop('disabled', false);
+                            $('#QAIR').prop('disabled', false);
+                            $('#SMOIS').prop('disabled', false);
+                            $('#UV').prop('disabled', false);
+                            $('#Tair').prop('disabled', false);
+                            $('#Tsurface').prop('disabled', false);
+                            $('#Tsoil').prop('disabled', false);
+                            $('#UV').prop('disabled',false);
+                            $("#variable").val('').trigger('change')
+                            $('#eddate').datepicker('setStartDate', '01/01/1980');
+                            $('#eddate').datepicker('setEndDate', '12/31/1999');
+                            $('#stdate').datepicker('setStartDate', '01/01/1980');
+                            $('#stdate').datepicker('setEndDate', '12/31/1999');
+                            $('.datepicker').datepicker("setDate", "01/01/1980");
+                            $('#stdate').datepicker('update');
+                            $('#eddate').datepicker('update');
+                            $('#Monthly').prop('disabled', false);
+                            $('#shadelevel').removeClass('disabled').css({ 'pointer-events': "auto" });
+                            $('#shadelevel1').removeClass('disabled').css({ 'pointer-events': "auto" });
+                            $('#shadelevel2').removeClass('disabled').css({ 'pointer-events': "auto" });
+                            $('#shadelevel3').removeClass('disabled').css({ 'pointer-events': "auto" });
+                            $('#shadelevel4').removeClass('disabled').css({ 'pointer-events': "auto" });
+                            $('#aggregation').prop('disabled', false);
+                            $('#aggregation').selectpicker('refresh');
                         }
                     });
-
+                    $('#2m_temperature').prop('disabled', 'true');
+                    $('#skin_temperature').prop('disabled', 'true');
+                    $('#soil_temperature_level_1').prop('disabled', 'true');
+                    $('#volumetric_soil_water_layer_1').prop('disabled', 'true');
+                    $('#evaporation').prop('disabled', 'true');
+                    $('#potential_evaporation').prop('disabled', 'true');
+                    $('#high_vegetation_cover').prop('disabled', 'true');
+                    $('#10m_u_component_of_wind').prop('disabled', 'true');
+                    $('#surface_solar_radiation_downwards').prop('disabled', 'true');
+                    $('#Temperature').prop('disabled', 'true');
+                    $('#solar_radiation').prop('disabled', 'true');
+                    $('#wind_speed').prop('disabled', 'true');
+                    $('#wind_direction').prop('disabled', 'true');
+                    $('#file2').addClass('disabled').css({ 'pointer-events': "none" });
+                    $('#file3').addClass('disabled').css({ 'pointer-events': "none" });
+                    $('#file4').addClass('disabled').css({ 'pointer-events': "none" });
                 </script>
 
                 <!-- check !-->
