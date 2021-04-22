@@ -103,7 +103,8 @@ router.post('/', function (req, res, next) {
         outputformat: file,
         startdate: stdate,
         status_message: "",
-        sourcetype: sourcetype
+        sourcetype: sourcetype,
+        version:"2"
     };
 
     //Using the {w:1} option ensure you get the error back if the document fails to insert correctly.
