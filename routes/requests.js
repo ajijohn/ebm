@@ -54,6 +54,7 @@ router.post('/', function (req, res, next) {
      enddate:19810102
      outputformat:csv
      startdate:19810102
+     sourcetype:ErA5
 
      */
 

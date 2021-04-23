@@ -261,6 +261,7 @@ $(function () {
             $('#eddate').datepicker('update');
         }
         if ($(this).val() == 'future') {
+            
             $("#years").text('Available time period - 2080-2099');
             $('#eddate').datepicker('setStartDate', '01/01/2080');
             $('#eddate').datepicker('setEndDate', '12/31/2099');

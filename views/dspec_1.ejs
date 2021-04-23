@@ -150,11 +150,27 @@
                 <div class="col-lg-12">
 
                     <div class="panel panel-info">
-                        <div class="panel-heading">Output Format</div>
+                        <div class="panel-heading">Output Format for WRF</div>
                         <p class="lead text-justify">We are currently serving the microclimate data in either NetCDF or CSV format. We use the following naming convention for output:</p></br>
                         <p class="lead text-justify">[varname]_[shade]_[height/depth]_[interval]_[aggregation]_[startdate]_[enddate]_[creation time].[nc/csv]</br></br>
                             Shade and height/depth are added to the file name only if they are part of the dimensions of the selected variable.  The selection parameters are also included as global attributes in each output NetCDF file and as header information for each csv file. Output csv files have three fixed fields namely ‘datetime’ (format YYYYMMDDHH), ‘lat’(latitude) and ‘lon’(longitude) , and a column for each variable selected. The netCDF file is a compressed format that has the same information as CSV divided into variables, dimensions and attributes. The variables are the selected variables, and dimensions contain spatio-temporal information. </p>
-
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Output Format for ERA5</div>
+                        <p class="lead text-justify">We are currently serving the ERA5 data in either NetCDF or CSV format or GRIB format. We use the following naming convention for output:</p></br>
+                        <p class="lead text-justify">[sourcetype]_[varname]_[interval]_[longitude]_[lattitude]_[startdate]_[enddate]_[creation time].[nc/csv/GRIB]</br></br>
+                        The selection parameters are also included as global attributes in each output NetCDF file and as header information for each csv file. 
+                        Output csv files have three fixed fields namely ‘datetime’ (format YYYYMMDDHH), ‘lat’(latitude) and ‘lon’(longitude) , and a column for each variable selected. 
+                        The netCDF file is a compressed format that has the same information as CSV divided into variables, dimensions and attributes.
+                         The variables are the selected variables, and dimensions contain spatio-temporal information.
+                         GRIB is a file format for the storage and transport of gridded meteorological data, such as Numerical Weather Prediction model output. </p>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Output Format for Aeris</div>
+                        <p class="lead text-justify">We are currently serving the Aeris Weather data in JSON format. We use the following naming convention for output:</p></br>
+                        <p class="lead text-justify">[sourcetype]_[varname]_[lattitude]_[longitude]_[interval]_[startdate]_[enddate]_[creation time].[json]</br></br>
+                        Output JSON files have Success, Error and Response. Success shows whether the request is True or False. Error shows the code and desciprtion.
+                    if any error occurs the description and code is given there. Response gives you the output with the variables and the values .  </p>
                     </div>
 
                 </div>
