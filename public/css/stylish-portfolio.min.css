@@ -362,3 +362,12 @@ a:active, a:focus, a:hover {
 .text-secondary {
     color: #ecb807 !important
 }
+.headi{
+    font-size: 1.25rem;
+}
+.mb-1{
+    margin-top: -1rem !important;
+}
+.lead{
+    width: 1250px;
+}

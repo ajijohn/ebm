@@ -162,7 +162,6 @@ $(function () {
 
                 stfmtdt = moment(self.$el.find('#stdate').val()).utc().format("YYYYMMDD");
                 endfmtdt = moment(self.$el.find('#eddate').val()).utc().format("YYYYMMDD");
-
                 var data = {
                     variable: self.$el.find('#variable').val(),
                     dateperformed: moment(new Date()).utc().format("MM/DD/YYYY HH:mm:ss Z"),
@@ -190,6 +189,7 @@ $(function () {
                 };
                 $("#variable").val('').trigger('change')
                 $("#sourcetype").val('').trigger('change')
+
 
                 $.post('/requests/', data, function (result) {
                     if (result.error == null) {

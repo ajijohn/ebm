@@ -252,25 +252,23 @@
                                         using Past/Future</button>
                                 </div>
 
-                                <div class="form-group row">
+                                <div class="form-group row" id="date">
                                     <label for="stdate" class="col-sm-auto col-form-label">Start Date</label>
                                     <div class="col-xs-3 btn-group btn-group-toggle input-group input-daterange">
                                         <div class="col-md-auto" id="row5">
                                             <input type="text" class="form-control datepicker" id="stdate" name="stdate"
-                                                placeholder="Start Date" required>
+                                                placeholder="Start Date" required />
                                         </div>
                                         <span class="input-group-addon"></span>
                                         <label for="eddate" class="col-sm-auto col-form-label"
                                             style="margin-left: -10px;">End Date</label>
                                         <div class="col-md-auto" id="row5">
-                                            <input type="text" class="form-control datepicker" data-date-end-date="1y"
-                                                id="eddate" name="eddate" placeholder="End Date" required>
+                                            <input type="text" class="form-control datepicker" data-date-end-date="+2y"
+                                                id="eddate" name="eddate" placeholder="End Date"/>
                                         </div>
-
-
-                                    </div>
-
+                                    </div> 
                                 </div>
+                                <div id="end"></div>
 
                                 <div class="form-group row">
                                     <label for="interval" class="col-sm-auto col-form-label">Interval</label>
@@ -551,9 +549,9 @@
                             drawnItems.removeLayer(layer);
                         });
                     });
-
                     $("#sourcetype").change("click", function () {
                         if ($(this).val() == 'ERA5') {
+                            $('#end').empty();
                             $('#file2').addClass('disabled').css({ 'pointer-events': "none" });
                             $('#file3').removeClass('disabled').css({ 'pointer-events': "auto" });
                             $('#file4').removeClass('disabled').css({ 'pointer-events': "auto" });
@@ -614,19 +612,29 @@
                             $('#stdate').datepicker().on('change', function (ev) {
                                 var firstDate = $(this).val();
                                 var jsDate = $('#stdate').datepicker('getDate');
-                                var d = String(jsDate.getDate()).padStart(2,'0');
-                                var m = String(jsDate.getMonth()+1).padStart(2,'0');
+                                var d = String(jsDate.getDate()).padStart(2, '0');
+                                var m = String(jsDate.getMonth() + 1).padStart(2, '0');
                                 var yyy = jsDate.getFullYear();
-                                var yy = yyy + 2;
-                                toda =  m + '/' + d + '/' + yy;
-                                $('#eddate').datepicker('setStartDate',firstDate);
-                                $('#eddate').datepicker('setEndDate', toda);
-                                $('#eddate').datepicker('update');
+                                toda = d + '.' + m + '.' + yyy;
+                                $('#eddate').datepicker('setStartDate', firstDate);
+                                $('#eddate').datepicker().on('change',function(ev){
+                                    $('#end').empty();
+                                    var jsEDate = $('#eddate').datepicker('getDate');
+                                    var de = String(jsEDate.getDate()).padStart(2, '0');
+                                    var me = String(jsEDate.getMonth() + 1).padStart(2, '0');
+                                    var ye = jsEDate.getFullYear();
+                                    var JsE = de + '.' + me + '.' + ye;
+                                    var startDat = moment(toda, "DD.MM.YYYY");
+                                    var endDat = moment(JsE, "DD.MM.YYYY");
+                                    var result =  endDat.diff(startDat, 'days');
+                                    if (result>730){
+                                        $('#end').append('Duration between the Start date and the End date are limited to 2 years');
+                                    }
+                                })
                             });
                         }
                         if ($(this).val() == 'Aeris') {
-                            $('#sourcetype').selectpicker('refresh');
-                            $('select[name=sourcetype]').val('aeris');
+                            $('#end').empty();
                             $('#file1').addClass('disabled').css({ 'pointer-events': "none" });
                             $('#file2').removeClass('disabled').css({ 'pointer-events': "auto" });
                             $('#file3').addClass('disabled').css({ 'pointer-events': "none" });
@@ -671,31 +679,31 @@
                             $('#wind_speed').prop('disabled', false);
                             $('#wind_direction').prop('disabled', false);
                             $("#variable").val('').trigger('change')
-                            $('#Monthly').prop('disabled', false);
-                            var today = new Date();
-                            var dd = String(today.getDate()).padStart(2, '0');
-                            var mm = String(today.getMonth() + 1).padStart(2, '0');
-                            var yyyy = today.getFullYear();
-                            today = mm + '/' + dd + '/' + yyyy;
-                            $('#stdate').datepicker('setStartDate', '01/01/1980');
-                            $('#stdate').datepicker('setEndDate', today);
-                            $('#eddate').datepicker('setStartDate', '01/01/1980');
-                            $('#eddate').datepicker('setEndDate', end_d);
-                            $('.datepicker').datepicker("setDate", "01/01/1980");
-                            $('#stdate').datepicker('update');
-                            $('#eddate').datepicker('update');
                             $('#stdate').datepicker().on('change', function (ev) {
                                 var firstDate = $(this).val();
                                 var jsDate = $('#stdate').datepicker('getDate');
-                                var d = String(jsDate.getDate()).padStart(2,'0');
-                                var m = String(jsDate.getMonth()+1).padStart(2,'0');
+                                var d = String(jsDate.getDate()).padStart(2, '0');
+                                var m = String(jsDate.getMonth() + 1).padStart(2, '0');
                                 var yyy = jsDate.getFullYear();
-                                var yy = yyy + 2;
-                                toda =  m + '/' + d + '/' + yy;
-                                $('#eddate').datepicker('setStartDate',firstDate);
-                                $('#eddate').datepicker('setEndDate', toda);
-                                $('#eddate').datepicker('update');
+                                toda = d + '.' + m + '.' + yyy;
+                                $('#eddate').datepicker('setStartDate', firstDate);
+                                $('#eddate').datepicker().on('change',function(ev){
+                                    $('#end').empty();
+                                    var jsEDate = $('#eddate').datepicker('getDate');
+                                    var de = String(jsEDate.getDate()).padStart(2, '0');
+                                    var me = String(jsEDate.getMonth() + 1).padStart(2, '0');
+                                    var ye = jsEDate.getFullYear();
+                                    var JsE = de + '.' + me + '.' + ye;
+                                    var startDat = moment(toda, "DD.MM.YYYY");
+                                    var endDat = moment(JsE, "DD.MM.YYYY");
+                                    var result =  endDat.diff(startDat, 'days');
+                                    if (result>730){
+                                        $('#end').append('Duration between the Start date and the End date are limited to 2 years');
+                                    }
+                                })
                             });
+                            
+                            
                         }
                         if ($(this).val() == 'WRF') {
                             $('#2m_temperature').prop('disabled', 'true');

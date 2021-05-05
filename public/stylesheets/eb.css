@@ -189,3 +189,7 @@ input[type="button"].btn-block {
 #sourcet{
     padding-right: 25px;
 }
+#end{
+    color:red; 
+    display:contents;
+}
