@@ -18,7 +18,7 @@ Jupyter+R: [![Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v
 
 ## Requirements
 
-* [NodeJs](http://nodejs.org) >= 6.x
+* [NodeJs](http://nodejs.org) >= 6.x (tested on 10.19)
 
 ## Configurations
 
